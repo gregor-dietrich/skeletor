@@ -1,2 +1,4 @@
 .idea
+src/System/db.php
+src/System/salt.php
 app.code-workspace
