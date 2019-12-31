@@ -24,7 +24,6 @@ class PostsController extends AbstractController
             $savedSuccess = true;
         }
         $this->render("post/admin/add", [
-            'entry' => $entry,
             'savedSuccess' => $savedSuccess
         ]);
     }
