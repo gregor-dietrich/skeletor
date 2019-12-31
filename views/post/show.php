@@ -34,7 +34,7 @@
                             <form method="post" action="post?id=<?php echo escape($post->id); ?>">
                                 <textarea name="content" class="form-text form-control" required></textarea>
                                 <br />
-                                <input type="submit" value="Add comment" class="btn btn-primary" />
+                                <input type="submit" value="Add Comment" class="btn btn-primary" />
                             </form>
                         </div>
                     </div>

@@ -1,17 +1,15 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
-
+<br />
 <div class="row">
     <div class="col-lg-12">
         <div class="container">
-            <h1>Startseite des Blogs</h1>
-            <p>Das hier ist die Startseite des Blogs.</p>
             <div class="card">
-                <div class="card-header"><h3>Alle Einträge des Blogs</h3></div>
+                <div class="card-header"><h3>All Posts</h3></div>
                 <div class="card-body">
                     <ul>
                         <?php foreach ($posts AS $post): ?>
                         <li>
-                            <a href="post?id=<?php echo escape($post->id); ?>">
+                            <a href="/app/index.php/post?id=<?php echo escape($post->id); ?>">
                             <?php echo escape($post->title); ?>
                             </a>
                         </li>

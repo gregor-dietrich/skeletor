@@ -35,7 +35,8 @@ class Container
             'postsController' => function() {
                 return new PostsController(
                     $this->make("postsRepository"),
-                    $this->make("commentsRepository")
+                    $this->make("commentsRepository"),
+                    $this->make("authService")
                 );
             },
             'postsRepository' => function() {

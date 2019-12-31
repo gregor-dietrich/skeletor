@@ -10,32 +10,7 @@ if (isset($_SERVER['PATH_INFO'])) {
     header("Location: index.php/");
 }
 
-$routes = [
-    '/' => [
-        'controller' => 'postsController',
-        'method' => 'index'
-    ],
-    '/dashboard' => [
-        'controller' => 'loginController',
-        'method' => 'dashboard'
-    ],
-    '/index' => [
-        'controller' => 'postsController',
-        'method' => 'index'
-    ],
-    '/login' => [
-        'controller' => 'loginController',
-        'method' => 'login'
-    ],
-    '/logout' => [
-        'controller' => 'loginController',
-        'method' => 'logout'
-    ],
-    '/post' => [
-        'controller' => 'postsController',
-        'method' => 'show'
-    ],
-];
+require __DIR__ . "/src/System/routes.php";
 
 if (isset($routes[$pathInfo])) {
     $route = $routes[$pathInfo];

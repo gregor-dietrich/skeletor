@@ -33,7 +33,7 @@ class AuthService
             return true;
         }
         else {
-            header("Location: login");
+            header("Location: /app/index.php/login");
             return false;
         }
     }
