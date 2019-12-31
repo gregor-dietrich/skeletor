@@ -47,8 +47,7 @@ class PostsController extends AbstractController
             if (!empty($post)) {
                 $this->postsRepository->delete($id);
             }
-            $posts = $this->postsRepository->findAll();
-            $this->render("post/admin/index", ['posts' => $posts]);
+            $this->admin_index();
         }
     }
 

@@ -53,8 +53,7 @@ class UsersController extends AbstractController
             if (!empty($user)) {
                 $this->usersRepository->delete($id);
             }
-            $users = $this->usersRepository->findAll();
-            $this->render("user/admin/index", ['users' => $users]);
+            $this->admin_index();
         }
     }
 
