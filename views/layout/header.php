@@ -6,7 +6,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Project Name Title</title>
-    <link href="/app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/app/css/style.css" rel="stylesheet"/>
 </head>
 <body>

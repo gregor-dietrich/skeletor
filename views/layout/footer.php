@@ -1,5 +1,5 @@
 </div>
-<script src="/app/vendor/jquery/jquery.slim.min.js"></script>
-<script src="/app/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
