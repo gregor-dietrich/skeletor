@@ -1,10 +1,8 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
-
+<br />
 <div class="row">
     <div class="col-lg-12">
         <div class="container">
-            <h1>Einzelner Blogeintrag</h1>
-            <p>Das hier ist ein einzelner Eintrag des Blogs.</p>
             <div class="card">
                 <div class="card-header">
                     <h3><?php echo escape($post->title); ?></h3>
@@ -27,18 +25,19 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-            </div>
-            <br />
-            <div class="card">
-                <div class="card-header">
-                    <h3>Add Comment</h3>
-                </div>
-                <div class="card-body">
-                    <form method="post" action="post?id=<?php echo escape($post->id); ?>">
-                        <textarea name="content" class="form-text form-control"></textarea>
-                        <br />
-                        <input type="submit" value="Kommentar hinzufügen" class="btn btn-primary" />
-                    </form>
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Add Comment</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" action="post?id=<?php echo escape($post->id); ?>">
+                                <textarea name="content" class="form-text form-control" required></textarea>
+                                <br />
+                                <input type="submit" value="Add comment" class="btn btn-primary" />
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
