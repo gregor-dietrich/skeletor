@@ -16,6 +16,10 @@ $routes = [
         'controller' => 'postsController',
         'method' => 'add'
     ],
+    '/dashboard/posts/delete' => [
+        'controller' => 'postsController',
+        'method' => 'delete'
+    ],
     '/dashboard/posts/edit' => [
         'controller' => 'postsController',
         'method' => 'edit'

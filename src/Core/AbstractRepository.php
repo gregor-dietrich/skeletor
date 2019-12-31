@@ -15,6 +15,13 @@ abstract class AbstractRepository
     abstract public function getModelName();
     abstract public function getTableName();
 
+    function delete($id)
+    {
+        $table = $this->getTableName();
+        $stmt = $this->pdo->prepare("DELETE FROM `{$table}` WHERE `{$table}`.`id` = :id");
+        $stmt->execute(['id' => $id]);
+    }
+
     function findAll()
     {
         $table = $this->getTableName();

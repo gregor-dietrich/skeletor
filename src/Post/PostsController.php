@@ -33,6 +33,21 @@ class PostsController extends AbstractController
         $posts = $this->postsRepository->findAll();
         $this->render("post/admin/index", ['posts' => $posts]);
     }
+    public function delete()
+    {
+        if (!$this->authService->check()) {
+            die();
+        }
+        else {
+            $id = $_GET['id'];
+            $post = $this->postsRepository->findID($id);
+            if (!empty($post)) {
+                $this->postsRepository->delete($id);
+            }
+            $posts = $this->postsRepository->findAll();
+            $this->render("post/admin/index", ['posts' => $posts]);
+        }
+    }
     public function edit()
     {
         $this->authService->check();
