@@ -3,7 +3,6 @@
 namespace App\User;
 
 use App\Core\AbstractController;
-use App\User\AuthService;
 
 class UsersController extends AbstractController
 {
