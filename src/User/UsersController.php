@@ -39,6 +39,7 @@ class UsersController extends AbstractController
     {
         $this->authService->check();
         $users = $this->usersRepository->findAll();
+        rsort($users);
         $this->render("user/admin/index", ['users' => $users]);
     }
 

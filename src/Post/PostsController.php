@@ -33,6 +33,7 @@ class PostsController extends AbstractController
     {
         $this->authService->check();
         $posts = $this->postsRepository->findAll();
+        rsort($posts);
         $this->render("post/admin/index", ['posts' => $posts]);
     }
 
@@ -72,6 +73,7 @@ class PostsController extends AbstractController
     public function index()
     {
         $posts = $this->postsRepository->findAll();
+        rsort($posts);
         $this->render("post/index", ['posts' => $posts]);
     }
 
