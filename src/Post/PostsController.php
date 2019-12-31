@@ -13,6 +13,7 @@ class PostsController extends AbstractController
         $this->commentsRepository = $commentsRepository;
         $this->authService = $authService;
     }
+
     public function add()
     {
         $this->authService->check();
@@ -27,18 +28,19 @@ class PostsController extends AbstractController
             'savedSuccess' => $savedSuccess
         ]);
     }
+
     public function admin_index()
     {
         $this->authService->check();
         $posts = $this->postsRepository->findAll();
         $this->render("post/admin/index", ['posts' => $posts]);
     }
+
     public function delete()
     {
         if (!$this->authService->check()) {
             die();
-        }
-        else {
+        } else {
             $id = $_GET['id'];
             $post = $this->postsRepository->findID($id);
             if (!empty($post)) {
@@ -48,6 +50,7 @@ class PostsController extends AbstractController
             $this->render("post/admin/index", ['posts' => $posts]);
         }
     }
+
     public function edit()
     {
         $this->authService->check();
@@ -65,11 +68,13 @@ class PostsController extends AbstractController
             'savedSuccess' => $savedSuccess
         ]);
     }
+
     public function index()
     {
         $posts = $this->postsRepository->findAll();
         $this->render("post/index", ['posts' => $posts]);
     }
+
     public function show()
     {
         $id = $_GET['id'];

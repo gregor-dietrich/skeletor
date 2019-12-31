@@ -6,11 +6,13 @@ use App\Core\AbstractController;
 
 class LoginController extends AbstractController
 {
-    public function __construct(AuthService $authService) {
+    public function __construct(AuthService $authService)
+    {
         $this->authService = $authService;
     }
 
-    public function dashboard() {
+    public function dashboard()
+    {
         $this->authService->check();
         $this->render("user/dashboard", []);
     }
@@ -30,11 +32,10 @@ class LoginController extends AbstractController
             if ($this->authService->attempt($username, $password)) {
                 header("Location: dashboard");
                 return;
-            }
-            else {
+            } else {
                 $error = "Username not found or incorrect password.";
             }
-            
+
         }
         $this->render("user/login", [
             'error' => $error

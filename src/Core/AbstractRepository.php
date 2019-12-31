@@ -7,13 +7,11 @@ use PDO;
 abstract class AbstractRepository
 {
     protected $pdo;
+
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
-
-    abstract public function getModelName();
-    abstract public function getTableName();
 
     function delete($id)
     {
@@ -21,6 +19,8 @@ abstract class AbstractRepository
         $stmt = $this->pdo->prepare("DELETE FROM `{$table}` WHERE `{$table}`.`id` = :id");
         $stmt->execute(['id' => $id]);
     }
+
+    abstract public function getTableName();
 
     function findAll()
     {
@@ -30,6 +30,8 @@ abstract class AbstractRepository
         $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $posts;
     }
+
+    abstract public function getModelName();
 
     function findID($id)
     {
@@ -42,4 +44,5 @@ abstract class AbstractRepository
         return $post;
     }
 }
+
 ?>

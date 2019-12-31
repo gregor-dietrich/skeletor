@@ -1,24 +1,24 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
-<br />
-<div class="row">
-    <div class="col-lg-12">
-        <div class="container">
-            <div class="card">
-                <div class="card-header"><h3>All Posts</h3></div>
-                <div class="card-body">
-                    <ul>
-                        <?php foreach ($posts AS $post): ?>
-                        <li>
-                            <a href="/app/index.php/post?id=<?php echo escape($post->id); ?>">
-                            <?php echo escape($post->title); ?>
-                            </a>
-                        </li>
-                        <?php endforeach; ?>
-                    </ul>
+    <br/>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header"><h3>All Posts</h3></div>
+                    <div class="card-body">
+                        <ul>
+                            <?php foreach ($posts AS $post): ?>
+                                <li>
+                                    <a href="/app/index.php/post?id=<?php echo escape($post->id); ?>">
+                                        <?php echo escape($post->title); ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <?php include __DIR__ . "/../layout/footer.php"; ?>

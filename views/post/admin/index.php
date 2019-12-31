@@ -5,29 +5,32 @@
     <a class="btn btn-primary" href="/app/index.php/dashboard/posts/add">
         Add New Post
     </a>
-    <br /><br />
+    <br/><br/>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
-        <thead>
+            <thead>
             <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Actions</th>
+                <th>#</th>
+                <th>Title</th>
+                <th>Actions</th>
             </tr>
-          </thead>
-          <tbody>
+            </thead>
+            <tbody>
             <?php foreach ($posts AS $post): ?>
-            <tr>
-              <td><?php echo escape($post->id); ?></td>
-              <td><a href="/app/index.php/dashboard/posts/edit?id=<?php echo escape($post->id); ?>"><?php echo escape($post->title); ?></a></td>
-              <td>
-                <a href="/app/index.php/dashboard/posts/delete?id=<?php echo escape($post->id); ?>" onclick="return confirm('Are you sure?')">
-                  Delete
-                </a>
-              </td>
-            </tr>
+                <tr>
+                    <td><?php echo escape($post->id); ?></td>
+                    <td>
+                        <a href="/app/index.php/dashboard/posts/edit?id=<?php echo escape($post->id); ?>"><?php echo escape($post->title); ?></a>
+                    </td>
+                    <td>
+                        <a href="/app/index.php/dashboard/posts/delete?id=<?php echo escape($post->id); ?>"
+                           onclick="return confirm('Are you sure?')">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
             <?php endforeach; ?>
-          </tbody>
+            </tbody>
         </table>
     </div>
 <?php include __DIR__ . "/../../layout/dashboard/footer.php"; ?>

@@ -2,21 +2,11 @@
 
 namespace App\User;
 
-use PDO;
 use App\Core\AbstractRepository;
+use PDO;
 
 class UsersRepository extends AbstractRepository
 {
-    public function getModelName()
-    {
-        return "App\\User\\UserModel";
-    }
-
-    public function getTableName()
-    {
-        return "users";
-    }
-
     public function findUsername($username)
     {
         $table = $this->getTableName();
@@ -26,6 +16,16 @@ class UsersRepository extends AbstractRepository
         $stmt->setFetchMode(PDO::FETCH_CLASS, $model);
         $user = $stmt->fetch(PDO::FETCH_CLASS);
         return $user;
+    }
+
+    public function getTableName()
+    {
+        return "users";
+    }
+
+    public function getModelName()
+    {
+        return "App\\User\\UserModel";
     }
 }
 

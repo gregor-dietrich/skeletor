@@ -21,8 +21,7 @@ class AuthService
             $_SESSION['login'] = $user->username;
             session_regenerate_id(true);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -31,8 +30,7 @@ class AuthService
     {
         if (isset($_SESSION['login'])) {
             return true;
-        }
-        else {
+        } else {
             header("Location: /app/index.php/login");
             return false;
         }
