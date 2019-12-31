@@ -1,4 +1,4 @@
-<?php
+
 
 session_start();
 
@@ -18,4 +18,3 @@ if (isset($routes[$pathInfo])) {
     $method = $route['method'];
     $controller->$method();
 }
-
