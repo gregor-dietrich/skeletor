@@ -12,16 +12,16 @@
         </div>
         <form method="POST" action="login" class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-md-3">
-                    Benutzername
+                <label class="control-label col-md-3" for="username">
+                    Username
                 </label>
                 <div class="col-md-9">
                     <input type="text" name="username" id="username" class="form-control" required/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-3">
-                    Passwort
+                <label class="control-label col-md-3" for="password">
+                    Password
                 </label>
                 <div class="col-md-9">
                     <input type="password" name="password" id="password" class="form-control" required/>

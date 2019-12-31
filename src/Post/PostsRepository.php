@@ -11,6 +11,11 @@ class PostsRepository extends AbstractRepository
         return "App\\Post\\PostModel";
     }
 
+    public function getTableName()
+    {
+        return "posts";
+    }
+
     public function insert($title, $content)
     {
         $table = $this->getTableName();
@@ -19,11 +24,6 @@ class PostsRepository extends AbstractRepository
             'content' => $content,
             'title' => $title
         ]);
-    }
-
-    public function getTableName()
-    {
-        return "posts";
     }
 
     public function update(PostModel $model)

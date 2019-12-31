@@ -51,8 +51,14 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/app/index.php/dashboard/posts">
-                            <span data-feather="file"></span>
+                            <span data-feather="file-text"></span>
                             Posts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/app/index.php/dashboard/users">
+                            <span data-feather="user"></span>
+                            Users
                         </a>
                     </li>
                 </ul>

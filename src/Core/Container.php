@@ -7,6 +7,7 @@ use App\Post\PostsController;
 use App\Post\PostsRepository;
 use App\User\AuthService;
 use App\User\LoginController;
+use App\User\UsersController;
 use App\User\UsersRepository;
 use PDO;
 use PDOException;
@@ -41,6 +42,12 @@ class Container
             },
             'postsRepository' => function () {
                 return new PostsRepository($this->make("pdo"));
+            },
+            'usersController' => function () {
+                return new UsersController(
+                    $this->make("usersRepository"),
+                    $this->make("authService")
+                );
             },
             'usersRepository' => function () {
                 return new UsersRepository($this->make("pdo"));

@@ -24,6 +24,22 @@ $routes = [
         'controller' => 'postsController',
         'method' => 'edit'
     ],
+    '/dashboard/users' => [
+        'controller' => 'usersController',
+        'method' => 'admin_index'
+    ],
+    '/dashboard/users/add' => [
+        'controller' => 'usersController',
+        'method' => 'add'
+    ],
+    '/dashboard/users/delete' => [
+        'controller' => 'usersController',
+        'method' => 'delete'
+    ],
+    '/dashboard/users/edit' => [
+        'controller' => 'usersController',
+        'method' => 'edit'
+    ],
     '/login' => [
         'controller' => 'loginController',
         'method' => 'login'
