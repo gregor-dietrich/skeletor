@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
                 <textarea name="content" id="content" class="form-text form-control"
-                          required><?php echo nl2br(escape($entry->content)); ?></textarea>
+                          required><?php echo escape($entry->content); ?></textarea>
                 <br/>
                 <input type="submit" name="save" value="Save" id="save" class="btn btn-primary"/>
                 <a href="/app/index.php/dashboard/posts/delete?id=<?php echo escape($entry->id); ?>"
