@@ -6,4 +6,3 @@ require __DIR__ . "/func.php";
 
 $container = new App\Core\Container();
 
-?>

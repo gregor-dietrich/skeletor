@@ -19,4 +19,3 @@ if (isset($routes[$pathInfo])) {
     $controller->$method();
 }
 
-?>

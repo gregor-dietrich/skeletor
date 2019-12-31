@@ -29,4 +29,3 @@ class UsersRepository extends AbstractRepository
     }
 }
 
-?>

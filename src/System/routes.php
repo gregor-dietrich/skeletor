@@ -37,4 +37,3 @@ $routes = [
         'method' => 'show'
     ],
 ];
-?>

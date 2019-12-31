@@ -39,4 +39,3 @@ class PostsRepository extends AbstractRepository
     }
 }
 
-?>

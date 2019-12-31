@@ -27,4 +27,3 @@ abstract class AbstractModel implements ArrayAccess
     }
 }
 
-?>

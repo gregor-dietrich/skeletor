@@ -5,4 +5,3 @@ $_ENV['dbname'] = "";
 $_ENV['dbuser'] = "";
 $_ENV['dbpass'] = "";
 $_ENV['dbchar'] = "utf8";
-?>

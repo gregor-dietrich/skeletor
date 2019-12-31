@@ -11,4 +11,3 @@ class PostModel extends AbstractModel
     public $content;
 }
 
-?>

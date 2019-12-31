@@ -12,4 +12,3 @@ class UserModel extends AbstractModel
     public $salt;
 }
 
-?>
