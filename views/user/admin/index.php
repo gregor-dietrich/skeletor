@@ -1,17 +1,18 @@
 <?php include __DIR__ . "/../../layout/admin/header.php"; ?>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">All Users</h1>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">All Users</h1>
+        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="/app/index.php/dashboard/users/add">
+            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add New User
+        </a>
     </div>
-    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="/app/index.php/dashboard/users/add">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add New User
-    </a>
-    <br/><br/>
+
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Title</th>
+                <th>Username</th>
                 <th></th>
             </tr>
             </thead>

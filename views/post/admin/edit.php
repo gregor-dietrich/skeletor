@@ -1,7 +1,9 @@
 <?php include __DIR__ . "/../../layout/admin/header.php"; ?>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Edit Post</h1>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Edit Post</h1>
     </div>
+
 <?php if (!empty($savedSuccess)): ?>
     <p>
         Post updated successfully.
