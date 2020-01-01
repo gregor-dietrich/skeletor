@@ -1,5 +1,5 @@
 .DS_STORE
 .idea
-src/System/db.php
-src/System/salt.php
-app.code-workspace
+app/src/System/db.php
+app/src/System/salt.php
+*.code-workspace
