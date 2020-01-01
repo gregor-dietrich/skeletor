@@ -35,14 +35,6 @@ class UsersController extends AbstractController
         ]);
     }
 
-    public function admin_index()
-    {
-        $this->authService->check();
-        $users = $this->usersRepository->findAll();
-        rsort($users);
-        $this->render("user/admin/index", ['users' => $users]);
-    }
-
     public function delete()
     {
         if (!$this->authService->check()) {
@@ -55,6 +47,14 @@ class UsersController extends AbstractController
             }
             $this->admin_index();
         }
+    }
+
+    public function admin_index()
+    {
+        $this->authService->check();
+        $users = $this->usersRepository->findAll();
+        rsort($users);
+        $this->render("user/admin/index", ['users' => $users]);
     }
 
     public function edit()

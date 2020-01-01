@@ -16,7 +16,7 @@
         <form method="POST" action="/app/index.php/dashboard/users/edit?id=<?php echo escape($entry->id); ?>"
               class="form-horizontal">
             <div class="card-header">
-                <?php echo escape($entry->username); ?>
+                Editing User: <?php echo escape($entry->username); ?>
             </div>
             <div class="card-body">
                 <input type="text" name="username" id="username" value="<?php echo escape($entry->username); ?>"
@@ -27,14 +27,14 @@
                 <input type="password" name="password" id="password" value=""
                        class="form-control" required/>
                 <label class="control-label col-md-3" for="password">
-                    Password
+                    New Password
                 </label>
                 <input type="password" name="password_confirm" id="password_confirm" value=""
                        class="form-control" required/>
                 <label class="control-label col-md-3" for="password_confirm">
-                    Confirm Password
+                    Confirm New Password
                 </label>
-                <br />
+                <br/>
                 <input type="submit" name="save" value="Save" id="save" class="btn btn-primary"/>
                 <a href="/app/index.php/dashboard/users/delete?id=<?php echo escape($entry->id); ?>"
                    class="btn btn-primary"

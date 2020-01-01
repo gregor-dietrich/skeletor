@@ -33,7 +33,7 @@
                 <label class="control-label col-md-3" for="password_confirm">
                     Confirm Password
                 </label>
-                <br />
+                <br/>
                 <input type="submit" name="save" value="Save" id="save" class="btn btn-primary"/>
             </div>
         </form>

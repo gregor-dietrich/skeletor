@@ -29,14 +29,6 @@ class PostsController extends AbstractController
         ]);
     }
 
-    public function admin_index()
-    {
-        $this->authService->check();
-        $posts = $this->postsRepository->findAll();
-        rsort($posts);
-        $this->render("post/admin/index", ['posts' => $posts]);
-    }
-
     public function delete()
     {
         if (!$this->authService->check()) {
@@ -49,6 +41,14 @@ class PostsController extends AbstractController
             }
             $this->admin_index();
         }
+    }
+
+    public function admin_index()
+    {
+        $this->authService->check();
+        $posts = $this->postsRepository->findAll();
+        rsort($posts);
+        $this->render("post/admin/index", ['posts' => $posts]);
     }
 
     public function edit()
