@@ -35,11 +35,13 @@
                     Confirm New Password
                 </label>
                 <br/>
-                <input type="submit" name="save" value="Save" id="save" class="btn btn-primary"/>
+                <button type="submit" name="save" id="save" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-edit fa-sm text-white-50"></i> Save
+                </button>
                 <a href="/app/index.php/dashboard/users/delete?id=<?php echo escape($entry->id); ?>"
-                   class="btn btn-primary"
+                   class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                    onclick="return confirm('Are you sure?')">
-                    Delete</a>
+                    <i class="fas fa-trash-alt fa-sm text-white-50"></i> Delete</a>
             </div>
         </form>
     </div>

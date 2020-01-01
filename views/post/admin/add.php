@@ -22,7 +22,9 @@
                     Content
                 </label>
                 <br/>
-                <input type="submit" name="save" value="Save" id="save" class="btn btn-primary"/>
+                <button type="submit" name="save" id="save" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-plus-circle fa-sm text-white-50"></i> Save
+                </button>
             </div>
         </form>
     </div>
