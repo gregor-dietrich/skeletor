@@ -5,7 +5,7 @@
     </div>
 
 <?php if (!empty($savedSuccess)): ?>
-    <p>
+    <p class="alert-success">
         Post updated successfully.
     </p>
 <?php endif; ?>

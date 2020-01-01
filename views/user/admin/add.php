@@ -5,12 +5,12 @@
     </div>
 
 <?php if (!empty($savedSuccess)): ?>
-    <p>
+    <p class="alert-success">
         User added successfully.
     </p>
 <?php endif; ?>
 <?php if (!empty($error)): ?>
-    <p>
+    <p class="alert-danger">
         <?php echo $error; ?>
     </p>
 <?php endif; ?>
