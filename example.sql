@@ -3,14 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2019 at 05:25 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Generation Time: Jan 01, 2020 at 07:56 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+01:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -31,7 +31,21 @@ SET time_zone = "+01:00";
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `content` text NOT NULL
+  `content` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_categories`
+--
+
+CREATE TABLE `post_categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `parent_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -43,7 +57,8 @@ CREATE TABLE `posts` (
 CREATE TABLE `post_comments` (
   `id` int(11) NOT NULL,
   `content` text NOT NULL,
-  `post_id` int(11) NOT NULL
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -56,14 +71,43 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `salt` varchar(255) NOT NULL
+  `salt` varchar(255) NOT NULL,
+  `rank` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` VALUES(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43');
+INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank`) VALUES
+(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_ranks`
+--
+
+CREATE TABLE `user_ranks` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `comment_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `post_add` tinyint(1) NOT NULL DEFAULT 0,
+  `post_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `post_edit` tinyint(1) NOT NULL DEFAULT 0,
+  `user_add` tinyint(1) NOT NULL DEFAULT 0,
+  `user_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `user_edit` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_ranks`
+--
+
+INSERT INTO `user_ranks` (`id`, `name`, `comment_delete`, `post_add`, `post_delete`, `post_edit`, `user_add`, `user_delete`, `user_edit`) VALUES
+(1, 'User', 0, 0, 0, 0, 0, 0, 0),
+(2, 'Moderator', 1, 0, 0, 0, 0, 0, 0),
+(3, 'Administrator', 1, 1, 1, 1, 1, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -73,6 +117,12 @@ INSERT INTO `users` VALUES(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS7
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `post_categories`
+--
+ALTER TABLE `post_categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -88,6 +138,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_ranks`
+--
+ALTER TABLE `user_ranks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -95,6 +151,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `post_categories`
+--
+ALTER TABLE `post_categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -107,6 +169,12 @@ ALTER TABLE `post_comments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_ranks`
+--
+ALTER TABLE `user_ranks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

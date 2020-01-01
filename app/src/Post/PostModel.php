@@ -7,7 +7,9 @@ use App\Core\AbstractModel;
 class PostModel extends AbstractModel
 {
     public $id;
-    public $title;
+    public $title;  
     public $content;
+    public $user_id;
+    public $category_id;
 }
 
