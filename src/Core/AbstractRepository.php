@@ -13,14 +13,15 @@ abstract class AbstractRepository
         $this->pdo = $pdo;
     }
 
+    abstract public function getModelName();
+    abstract public function getTableName();
+
     function delete($id)
     {
         $table = $this->getTableName();
         $stmt = $this->pdo->prepare("DELETE FROM `{$table}` WHERE `{$table}`.`id` = :id");
         $stmt->execute(['id' => $id]);
     }
-
-    abstract public function getTableName();
 
     function findAll()
     {
@@ -30,8 +31,6 @@ abstract class AbstractRepository
         $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $posts;
     }
-
-    abstract public function getModelName();
 
     function findID($id)
     {
