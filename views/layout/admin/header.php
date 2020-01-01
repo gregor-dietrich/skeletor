@@ -39,6 +39,16 @@
         </a>
 
         <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="/app/index.php/dashboard">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
@@ -46,14 +56,14 @@
             Modules
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- Nav Item - Posts Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePosts"
-               aria-expanded="true" aria-controls="collapseTwo">
+               aria-expanded="true" aria-controls="collapsePosts">
                 <i class="fas fa-fw fa-file-alt"></i>
                 <span>Posts</span>
             </a>
-            <div id="collapsePosts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapsePosts" class="collapse" aria-labelledby="headingPosts" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="/app/index.php/dashboard/posts">Manage</a>
                     <a class="collapse-item" href="/app/index.php/dashboard/posts/add">Add New</a>
@@ -61,14 +71,14 @@
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- Nav Item - Users Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-               aria-expanded="true" aria-controls="collapseUtilities">
+               aria-expanded="true" aria-controls="collapseUsers">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Users</span>
             </a>
-            <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="/app/index.php/dashboard/users">Manage</a>
                     <a class="collapse-item" href="/app/index.php/dashboard/users/add">Add New</a>
