@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2020 at 07:56 PM
+-- Generation Time: Jan 04, 2020 at 06:15 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `content` text NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -44,9 +44,9 @@ CREATE TABLE `posts` (
 
 CREATE TABLE `post_categories` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `parent_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -56,10 +56,10 @@ CREATE TABLE `post_categories` (
 
 CREATE TABLE `post_comments` (
   `id` int(11) NOT NULL,
-  `content` text NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -69,11 +69,11 @@ CREATE TABLE `post_comments` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `salt` varchar(255) NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `salt` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rank` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -90,24 +90,32 @@ INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank`) VALUES
 
 CREATE TABLE `user_ranks` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `comment_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_add` tinyint(1) NOT NULL DEFAULT 0,
   `post_delete` tinyint(1) NOT NULL DEFAULT 0,
   `post_edit` tinyint(1) NOT NULL DEFAULT 0,
+  `post_category_add` tinyint(1) NOT NULL DEFAULT 0,
+  `post_category_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `post_category_edit` tinyint(1) NOT NULL DEFAULT 0,
+  `post_comment_add` tinyint(1) NOT NULL DEFAULT 0,
+  `post_comment_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `post_comment_edit` tinyint(1) NOT NULL DEFAULT 0,
   `user_add` tinyint(1) NOT NULL DEFAULT 0,
   `user_delete` tinyint(1) NOT NULL DEFAULT 0,
-  `user_edit` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `user_edit` tinyint(1) NOT NULL DEFAULT 0,
+  `user_rank_add` tinyint(1) NOT NULL DEFAULT 0,
+  `user_rank_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `user_rank_edit` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user_ranks`
 --
 
-INSERT INTO `user_ranks` (`id`, `name`, `comment_delete`, `post_add`, `post_delete`, `post_edit`, `user_add`, `user_delete`, `user_edit`) VALUES
-(1, 'User', 0, 0, 0, 0, 0, 0, 0),
-(2, 'Moderator', 1, 0, 0, 0, 0, 0, 0),
-(3, 'Administrator', 1, 1, 1, 1, 1, 1, 1);
+INSERT INTO `user_ranks` (`id`, `name`, `post_add`, `post_delete`, `post_edit`, `post_category_add`, `post_category_delete`, `post_category_edit`, `post_comment_add`, `post_comment_delete`, `post_comment_edit`, `user_add`, `user_delete`, `user_edit`, `user_rank_add`, `user_rank_delete`, `user_rank_edit`) VALUES
+(1, 'User', 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'Moderator', 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0),
+(3, 'Administrator', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 --
 -- Indexes for dumped tables
