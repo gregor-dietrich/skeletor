@@ -40,6 +40,22 @@ $routes = [
         'controller' => 'usersController',
         'method' => 'edit'
     ],
+    '/dashboard/user_ranks' => [
+        'controller' => 'ranksController',
+        'method' => 'admin_index'
+    ],
+    '/dashboard/user_ranks/add' => [
+        'controller' => 'ranksController',
+        'method' => 'add'
+    ],
+    '/dashboard/user_ranks/delete' => [
+        'controller' => 'ranksController',
+        'method' => 'delete'
+    ],
+    '/dashboard/user_ranks/edit' => [
+        'controller' => 'ranksController',
+        'method' => 'edit'
+    ],
     '/login' => [
         'controller' => 'loginController',
         'method' => 'login'

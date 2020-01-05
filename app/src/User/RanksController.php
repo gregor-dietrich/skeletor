@@ -47,8 +47,8 @@ class RanksController extends AbstractController
             die();
         } else {
             $id = $_GET['id'];
-            $rank = $this->ranksRepository->findID($id);
-            if (!empty($rank)) {
+            $user = $this->ranksRepository->findID($id);
+            if (!empty($user)) {
                 $this->ranksRepository->delete($id);
             }
             $this->admin_index();
