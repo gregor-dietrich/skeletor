@@ -10,6 +10,7 @@ class UserModel extends AbstractModel
     public $username;
     public $password;
     public $salt;
-    public $rank;
+    public $rank_id;
+    public $email;
 }
 
