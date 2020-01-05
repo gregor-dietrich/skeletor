@@ -6,7 +6,6 @@
             <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add New Post
         </a>
     </div>
-
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>

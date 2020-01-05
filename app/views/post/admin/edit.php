@@ -3,7 +3,6 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Edit Post</h1>
     </div>
-
 <?php if (!empty($savedSuccess)): ?>
     <p class="alert-success">
         Post updated successfully.
