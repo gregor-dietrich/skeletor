@@ -4,7 +4,7 @@ namespace App\User;
 
 use App\Core\AbstractRepository;
 
-class PostsRepository extends AbstractRepository
+class RanksRepository extends AbstractRepository
 {
     public function getModelName()
     {
