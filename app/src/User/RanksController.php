@@ -6,6 +6,12 @@ use App\Core\AbstractController;
 
 class RanksController extends AbstractController
 {
+    private $permissions = [
+        "post_add", "post_delete", "post_edit", "post_category_add", "post_category_delete",
+        "post_category_edit", "post_comment_add", "post_comment_delete", "post_comment_edit", "user_add",
+        "user_delete", "user_edit", "user_rank_add", "user_rank_delete", "user_rank_edit"
+    ];
+
     public function __construct(RanksRepository $ranksRepository, AuthService $authService)
     {
         $this->ranksRepository = $ranksRepository;
@@ -18,21 +24,13 @@ class RanksController extends AbstractController
         $savedSuccess = false;
         if (!empty($_POST['name'])) {
             $name = $_POST['name'];
-            $post_add = $_POST['post_add'];
-            $post_delete = $_POST['post_delete'];
-            $post_edit = $_POST['post_edit'];
-            $post_category_add = $_POST['post_category_add'];
-            $post_category_delete = $_POST['post_category_delete'];
-            $post_category_edit = $_POST['post_category_edit'];
-            $post_comment_add = $_POST['post_comment_add'];
-            $post_comment_delete = $_POST['post_comment_delete'];
-            $post_comment_edit = $_POST['post_comment_edit'];
-            $user_add = $_POST['user_add'];
-            $user_delete = $_POST['user_delete'];
-            $user_edit = $_POST['user_edit'];
-            $user_rank_add = $_POST['user_rank_add'];
-            $user_rank_delete = $_POST['user_rank_delete'];
-            $user_rank_edit = $_POST['user_rank_edit'];
+            foreach ($this->permissions AS $permission) {
+                if (!empty($_POST[$permission])) {
+                    $$permission = $_POST[$permission];
+                } else {
+                    $$permission = 0;
+                }
+            }
             $this->ranksRepository->insert($name, $post_add, $post_delete, $post_edit, $post_category_add, $post_category_delete, $post_category_edit, $post_comment_add, $post_comment_delete, $post_comment_edit, $user_add, $user_delete, $user_edit, $user_rank_add, $user_rank_delete, $user_rank_edit);
             $savedSuccess = true;
         }
@@ -71,21 +69,13 @@ class RanksController extends AbstractController
         $savedSuccess = false;
         if (!empty($_POST['name'])) {
             $entry->name = $_POST['name'];
-            $entry->post_add = $_POST['post_add'];
-            $entry->post_delete = $_POST['post_delete'];
-            $entry->post_edit = $_POST['post_edit'];
-            $entry->post_category_add = $_POST['post_category_add'];
-            $entry->post_category_delete = $_POST['post_category_delete'];
-            $entry->post_category_edit = $_POST['post_category_edit'];
-            $entry->post_comment_add = $_POST['post_comment_add'];
-            $entry->post_comment_delete = $_POST['post_comment_delete'];
-            $entry->post_comment_edit = $_POST['post_comment_edit'];
-            $entry->user_add = $_POST['user_add'];
-            $entry->user_delete = $_POST['user_delete'];
-            $entry->user_edit = $_POST['user_edit'];
-            $entry->user_rank_add = $_POST['user_rank_add'];
-            $entry->user_rank_delete = $_POST['user_rank_delete'];
-            $entry->user_rank_edit = $_POST['user_rank_edit'];
+            foreach ($this->permissions AS $permission) {
+                if (!empty($_POST[$permission])) {
+                    $entry->$permission = $_POST[$permission];
+                } else {
+                    $entry->$permission = 0;
+                }
+            }
             $this->ranksRepository->update($entry);
             $savedSuccess = true;
         }

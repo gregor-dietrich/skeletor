@@ -14,7 +14,7 @@ class RanksRepository extends AbstractRepository
     public function insert($name, $post_add, $post_delete, $post_edit, $post_category_add, $post_category_delete, $post_category_edit, $post_comment_add, $post_comment_delete, $post_comment_edit, $user_add, $user_delete, $user_edit, $user_rank_add, $user_rank_delete, $user_rank_edit)
     {
         $table = $this->getTableName();
-        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`name`, `post_add`, `post_delete`, `post_edit`, `post_category_add`, `post_category_delete`, `post_category_edit`, `post_comment_add`, `post_comment_delete`, `post_comment_edit`, `user_add`, `user_delete`, `user_edit`, `user_rank_add`, `user_rank_delete`, `user_rank_edit`) VALUES (:post_add, :post_delete, :post_edit, :post_category_add, :post_category_delete, :post_category_edit, :post_comment_add, :post_comment_delete, :post_comment_edit, :user_add, :user_delete, :user_edit, :user_rank_add, :user_rank_delete, :user_rank_edit)");
+        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`name`, `post_add`, `post_delete`, `post_edit`, `post_category_add`, `post_category_delete`, `post_category_edit`, `post_comment_add`, `post_comment_delete`, `post_comment_edit`, `user_add`, `user_delete`, `user_edit`, `user_rank_add`, `user_rank_delete`, `user_rank_edit`) VALUES (:name, :post_add, :post_delete, :post_edit, :post_category_add, :post_category_delete, :post_category_edit, :post_comment_add, :post_comment_delete, :post_comment_edit, :user_add, :user_delete, :user_edit, :user_rank_add, :user_rank_delete, :user_rank_edit)");
         $stmt->execute([
             'name' => $name,
             'post_add' => $post_add,
