@@ -1,0 +1,7 @@
+.DS_STORE
+
+.idea
+*.code-workspace
+
+app/src/System/db.php
+app/src/System/salt.php
