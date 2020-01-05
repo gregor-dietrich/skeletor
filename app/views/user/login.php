@@ -3,12 +3,12 @@
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
-                    <?php if (!empty($error)): ?>
-                        <p class="alert-danger">
-                            <?php echo $error; ?>
-                        </p>
-                    <?php endif; ?>
                     <div class="card-body">
+                        <?php if (!empty($error)): ?>
+                            <p class="alert alert-danger">
+                                <?php echo $error; ?>
+                            </p>
+                        <?php endif; ?>
                         <h5 class="card-title text-center">Sign In</h5>
                         <form method="POST" action="login" class="form-signin">
                             <div class="form-label-group">

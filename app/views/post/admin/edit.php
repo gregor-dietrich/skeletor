@@ -4,7 +4,7 @@
         <h1 class="h3 mb-0 text-gray-800">Edit Post</h1>
     </div>
 <?php if (!empty($savedSuccess)): ?>
-    <p class="alert-success">
+    <p class="alert alert-success">
         Post updated successfully.
     </p>
 <?php endif; ?>

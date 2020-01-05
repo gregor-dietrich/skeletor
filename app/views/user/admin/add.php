@@ -4,12 +4,12 @@
         <h1 class="h3 mb-0 text-gray-800">Add User</h1>
     </div>
 <?php if (!empty($savedSuccess)): ?>
-    <p class="alert-success">
+    <p class="alert alert-success">
         User added successfully.
     </p>
 <?php endif; ?>
 <?php if (!empty($error)): ?>
-    <p class="alert-danger">
+    <p class="alert alert-danger">
         <?php echo $error; ?>
     </p>
 <?php endif; ?>

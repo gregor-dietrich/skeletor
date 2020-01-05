@@ -4,7 +4,7 @@
         <h1 class="h3 mb-0 text-gray-800">Add User Rank</h1>
     </div>
 <?php if (!empty($savedSuccess)): ?>
-    <p class="alert-success">
+    <p class="alert alert-success">
         User Rank added successfully.
     </p>
 <?php endif; ?>
