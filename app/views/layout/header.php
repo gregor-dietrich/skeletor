@@ -10,6 +10,7 @@
           rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous"/>
     <link href="/app/css/style.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="/app/img/favicon.png"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
