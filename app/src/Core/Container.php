@@ -7,6 +7,8 @@ use App\Post\PostsController;
 use App\Post\PostsRepository;
 use App\User\AuthService;
 use App\User\LoginController;
+use App\User\RanksController;
+use App\User\RanksRepository;
 use App\User\UsersController;
 use App\User\UsersRepository;
 use PDO;
@@ -42,6 +44,15 @@ class Container
             },
             'postsRepository' => function () {
                 return new PostsRepository($this->make("pdo"));
+            },
+            'ranksController' => function () {
+                return new RanksController(
+                    $this->make("ranksRepository"),
+                    $this->make("authService")
+                );
+            },
+            'ranksRepository' => function () {
+                return new RanksRepository($this->make("pdo"));
             },
             'usersController' => function () {
                 return new UsersController(
