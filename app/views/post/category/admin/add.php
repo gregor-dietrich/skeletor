@@ -21,7 +21,7 @@
                 </label>
                 <select name="parent_id" id="parent_id"
                         class="form form-control col-md-4">
-                    <option value="NULL">
+                    <option selected value>
                         (None)
                     </option>
                     <?php foreach ($categories AS $category): ?>

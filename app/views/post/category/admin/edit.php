@@ -22,7 +22,9 @@
                 </label>
                 <select name="parent_id" id="parent_id"
                         class="form form-control col-md-4">
-                    <option value="NULL">
+                    <option <?php
+                                if (empty(escape($entry->parent_id))) { echo " selected "; }
+                            ?>value>
                         (None)
                     </option>
                     <?php foreach ($categories AS $category):
