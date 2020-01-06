@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Post\CategoriesController;
+use App\Post\CategoriesRepository;
 use App\Post\CommentsRepository;
 use App\Post\PostsController;
 use App\Post\PostsRepository;
@@ -26,6 +28,15 @@ class Container
                 return new AuthService(
                     $this->make("usersRepository")
                 );
+            },
+            'categoriesController' => function () {
+                return new CategoriesController(
+                    $this->make("categoriesRepository"),
+                    $this->make("authService")
+                );
+            },
+            'categoriesRepository' => function () {
+                return new CategoriesRepository($this->make("pdo"));
             },
             'commentsRepository' => function () {
                 return new CommentsRepository($this->make("pdo"));
