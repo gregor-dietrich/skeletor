@@ -18,11 +18,3 @@ if (isset($routes[$pathInfo])) {
     $method = $route['method'];
     $controller->$method();
 }
-
-echo '
-<div style="display: none; visibility: hidden;">
-    ';
-var_dump($_ENV);
-echo '
-</div>
-';
