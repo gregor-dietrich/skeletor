@@ -4,12 +4,15 @@ namespace App\Post;
 
 use App\Core\AbstractController;
 use App\User\AuthService;
+use App\User\UsersRepository;
 
 class PostsController extends AbstractController
 {
-    public function __construct(PostsRepository $postsRepository, CommentsRepository $commentsRepository, AuthService $authService)
+    public function __construct(PostsRepository $postsRepository, CategoriesRepository $categoriesRepository, UsersRepository $usersRepository, CommentsRepository $commentsRepository, AuthService $authService)
     {
         $this->postsRepository = $postsRepository;
+        $this->categoriesRepository = $categoriesRepository;
+        $this->usersRepository = $usersRepository;
         $this->commentsRepository = $commentsRepository;
         $this->authService = $authService;
     }

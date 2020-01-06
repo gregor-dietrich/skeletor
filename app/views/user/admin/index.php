@@ -12,6 +12,7 @@
             <tr>
                 <th>#</th>
                 <th>Username</th>
+                <th>Rank</th>
                 <th></th>
             </tr>
             </thead>
@@ -22,6 +23,7 @@
                     <td>
                         <a href="/app/index.php/dashboard/users/edit?id=<?php echo escape($user->id); ?>"><?php echo escape($user->username); ?></a>
                     </td>
+                    <td><?php echo escape($user->rank_id); ?></td>
                     <td>
                         <a href="/app/index.php/dashboard/users/edit?id=<?php echo escape($user->id); ?>"
                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">

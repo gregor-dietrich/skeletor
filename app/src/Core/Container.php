@@ -26,7 +26,8 @@ class Container
         $this->recipes = [
             'authService' => function () {
                 return new AuthService(
-                    $this->make("usersRepository")
+                    $this->make("usersRepository"),
+                    $this->make("ranksRepository")
                 );
             },
             'categoriesController' => function () {
@@ -49,6 +50,8 @@ class Container
             'postsController' => function () {
                 return new PostsController(
                     $this->make("postsRepository"),
+                    $this->make("categoriesRepository"),
+                    $this->make("usersRepository"),
                     $this->make("commentsRepository"),
                     $this->make("authService")
                 );
@@ -68,6 +71,7 @@ class Container
             'usersController' => function () {
                 return new UsersController(
                     $this->make("usersRepository"),
+                    $this->make("ranksRepository"),
                     $this->make("authService")
                 );
             },

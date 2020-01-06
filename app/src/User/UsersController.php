@@ -6,9 +6,10 @@ use App\Core\AbstractController;
 
 class UsersController extends AbstractController
 {
-    public function __construct(UsersRepository $usersRepository, AuthService $authService)
+    public function __construct(UsersRepository $usersRepository, RanksRepository $ranksRepository, AuthService $authService)
     {
         $this->usersRepository = $usersRepository;
+        $this->ranksRepository = $ranksRepository;
         $this->authService = $authService;
     }
 

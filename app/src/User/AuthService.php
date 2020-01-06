@@ -4,9 +4,10 @@ namespace App\User;
 
 class AuthService
 {
-    public function __construct(UsersRepository $usersRepository)
+    public function __construct(UsersRepository $usersRepository, RanksRepository $ranksRepository)
     {
         $this->usersRepository = $usersRepository;
+        $this->ranksRepository = $ranksRepository;
     }
 
     public function attempt($username, $password)
