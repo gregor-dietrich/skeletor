@@ -3,6 +3,7 @@
 namespace App\Post;
 
 use App\Core\AbstractController;
+use App\User\AuthService;
 
 class CategoriesController extends AbstractController
 {
@@ -27,8 +28,10 @@ class CategoriesController extends AbstractController
             $this->categoriesRepository->insert($name, $parent_id);
             $savedSuccess = true;
         }
+        $categories = $this->categoriesRepository->findAll();
         $this->render("post/category/admin/add", [
-            'savedSuccess' => $savedSuccess
+            'savedSuccess' => $savedSuccess,
+            'categories' => $categories
         ]);
     }
 
@@ -70,9 +73,11 @@ class CategoriesController extends AbstractController
             $this->categoriesRepository->update($entry);
             $savedSuccess = true;
         }
+        $categories = $this->categoriesRepository->findAll();
         $this->render("post/category/admin/edit", [
             'entry' => $entry,
-            'savedSuccess' => $savedSuccess
+            'savedSuccess' => $savedSuccess,
+            'categories' => $categories
         ]);
     }
 }

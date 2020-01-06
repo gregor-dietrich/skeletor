@@ -65,8 +65,8 @@
             </a>
             <div id="collapsePostCategories" class="collapse" aria-labelledby="headingPostCategories" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#">Manage</a>
-                    <a class="collapse-item" href="#">Add New</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories">Manage</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories/add">Add New</a>
                 </div>
             </div>
         </li>

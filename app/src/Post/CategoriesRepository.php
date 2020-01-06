@@ -8,7 +8,7 @@ class CategoriesRepository extends AbstractRepository
 {
     public function getModelName()
     {
-        return "App\\Post\\RankModel";
+        return "App\\Post\\CategoryModel";
     }
 
     public function insert($name, $parent_id)
@@ -26,7 +26,7 @@ class CategoriesRepository extends AbstractRepository
         return "post_categories";
     }
 
-    public function update(RankModel $model)
+    public function update(CategoryModel $model)
     {
         $table = $this->getTableName();
 

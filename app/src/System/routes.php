@@ -24,6 +24,22 @@ $routes = [
         'controller' => 'postsController',
         'method' => 'edit'
     ],
+    '/dashboard/post_categories' => [
+        'controller' => 'categoriesController',
+        'method' => 'admin_index'
+    ],
+    '/dashboard/post_categories/add' => [
+        'controller' => 'categoriesController',
+        'method' => 'add'
+    ],
+    '/dashboard/post_categories/delete' => [
+        'controller' => 'categoriesController',
+        'method' => 'delete'
+    ],
+    '/dashboard/post_categories/edit' => [
+        'controller' => 'categoriesController',
+        'method' => 'edit'
+    ],
     '/dashboard/users' => [
         'controller' => 'usersController',
         'method' => 'admin_index'
