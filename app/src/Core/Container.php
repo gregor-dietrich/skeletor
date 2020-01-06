@@ -91,7 +91,11 @@ class Container
                         $_ENV['dbuser'],
                         $_ENV['dbpass']
                     );
-                    unset($_ENV);
+                    unset($_ENV['dbpass']);
+                    unset($_ENV['dbuser']);
+                    unset($_ENV['dbname']);
+                    unset($_ENV['dbhost']);
+                    unset($_ENV['dbchar']);
                 } catch (PDOException $e) {
                     echo "Could not establish a database connection.";
                     die();
