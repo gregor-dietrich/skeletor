@@ -24,6 +24,7 @@ class UsersController extends AbstractController
                 $username = $_POST['username'];
                 $salt = bin2hex(random_bytes(10));
                 $password = password_hash($salt . $_POST['password'] . $_ENV['salt'], PASSWORD_DEFAULT);
+                unset($_ENV);
                 $this->usersRepository->insert($username, $password, $salt);
                 $savedSuccess = true;
             } else {
@@ -71,6 +72,7 @@ class UsersController extends AbstractController
                 $entry->username = $_POST['username'];
                 $salt = bin2hex(random_bytes(10));
                 $entry->password = password_hash($salt . $_POST['password'] . $_ENV['salt'], PASSWORD_DEFAULT);
+                unset($_ENV);
                 $entry->salt = $salt;
                 $this->usersRepository->update($entry);
                 $savedSuccess = true;

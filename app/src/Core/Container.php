@@ -82,10 +82,16 @@ class Container
                 try {
                     require __DIR__ . "/../System/db.php";
                     $pdo = new PDO(
-                        'mysql:host=' . $_ENV['dbhost'] . ';dbname=' . $_ENV['dbname'] . ';charset=' . $_ENV['dbchar'],
+                        'mysql:host=' .
+                            $_ENV['dbhost'] . ';
+                        dbname=' .
+                            $_ENV['dbname'] . ';
+                        charset=' .
+                            $_ENV['dbchar'],
                         $_ENV['dbuser'],
                         $_ENV['dbpass']
                     );
+                    unset($_ENV);
                 } catch (PDOException $e) {
                     echo "Could not establish a database connection.";
                     die();

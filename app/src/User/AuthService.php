@@ -19,10 +19,12 @@ class AuthService
 
         require __DIR__ . "/../System/salt.php";
         if (password_verify($user->salt . $password . $_ENV['salt'], $user->password)) {
+            unset($_ENV);
             $_SESSION['login'] = $user->username;
             session_regenerate_id(true);
             return true;
         } else {
+            unset($_ENV);
             return false;
         }
     }
