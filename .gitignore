@@ -1,6 +1,7 @@
 .DS_STORE
 
 .idea
+scripts/.idea
 *.code-workspace
 
 app/src/System/db.php
