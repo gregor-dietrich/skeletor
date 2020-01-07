@@ -23,7 +23,9 @@
                     <td>
                         <a href="/app/index.php/dashboard/users/edit?id=<?php echo escape($user->id); ?>"><?php echo escape($user->username); ?></a>
                     </td>
-                    <td><?php echo escape($user->rank_id); ?></td>
+                    <td><?php if (!empty($user->rank_id)) {
+                            echo escape($this->ranksRepository->findID($user->rank_id)->name);
+                        }?></td>
                     <td>
                         <a href="/app/index.php/dashboard/users/edit?id=<?php echo escape($user->id); ?>"
                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">

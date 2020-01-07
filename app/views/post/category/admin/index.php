@@ -20,7 +20,9 @@
             <?php foreach ($categories AS $category): ?>
                 <tr>
                     <td><?php echo escape($category->id); ?></td>
-                    <td><?php echo escape($category->parent_id); ?></td>
+                    <td><?php if (!empty($category->parent_id)) {
+                            echo escape($this->categoriesRepository->findID($category->parent_id)->name);
+                        }?></td>
                     <td>
                         <a href="/app/index.php/dashboard/post_categories/edit?id=<?php echo escape($category->id); ?>">
                             <?php echo escape($category->name); ?>

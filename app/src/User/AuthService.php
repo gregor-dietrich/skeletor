@@ -39,10 +39,14 @@ class AuthService
         }
     }
 
+    public function checkAccess()
+    {
+        $this->check();
+    }
+
     public function logout()
     {
         unset($_SESSION['login']);
         session_regenerate_id(true);
     }
 }
-

@@ -11,7 +11,9 @@
             <thead>
             <tr>
                 <th>#</th>
+                <th>Category</th>
                 <th>Title</th>
+                <th>Author</th>
                 <th></th>
             </tr>
             </thead>
@@ -19,9 +21,15 @@
             <?php foreach ($posts AS $post): ?>
                 <tr>
                     <td><?php echo escape($post->id); ?></td>
+                    <td><?php if (!empty($post->category_id)) {
+                            echo escape($this->categoriesRepository->findID($post->category_id)->name);
+                        }?></td>
                     <td>
                         <a href="/app/index.php/dashboard/posts/edit?id=<?php echo escape($post->id); ?>"><?php echo escape($post->title); ?></a>
                     </td>
+                    <td><?php if (!empty($post->user_id)) {
+                            echo escape($this->usersRepository->findID($post->user_id)->username);
+                        }?></td>
                     <td>
                         <a href="/app/index.php/dashboard/posts/edit?id=<?php echo escape($post->id); ?>"
                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
