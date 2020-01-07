@@ -12,27 +12,36 @@ def init_db():
 
     if os.path.isfile(sql_file):
         auth = {
-            "db_host": input("Hostname: "),
-            "db_name": input("Database: "),
-            "db_user": input("Username: "),
-            "db_pass": input("Password: ")
+            "dbhost": input("Hostname: "),
+            "dbname": input("Database: "),
+            "dbuser": input("Username: "),
+            "dbpass": input("Password: ")
         }
 
         try:
             print("Connecting to database...")
             connection = mysql.connector.connect(
-                user=auth["db_user"],
-                password=auth["db_pass"],
-                host=auth["db_host"],
-                database=auth["db_name"])
+                user=auth["dbuser"],
+                password=auth["dbpass"],
+                host=auth["dbhost"],
+                database=auth["dbname"])
             if connection.is_connected():
-                print("Connected to database '%s'!" % auth["db_name"])
+                print("Connected to database '%s'!" % auth["dbname"])
                 cursor = connection.cursor()
 
                 write_auth = input("Save credentials to db.php? (y/n) ")
                 if write_auth == "y":
                     print("Writing credentials to db.php...")
-                    # TO DO
+                    target_file = open(root + "/../app/src/System/db.php", "w", encoding="utf-8")
+                    with open(root + "/setup/db.default.php", "r", encoding="utf-8") as source_file:
+                        for line in source_file:
+                            if "$_ENV" not in line or "dbchar" in line:
+                                target_file.write(line)
+                            else:
+                                for key, value in auth.items():
+                                    if key in line:
+                                        target_file.write("$_ENV['" + key + "'] = '" + value + "';\n")
+                    target_file.close()
                     print("Finished writing to db.php.")
                 else:
                     print("Skipped writing to db.php.")
@@ -49,7 +58,7 @@ def init_db():
                 create_tables = input("Create database tables? (y/n) ")
                 if create_tables == "y":
                     print("Creating database tables...")
-                    parse_sql(sql_file, cursor)
+                    parse_sql(sql_file, cursor, ";")
                 else:
                     print("Database initialization skipped.")
 
@@ -98,13 +107,13 @@ def init_files():
             print(filename + " already exists. Skipping...")
 
 
-def parse_sql(sql_file, cursor):
+def parse_sql(sql_file, cursor, delimiter):
     file = open(sql_file, "r", encoding="utf-8")
     contents = file.read()
     file.close()
-    commands = contents.split(";")
-    for command in commands:
-        cursor.execute(command)
+    queries = contents.split(delimiter)
+    for query in queries:
+        cursor.execute(query)
 
 
 def main():
@@ -114,7 +123,7 @@ def main():
     else:
         print("Default file creation skipped.")
 
-    create_connection = input("Create MySQL connection? (y/n) ")
+    create_connection = input("Establish MySQL connection? (y/n) ")
     if create_connection == "y":
         init_db()
     else:
