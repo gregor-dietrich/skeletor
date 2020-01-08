@@ -23,7 +23,7 @@
                 <select name="parent_id" id="parent_id"
                         class="form form-control col-md-4">
                     <option <?php
-                                if (empty(escape($entry->parent_id))) { echo " selected "; }
+                                if (empty(escape($entry->parent_id))) { echo "selected "; }
                             ?>value>
                         (None)
                     </option>

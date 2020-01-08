@@ -20,14 +20,22 @@ class PostsController extends AbstractController
     public function add()
     {
         $this->authService->check();
+        $categories = $this->categoriesRepository->findAll();
         $savedSuccess = false;
-        if (!empty($_POST['title']) AND !empty($_POST['content'])) {
+        if (!empty($_POST['title']) AND !empty($_POST['content']) AND !empty($_POST['user_id']) AND $this->usersRepository->findUsername($_SESSION['login'])->id == $_POST['user_id']) {
             $title = $_POST['title'];
             $content = $_POST['content'];
-            $this->postsRepository->insert($title, $content);
+            $user_id = $_POST['user_id'];
+            if (!empty($_POST['category_id'])) {
+                $category_id = $_POST['category_id'];
+            } else {
+                $category_id = NULL;
+            }
+            $this->postsRepository->insert($title, $content, $user_id, $category_id);
             $savedSuccess = true;
         }
         $this->render("post/admin/add", [
+            'categories' => $categories,
             'savedSuccess' => $savedSuccess
         ]);
     }
@@ -59,15 +67,22 @@ class PostsController extends AbstractController
         $this->authService->check();
         $id = $_GET['id'];
         $entry = $this->postsRepository->findID($id);
+        $categories = $this->categoriesRepository->findAll();
         $savedSuccess = false;
         if (!empty($_POST['title']) AND !empty($_POST['content'])) {
             $entry->title = $_POST['title'];
             $entry->content = $_POST['content'];
+            if (!empty($_POST['category_id'])) {
+                $entry->category_id = $_POST['category_id'];
+            } else {
+                $entry->category_id = NULL;
+            }
             $this->postsRepository->update($entry);
             $savedSuccess = true;
         }
         $this->render("post/admin/edit", [
             'entry' => $entry,
+            'categories' => $categories,
             'savedSuccess' => $savedSuccess
         ]);
     }
@@ -82,9 +97,10 @@ class PostsController extends AbstractController
     public function show()
     {
         $id = $_GET['id'];
-        if (isset($_POST['content'])) {
+        if ((isset($_POST['content']) and isset($_POST['user_id'])) and ($this->usersRepository->findUsername($_SESSION['login'])->id == $_POST['user_id'])) {
             $content = $_POST['content'];
-            $this->commentsRepository->addByID($id, $content);
+            $user_id = $_POST['user_id'];
+            $this->commentsRepository->addByID($id, $content, $user_id);
         }
         $post = $this->postsRepository->findID($id);
         $comments = $this->commentsRepository->fetchAllByID($id);

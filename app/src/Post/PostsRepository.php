@@ -11,13 +11,15 @@ class PostsRepository extends AbstractRepository
         return "App\\Post\\PostModel";
     }
 
-    public function insert($title, $content)
+    public function insert($title, $content, $user_id, $category_id)
     {
         $table = $this->getTableName();
-        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`title`, `content`) VALUES (:title, :content)");
+        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`title`, `content`, `user_id`, `category_id`) VALUES (:title, :content, :user_id, :category_id)");
         $stmt->execute([
             'content' => $content,
-            'title' => $title
+            'title' => $title,
+            'user_id' => $user_id,
+            'category_id' => $category_id
         ]);
     }
 
@@ -30,10 +32,11 @@ class PostsRepository extends AbstractRepository
     {
         $table = $this->getTableName();
 
-        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `content` = :content, `title` = :title WHERE `id` = :id");
+        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `content` = :content, `title` = :title, `category_id` = :category_id WHERE `id` = :id");
         $stmt->execute([
             'content' => $model->content,
             'title' => $model->title,
+            'category_id' => $model->category_id,
             'id' => $model->id
         ]);
     }

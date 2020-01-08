@@ -20,6 +20,27 @@
                 <label class="control-label col-md-3" for="title">
                     Title
                 </label>
+                <select name="category_id" id="category_id"
+                        class="form form-control col-md-4">
+                    <option <?php
+                            if (empty(escape($entry->category_id))) { echo "selected "; }
+                            ?>value>
+                        (None)
+                    </option>
+                    <?php foreach ($categories AS $category): ?>
+                        <option value="<?php
+                        echo escape($category->id);
+                        ?>"<?php
+                        if (escape($category->id) == escape($entry->category_id)) {
+                            echo " selected";
+                        } ?>>
+                            <?php echo escape($category->name); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <label class="control-label col-md-2" for="category_id">
+                    Category
+                </label>
                 <textarea name="content" id="content" class="form-text form-control"
                           required><?php echo escape($entry->content); ?></textarea>
                 <label class="control-label col-md-3" for="content">

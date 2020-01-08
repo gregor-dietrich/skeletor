@@ -7,13 +7,14 @@ use PDO;
 
 class CommentsRepository extends AbstractRepository
 {
-    public function addByID($post_id, $content)
+    public function addByID($post_id, $content, $user_id)
     {
         $table = $this->getTableName();
-        $stmt = $this->pdo->prepare("INSERT INTO `$table` (`content`, `post_id`) VALUES (:content, :post_id)");
+        $stmt = $this->pdo->prepare("INSERT INTO `$table` (`content`, `post_id`, `user_id`) VALUES (:content, :post_id, :user_id)");
         $stmt->execute([
             'content' => $content,
-            'post_id' => $post_id
+            'post_id' => $post_id,
+            'user_id' => $user_id
         ]);
     }
 
