@@ -26,6 +26,7 @@ A Web Application Framework
   * Views
 
 ## ToDo.py
+* Generate module.json Script
 * Generate Model Script
 * Generate Repository Script
 * Generate Views Script
