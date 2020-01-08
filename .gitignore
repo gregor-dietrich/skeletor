@@ -2,6 +2,7 @@
 
 .idea
 scripts/.idea
+scripts/modules/generated
 *.code-workspace
 
 app/src/System/db.php

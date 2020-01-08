@@ -1,16 +1,16 @@
 {
-  "name": "Comment",
-  "plural": "Comments",
-  "namespace": "Post",
-  "properties": [
-    "id",
-    "content",
-    "post_id",
-    "user_id"
-  ],
-  "has_many": [],
-  "has_one": [
-    "Post",
-    "User"
-  ]
+    "name": "Comment",
+    "plural": "Comments",
+    "namespace": "Post",
+    "properties": [
+      "id",
+      "content",
+      "post_id",
+      "user_id"
+    ],
+    "has_many": [],
+    "has_one": [
+      "Post",
+      "User"
+    ]
 }

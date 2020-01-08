@@ -1,16 +1,16 @@
 {
-  "name": "Category",
-  "plural": "Categories",
-  "namespace": "Post",
-  "properties": [
-    "id",
-    "name",
-    "parent_id"
-  ],
-  "has_many": [
-    "Posts"
-  ],
-  "has_one": [
-    "Category"
-  ]
+    "name": "Category",
+    "plural": "Categories",
+    "namespace": "Post",
+    "properties": [
+      "id",
+      "name",
+      "parent_id"
+    ],
+    "has_many": [
+      "Posts"
+    ],
+    "has_one": [
+      "Category"
+    ]
 }
