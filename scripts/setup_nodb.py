@@ -33,7 +33,7 @@ def init_files():
             print(filename + " already exists. Skipping...")
 
 
-def rewrite_file(filename, data, array, skip, charset):
+def rewrite_file(filename, array, skip, charset):
     if input("Save credentials to %s? (y/n) " % filename) == "y":
         auth = {
                 "dbhost": input("Hostname: "),
@@ -48,7 +48,7 @@ def rewrite_file(filename, data, array, skip, charset):
                 if array not in line or skip in line:
                     target_file.write(line)
                 else:
-                    for key, value in data.items():
+                    for key, value in auth.items():
                         if key in line:
                             target_file.write(array + "['" + key + "'] = '" + value + "';\n")
         target_file.close()
@@ -63,7 +63,7 @@ def main():
     else:
         print("Default file creation skipped.")
 
-    rewrite_file("db.php", auth, "$_ENV", "dbchar", "utf-8")
+    rewrite_file("db.php", "$_ENV", "dbchar", "utf-8")
 
     print("All operations completed. Exiting...")
     sys.exit()
