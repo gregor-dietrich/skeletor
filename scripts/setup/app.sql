@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2020 at 05:41 PM
+-- Generation Time: Jan 08, 2020 at 05:39 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -33,8 +33,18 @@ CREATE TABLE `posts` (
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL
+  `category_id` int(11) DEFAULT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT 0,
+  `commentable` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `posts`:
+--   `user_id`
+--       `users` -> `id`
+--   `category_id`
+--       `post_categories` -> `id`
+--
 
 -- --------------------------------------------------------
 
@@ -48,6 +58,12 @@ CREATE TABLE `post_categories` (
   `parent_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- RELATIONSHIPS FOR TABLE `post_categories`:
+--   `parent_id`
+--       `post_categories` -> `id`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +76,14 @@ CREATE TABLE `post_comments` (
   `post_id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `post_comments`:
+--   `user_id`
+--       `users` -> `id`
+--   `post_id`
+--       `posts` -> `id`
+--
 
 -- --------------------------------------------------------
 
@@ -75,6 +99,12 @@ CREATE TABLE `users` (
   `rank_id` int(11) DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `users`:
+--   `rank_id`
+--       `user_ranks` -> `id`
+--
 
 --
 -- Dumping data for table `users`
@@ -110,6 +140,10 @@ CREATE TABLE `user_ranks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- RELATIONSHIPS FOR TABLE `user_ranks`:
+--
+
+--
 -- Dumping data for table `user_ranks`
 --
 
@@ -129,6 +163,7 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `posts_ibfk_1` (`user_id`),
   ADD KEY `posts_ibfk_2` (`category_id`);
+ALTER TABLE `posts` ADD FULLTEXT KEY `content` (`content`);
 
 --
 -- Indexes for table `post_categories`
@@ -228,3 +263,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
