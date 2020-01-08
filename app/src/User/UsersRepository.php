@@ -56,4 +56,3 @@ class UsersRepository extends AbstractRepository
         ]);
     }
 }
-

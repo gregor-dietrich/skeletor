@@ -13,4 +13,3 @@ class UserModel extends AbstractModel
     public $rank_id;
     public $email;
 }
-

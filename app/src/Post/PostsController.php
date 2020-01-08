@@ -110,4 +110,3 @@ class PostsController extends AbstractController
         ]);
     }
 }
-

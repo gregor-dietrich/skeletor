@@ -11,4 +11,3 @@ class CommentModel extends AbstractModel
     public $post_id;
     public $user_id;
 }
-

@@ -16,11 +16,14 @@ def get_input():
     ]
 
     for setting in settings:
-        module[setting] = input("%s: " % setting)
+        if setting == "namespace":
+            module[setting] = input("%s: App\\" % setting)
+        else:
+            module[setting] = input("%s: " % setting)
         if ", " in module[setting]:
             module[setting] = module[setting].replace(",", "")
             module[setting] = module[setting].split()
-        if isinstance(module[setting], str) and not (setting in ["name", "plural", "namespace"]):
+        if isinstance(module[setting], str) and not (setting in settings[:3]):
             if module[setting] != "":
                 module[setting] = [module[setting]]
             else:

@@ -10,4 +10,3 @@ abstract class AbstractController
         include __DIR__ . "/../../views/{$view}.php";
     }
 }
-

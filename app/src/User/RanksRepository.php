@@ -66,4 +66,3 @@ class RanksRepository extends AbstractRepository
         ]);
     }
 }
-

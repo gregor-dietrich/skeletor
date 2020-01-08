@@ -26,4 +26,3 @@ abstract class AbstractModel implements ArrayAccess
         unset($this->$offset);
     }
 }
-

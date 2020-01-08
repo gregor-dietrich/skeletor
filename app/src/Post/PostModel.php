@@ -14,4 +14,3 @@ class PostModel extends AbstractModel
 	public $published;
 	public $commentable;
 }
-
