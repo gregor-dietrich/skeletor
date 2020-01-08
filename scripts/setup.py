@@ -1,10 +1,10 @@
-
+# pip install mysql-connector-python
 import mysql.connector
 import os
 import shutil
 import sys
 
-root = os.path.dirname(__file__)
+root = "."
 
 
 def init_db():
