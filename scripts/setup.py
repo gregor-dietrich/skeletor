@@ -29,16 +29,9 @@ def init_db():
                 print("Connected to database '%s'!" % auth["dbname"])
                 cursor = connection.cursor()
 
-                write_auth = input("Save credentials to db.php? (y/n) ")
-                if write_auth == "y":
-                    print("Writing credentials to db.php...")
-                    rewrite_db_file(auth)
-                    print("Finished writing to db.php.")
-                else:
-                    print("Skipped writing to db.php.")
+                rewrite_file("db.php", auth, "$_ENV", "dbchar", "utf-8")
 
-                drop_tables = input("Drop database tables (if they exist)? (y/n) ")
-                if drop_tables == "y":
+                if input("Drop database tables (if they exist)? (y/n) ") == "y":
                     print("Dropping database tables...")
                     cursor.execute("DROP TABLE IF EXISTS `post_comments`, `posts`, `post_categories`;")
                     cursor.execute("DROP TABLE IF EXISTS `users`, `user_ranks`;")
@@ -46,10 +39,9 @@ def init_db():
                 else:
                     print("Not dropping existing tables (if any).")
 
-                create_tables = input("Create database tables? (y/n) ")
-                if create_tables == "y":
+                if input("Create database tables? (y/n) ") == "y":
                     print("Creating database tables...")
-                    parse_sql(sql_file, cursor, ";")
+                    parse_sql(sql_file, cursor, ";", "utf-8")
                 else:
                     print("Database initialization skipped.")
 
@@ -98,8 +90,8 @@ def init_files():
             print(filename + " already exists. Skipping...")
 
 
-def parse_sql(sql_file, cursor, delimiter):
-    file = open(sql_file, "r", encoding="utf-8")
+def parse_sql(filename, cursor, delimiter, charset):
+    file = open(filename, "r", encoding=charset)
     contents = file.read()
     file.close()
     queries = contents.split(delimiter)
@@ -107,28 +99,31 @@ def parse_sql(sql_file, cursor, delimiter):
         cursor.execute(query)
 
 
-def rewrite_db_file(auth):
-    target_file = open(root + "/../app/src/System/db.php", "w", encoding="utf-8")
-    with open(root + "/setup/db.default.php", "r", encoding="utf-8") as source_file:
-        for line in source_file:
-            if "$_ENV" not in line or "dbchar" in line:
-                target_file.write(line)
-            else:
-                for key, value in auth.items():
-                    if key in line:
-                        target_file.write("$_ENV['" + key + "'] = '" + value + "';\n")
-    target_file.close()
+def rewrite_file(filename, data, array, skip, charset):
+    if input("Save credentials to %s? (y/n) " % filename) == "y":
+        print("Writing credentials to %s." % filename)
+        target_file = open(root + "/../app/src/System/%s" % filename, "w", encoding=charset)
+        with open(root + "/setup/%sdefault.php" % filename[:-3], "r", encoding=charset) as source_file:
+            for line in source_file:
+                if array not in line or skip in line:
+                    target_file.write(line)
+                else:
+                    for key, value in data.items():
+                        if key in line:
+                            target_file.write(array + "['" + key + "'] = '" + value + "';\n")
+        target_file.close()
+        print("Finished writing to %s." % filename)
+    else:
+        print("Skipped writing to %s." % filename)
 
 
 def main():
-    create_files = input("Create default files? (y/n) ")
-    if create_files == "y":
+    if input("Create default files? (y/n) ") == "y":
         init_files()
     else:
         print("Default file creation skipped.")
 
-    create_connection = input("Establish MySQL connection? (y/n) ")
-    if create_connection == "y":
+    if input("Establish MySQL connection? (y/n) ") == "y":
         init_db()
     else:
         print("MySQL connection skipped.")
