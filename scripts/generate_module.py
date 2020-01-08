@@ -29,6 +29,10 @@ def get_input():
             else:
                 module[setting] = []
 
+    for k, v in module.items():
+        if k in ["name", "plural", "namespace"]:
+            module[k] = v.capitalize()
+
     return module
 
 

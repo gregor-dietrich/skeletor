@@ -18,6 +18,11 @@ def parse_json(filename, charset):
     with open(filename, "r", encoding=charset) as file:
         data = file.read()
     module = json.loads(data)
+
+    for k, v in module.items():
+        if k in ["name", "plural", "namespace"]:
+            module[k] = v.capitalize()
+
     if module["namespace"] == "":
         module["namespace"] = module["name"].capitalize()
     print("Successfully read JSON file.")
