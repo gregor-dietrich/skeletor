@@ -42,15 +42,16 @@ if (!defined('__CSRF_PROTECTOR_csrfpCookieConfig__')) {
 
         /**
          * Function: constructor
-         * 
+         *
          * Parameters:
          * @param $cfg - config array loaded from config file;
          */
-        function __construct($cfg) {
+        function __construct($cfg)
+        {
             if ($cfg !== null) {
                 if (isset($cfg['path'])) $this->path = $cfg['path'];
                 if (isset($cfg['domain'])) $this->domain = $cfg['domain'];
-                if (isset($cfg['secure'])) $this->secure = (bool) $cfg['secure'];
+                if (isset($cfg['secure'])) $this->secure = (bool)$cfg['secure'];
                 if (isset($cfg['expire']) && $cfg['expire']) $this->expire = (int)$cfg['expire'];
             }
         }

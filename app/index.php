@@ -2,7 +2,7 @@
 
 session_start();
 
-require __DIR__ .'/../libs/csrf/csrfprotector.php';
+require __DIR__ . '/../libs/csrf/csrfprotector.php';
 
 csrfProtector::init();
 

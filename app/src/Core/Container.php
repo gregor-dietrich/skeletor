@@ -83,11 +83,11 @@ class Container
                     require __DIR__ . "/../System/db.php";
                     $pdo = new PDO(
                         'mysql:host=' .
-                            $_ENV['dbhost'] . ';
+                        $_ENV['dbhost'] . ';
                         dbname=' .
-                            $_ENV['dbname'] . ';
+                        $_ENV['dbname'] . ';
                         charset=' .
-                            $_ENV['dbchar'],
+                        $_ENV['dbchar'],
                         $_ENV['dbuser'],
                         $_ENV['dbpass']
                     );

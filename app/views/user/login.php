@@ -12,14 +12,18 @@
                         <h5 class="card-title text-center">Sign In</h5>
                         <form method="POST" action="login" class="form-signin">
                             <div class="form-label-group">
-                                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+                                <input type="text" id="username" name="username" class="form-control"
+                                       placeholder="Username" required autofocus>
                                 <label for="username">Username</label>
                             </div>
                             <div class="form-label-group">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                                <input type="password" id="password" name="password" class="form-control"
+                                       placeholder="Password" required>
                                 <label for="password">Password</label>
                             </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" style="border-radius:20px;">Sign in</button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
+                                    style="border-radius:20px;">Sign in
+                            </button>
                         </form>
                     </div>
                 </div>

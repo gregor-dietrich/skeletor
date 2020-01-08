@@ -2,7 +2,8 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">All Post Categories</h1>
-        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="/app/index.php/dashboard/post_categories/add">
+        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+           href="/app/index.php/dashboard/post_categories/add">
             <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add New Post Category
         </a>
     </div>
@@ -22,7 +23,7 @@
                     <td><?php echo escape($category->id); ?></td>
                     <td><?php if (!empty($category->parent_id)) {
                             echo escape($this->categoriesRepository->findID($category->parent_id)->name);
-                        }?></td>
+                        } ?></td>
                     <td>
                         <a href="/app/index.php/dashboard/post_categories/edit?id=<?php echo escape($category->id); ?>">
                             <?php echo escape($category->name); ?>

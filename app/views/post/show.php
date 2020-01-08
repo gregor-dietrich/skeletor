@@ -32,16 +32,17 @@
                             </div>
                             <div class="card-body">
                                 <?php if (isset($_SESSION['login'])): ?>
-                                <form method="post" action="post?id=<?php echo escape($post->id); ?>">
-                                    <input type="hidden" name="user_id" id="user_id"
-                                           value="<?php echo $this->usersRepository->findUsername($_SESSION['login'])->id; ?>" required/>
-                                    <textarea name="content" class="form-text form-control" required></textarea>
-                                    <br/>
-                                    <input type="submit" value="Add Comment" class="btn btn-primary"/>
-                                </form>
+                                    <form method="post" action="post?id=<?php echo escape($post->id); ?>">
+                                        <input type="hidden" name="user_id" id="user_id"
+                                               value="<?php echo $this->usersRepository->findUsername($_SESSION['login'])->id; ?>"
+                                               required/>
+                                        <textarea name="content" class="form-text form-control" required></textarea>
+                                        <br/>
+                                        <input type="submit" value="Add Comment" class="btn btn-primary"/>
+                                    </form>
                                 <?php else: ?>
-                                <p>Commenting is disabled because you're not logged in.
-                                    <a href="login">Sign in</a> now.</p>
+                                    <p>Commenting is disabled because you're not logged in.
+                                        <a href="login">Sign in</a> now.</p>
                                 <?php endif; ?>
                             </div>
                         </div>

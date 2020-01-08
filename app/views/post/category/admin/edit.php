@@ -23,7 +23,9 @@
                 <select name="parent_id" id="parent_id"
                         class="form form-control col-md-4">
                     <option <?php
-                                if (empty(escape($entry->parent_id))) { echo "selected "; }
+                            if (empty(escape($entry->parent_id))) {
+                                echo "selected ";
+                            }
                             ?>value>
                         (None)
                     </option>
@@ -33,11 +35,11 @@
                         }
                         ?>
                         <option value="<?php
-                                        echo escape($category->id);
-                                        ?>"<?php
-                                        if (escape($category->id) == escape($entry->parent_id)) {
-                                            echo " selected";
-                                        } ?>>
+                        echo escape($category->id);
+                        ?>"<?php
+                        if (escape($category->id) == escape($entry->parent_id)) {
+                            echo " selected";
+                        } ?>>
                             <?php echo escape($category->name); ?>
                         </option>
                     <?php endforeach; ?>
@@ -46,7 +48,8 @@
                     Parent Category
                 </label>
                 <br/>
-                <button type="submit" name="save" id="save" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <button type="submit" name="save" id="save"
+                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                     <i class="fas fa-edit fa-sm text-white-50"></i> Save
                 </button>
                 <a href="/app/index.php/dashboard/post_categories/delete?id=<?php echo escape($entry->id); ?>"

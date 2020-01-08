@@ -29,6 +29,11 @@ class AuthService
         }
     }
 
+    public function checkAccess()
+    {
+        $this->check();
+    }
+
     public function check()
     {
         if (isset($_SESSION['login'])) {
@@ -37,11 +42,6 @@ class AuthService
             header("Location: /app/index.php/login");
             return false;
         }
-    }
-
-    public function checkAccess()
-    {
-        $this->check();
     }
 
     public function logout()

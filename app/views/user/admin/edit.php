@@ -28,11 +28,11 @@
                 <select name="rank_id" id="rank_id"
                         class="form form-control col-md-4">
                     <?php foreach ($ranks AS $rank): ?>
-                        <option value="<?php echo escape($rank->id);?>"<?php
-                            if (escape($rank->id) == escape($entry->rank_id)) {
-                                echo " selected";
-                            } ?>><?php echo escape($rank->name); ?>
-                            </option>
+                        <option value="<?php echo escape($rank->id); ?>"<?php
+                        if (escape($rank->id) == escape($entry->rank_id)) {
+                            echo " selected";
+                        } ?>><?php echo escape($rank->name); ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
                 <label class="control-label col-md-2" for="rank_id">
@@ -54,7 +54,8 @@
                     Confirm New Password
                 </label>
                 <br/>
-                <button type="submit" name="save" id="save" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <button type="submit" name="save" id="save"
+                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                     <i class="fas fa-edit fa-sm text-white-50"></i> Save
                 </button>
                 <a href="/app/index.php/dashboard/users/delete?id=<?php echo escape($entry->id); ?>"

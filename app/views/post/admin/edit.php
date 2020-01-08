@@ -23,7 +23,9 @@
                 <select name="category_id" id="category_id"
                         class="form form-control col-md-4">
                     <option <?php
-                            if (empty(escape($entry->category_id))) { echo "selected "; }
+                            if (empty(escape($entry->category_id))) {
+                                echo "selected ";
+                            }
                             ?>value>
                         (None)
                     </option>
@@ -47,7 +49,8 @@
                     Content
                 </label>
                 <br/>
-                <button type="submit" name="save" id="save" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <button type="submit" name="save" id="save"
+                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                     <i class="fas fa-edit fa-sm text-white-50"></i> Save
                 </button>
                 <a href="/app/index.php/dashboard/posts/delete?id=<?php echo escape($entry->id); ?>"

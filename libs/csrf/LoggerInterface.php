@@ -10,14 +10,15 @@ if (!defined('__CSRF_PROTECTOR_loggerInterface__')) {
     /**
      * Interface for logger class
      */
-    interface LoggerInterface {
+    interface LoggerInterface
+    {
         /**
          * logging method
          *
          * Parameters:
          * $message - the log message
          * $context - context array
-         * 
+         *
          * Return:
          * void
          */

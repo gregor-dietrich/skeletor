@@ -32,29 +32,35 @@
                     <label class="form-check-label col-md-2" for="post_edit">
                         Edit Posts
                     </label>
-                    <br />
-                    <input class="form-check-input" type="checkbox" name="post_category_add" id="post_category_add" value="1"/>
+                    <br/>
+                    <input class="form-check-input" type="checkbox" name="post_category_add" id="post_category_add"
+                           value="1"/>
                     <label class="form-check-label col-md-2" for="post_category_add">
                         Add Post Categories
                     </label>
-                    <input class="form-check-input" type="checkbox" name="post_category_delete" id="post_category_delete" value="1"/>
+                    <input class="form-check-input" type="checkbox" name="post_category_delete"
+                           id="post_category_delete" value="1"/>
                     <label class="form-check-label col-md-2" for="post_category_delete">
                         Delete Post Categories
                     </label>
-                    <input class="form-check-input" type="checkbox" name="post_category_edit" id="post_category_edit" value="1"/>
+                    <input class="form-check-input" type="checkbox" name="post_category_edit" id="post_category_edit"
+                           value="1"/>
                     <label class="form-check-label col-md-2" for="post_category_edit">
                         Edit Post Categories
                     </label>
-                    <br />
-                    <input class="form-check-input" type="checkbox" name="post_comment_add" id="post_comment_add" value="1"/>
+                    <br/>
+                    <input class="form-check-input" type="checkbox" name="post_comment_add" id="post_comment_add"
+                           value="1"/>
                     <label class="form-check-label col-md-2" for="post_comment_add">
                         Add Post Comments
                     </label>
-                    <input class="form-check-input" type="checkbox" name="post_comment_delete" id="post_comment_delete" value="1"/>
+                    <input class="form-check-input" type="checkbox" name="post_comment_delete" id="post_comment_delete"
+                           value="1"/>
                     <label class="form-check-label col-md-2" for="post_comment_delete">
                         Delete Post Comments
                     </label>
-                    <input class="form-check-input" type="checkbox" name="post_comment_edit" id="post_comment_edit" value="1"/>
+                    <input class="form-check-input" type="checkbox" name="post_comment_edit" id="post_comment_edit"
+                           value="1"/>
                     <label class="form-check-label col-md-2" for="post_comment_edit">
                         Edit Post Comments
                     </label>
@@ -71,22 +77,25 @@
                     <label class="form-check-label col-md-2" for="user_edit">
                         Edit Users
                     </label>
-                    <br />
+                    <br/>
                     <input class="form-check-input" type="checkbox" name="user_rank_add" id="user_rank_add" value="1"/>
                     <label class="form-check-label col-md-2" for="user_rank_add">
                         Add User Ranks
                     </label>
-                    <input class="form-check-input" type="checkbox" name="user_rank_delete" id="user_rank_delete" value="1"/>
+                    <input class="form-check-input" type="checkbox" name="user_rank_delete" id="user_rank_delete"
+                           value="1"/>
                     <label class="form-check-label col-md-2" for="user_rank_delete">
                         Delete User Ranks
                     </label>
-                    <input class="form-check-input" type="checkbox" name="user_rank_edit" id="user_rank_edit" value="1"/>
+                    <input class="form-check-input" type="checkbox" name="user_rank_edit" id="user_rank_edit"
+                           value="1"/>
                     <label class="form-check-label col-md-2" for="user_rank_edit">
                         Edit User Ranks
                     </label>
                 </div>
                 <br/>
-                <button type="submit" name="save" id="save" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <button type="submit" name="save" id="save"
+                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                     <i class="fas fa-plus-circle fa-sm text-white-50"></i> Save
                 </button>
             </div>

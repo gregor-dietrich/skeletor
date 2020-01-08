@@ -10,7 +10,8 @@ if (!defined('__CSRF_PROTECTOR_csrfpAction__')) {
     /**
      * Enumerator for actions
      */
-    abstract class csrfpAction {
+    abstract class csrfpAction
+    {
         /**
          * Variable: ForbiddenResponseAction
          * Action of sending back 403 response code
