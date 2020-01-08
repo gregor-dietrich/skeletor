@@ -1,9 +1,6 @@
 # Skeletor
 A Web Application Framework
 
-## Known Issues
-* [CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29) vulnerability
-
 ## ToDo.php
 * Posts
   * Display Author
