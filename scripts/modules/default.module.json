@@ -1,0 +1,8 @@
+{
+  "name": "User",
+  "plural": "Users",
+  "namespace": "",
+  "properties": [],
+  "has_many": [],
+  "has_one": []
+}

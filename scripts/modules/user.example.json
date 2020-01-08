@@ -1,0 +1,17 @@
+{
+  "name": "User",
+  "plural": "Users",
+  "namespace": "",
+  "properties": [
+    "id",
+    "username",
+    "password",
+    "salt",
+    "rank_id",
+    "email"
+  ],
+  "has_many": [],
+  "has_one": [
+    "Rank"
+  ]
+}

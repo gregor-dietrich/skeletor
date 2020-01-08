@@ -1,0 +1,28 @@
+{
+  "name": "Rank",
+  "plural": "Ranks",
+  "namespace": "User",
+  "properties": [
+    "id",
+    "name",
+    "post_add",
+    "post_delete",
+    "post_edit",
+    "post_category_add",
+    "post_category_delete",
+    "post_category_edit",
+    "post_comment_add",
+    "post_comment_edit",
+    "post_comment_delete",
+    "user_add",
+    "user_delete",
+    "user_edit",
+    "user_rank_add",
+    "user_rank_delete",
+    "user_rank_edit"
+  ],
+  "has_many": [
+    "Users"
+  ],
+  "has_one": []
+}
