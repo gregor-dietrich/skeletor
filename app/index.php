@@ -2,6 +2,10 @@
 
 session_start();
 
+require __DIR__ .'/libs/csrf/csrfprotector.php';
+
+csrfProtector::init();
+
 require __DIR__ . "/src/System/init.php";
 
 if (isset($_SERVER['PATH_INFO'])) {

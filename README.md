@@ -12,8 +12,8 @@ A Web Application Framework
   * Add Toggle Commentable
   * Add Creation Date
   * Comments
-    * Add Creation Date
     * Display Author
+    * Add Creation Date
 * Users
   * Create Profile View
   * Add Toggle activated
@@ -26,8 +26,7 @@ A Web Application Framework
   * Views
 
 ## ToDo.py
-* Generate module.json Script
-* Generate Model Script
-* Generate Repository Script
-* Generate Views Script
-* Generate Controller Script
+* Finish Generate Model Script
+* Create Generate Repository Script
+* Create Generate Views Script
+* Create Generate Controller Script
