@@ -24,6 +24,20 @@
                 <label class="control-label col-md-3" for="username">
                     Username
                 </label>
+                <select name="rank_id" id="rank_id"
+                        class="form form-control col-md-4">
+                    <?php foreach ($ranks AS $rank): ?>
+                        <option value="<?php echo escape($rank->id); ?>"><?php echo escape($rank->name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <label class="control-label col-md-2" for="rank_id">
+                    Rank
+                </label>
+                <input type="email" name="email" id="email" value=""
+                       class="form-control"/>
+                <label class="control-label col-md-3" for="email">
+                    E-Mail
+                </label>
                 <input type="password" name="password" id="password" value=""
                        class="form-control" required/>
                 <label class="control-label col-md-3" for="password">

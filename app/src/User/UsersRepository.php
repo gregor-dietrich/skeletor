@@ -28,14 +28,16 @@ class UsersRepository extends AbstractRepository
         return "App\\User\\UserModel";
     }
 
-    public function insert($username, $password, $salt)
+    public function insert($username, $password, $salt, $rank_id, $email)
     {
         $table = $this->getTableName();
-        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`username`, `password`, `salt`) VALUES (:username, :password, :salt)");
+        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`username`, `password`, `salt`, `rank_id`, `email`) VALUES (:username, :password, :salt, :rank_id, :email)");
         $stmt->execute([
             'username' => $username,
             'password' => $password,
-            'salt' => $salt
+            'salt' => $salt,
+            'rank_id' => $rank_id,
+            'email' => $email
         ]);
     }
 
@@ -43,11 +45,13 @@ class UsersRepository extends AbstractRepository
     {
         $table = $this->getTableName();
 
-        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `username` = :username, `password` = :password, `salt` = :salt WHERE `id` = :id");
+        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `username` = :username, `password` = :password, `salt` = :salt, `rank_id` = :rank_id, `email` = :email WHERE `id` = :id");
         $stmt->execute([
             'username' => $model->username,
             'password' => $model->password,
             'salt' => $model->salt,
+            'rank_id' => $model->rank_id,
+            'email' => $model->email,
             'id' => $model->id
         ]);
     }
