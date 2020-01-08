@@ -11,12 +11,25 @@ def init_db():
     sql_file = os.path.join(root + "/setup/app.sql")
 
     if os.path.isfile(sql_file):
-        auth = {
-            "dbhost": "localhost",
-            "dbname": input("Database: "),
-            "dbuser": input("Username: "),
-            "dbpass": input("Password: ")
-        }
+        if os.path.isfile("../app/src/System/db.php") and input("Fetch credentials from local db.php? (y/n) ") == "y":
+            print("Reading credentials from existing db.php...")
+            auth = {}
+            with open("../app/src/System/db.php", "r", encoding="utf-8") as file:
+                for line in file:
+                    if "$_ENV" in line:
+                        key, value = line[7:13], line[19:-3]
+                        if key == "dbchar":
+                            continue
+                        auth[key] = value
+                        print(key + " => " + value)
+            print("Finished reading db.php.")
+        else:
+            auth = {
+                "dbhost": "localhost",
+                "dbname": input("Database: "),
+                "dbuser": input("Username: "),
+                "dbpass": input("Password: ")
+            }
 
         try:
             print("Connecting to database...")

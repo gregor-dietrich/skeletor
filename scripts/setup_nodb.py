@@ -34,7 +34,7 @@ def init_files():
 
 
 def rewrite_file(filename, array, skip, charset):
-    if input("Save credentials to %s? (y/n) " % filename) == "y":
+    if input("Write credentials to %s? (y/n) " % filename) == "y":
         auth = {
                 "dbhost": input("Hostname: "),
                 "dbname": input("Database: "),
