@@ -32,16 +32,7 @@ def init_db():
                 write_auth = input("Save credentials to db.php? (y/n) ")
                 if write_auth == "y":
                     print("Writing credentials to db.php...")
-                    target_file = open(root + "/../app/src/System/db.php", "w", encoding="utf-8")
-                    with open(root + "/setup/db.default.php", "r", encoding="utf-8") as source_file:
-                        for line in source_file:
-                            if "$_ENV" not in line or "dbchar" in line:
-                                target_file.write(line)
-                            else:
-                                for key, value in auth.items():
-                                    if key in line:
-                                        target_file.write("$_ENV['" + key + "'] = '" + value + "';\n")
-                    target_file.close()
+                    rewrite_db_file(auth)
                     print("Finished writing to db.php.")
                 else:
                     print("Skipped writing to db.php.")
@@ -114,6 +105,19 @@ def parse_sql(sql_file, cursor, delimiter):
     queries = contents.split(delimiter)
     for query in queries:
         cursor.execute(query)
+
+
+def rewrite_db_file(auth):
+    target_file = open(root + "/../app/src/System/db.php", "w", encoding="utf-8")
+    with open(root + "/setup/db.default.php", "r", encoding="utf-8") as source_file:
+        for line in source_file:
+            if "$_ENV" not in line or "dbchar" in line:
+                target_file.write(line)
+            else:
+                for key, value in auth.items():
+                    if key in line:
+                        target_file.write("$_ENV['" + key + "'] = '" + value + "';\n")
+    target_file.close()
 
 
 def main():
