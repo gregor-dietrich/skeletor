@@ -9,7 +9,7 @@
  */
 return array(
 	"CSRFP_TOKEN" => "token",
-	"logDirectory" => "../log",
+	"logDirectory" => "../../../log",
 	"failedAuthAction" => array(
 		"GET" => 0,
 		"POST" => 0),
