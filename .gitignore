@@ -3,8 +3,8 @@
 .idea
 log/*.log
 scripts/.idea
-scripts/modules/generated
-temp
+scripts/modules/generated/*
+temp/*
 *.code-workspace
 
 app/src/System/db.php
