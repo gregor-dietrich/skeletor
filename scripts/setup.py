@@ -1,66 +1,9 @@
-# pip install mysql-connector-python
-import mysql.connector
+
 import os
 import shutil
 import sys
 
 root = "."
-
-
-def init_db():
-    sql_file = os.path.join(root + "/setup/app.sql")
-
-    if os.path.isfile(sql_file):
-        auth = {
-            "dbhost": input("Hostname: "),
-            "dbname": input("Database: "),
-            "dbuser": input("Username: "),
-            "dbpass": input("Password: ")
-        }
-
-        try:
-            print("Connecting to database...")
-            connection = mysql.connector.connect(
-                user=auth["dbuser"],
-                password=auth["dbpass"],
-                host=auth["dbhost"],
-                database=auth["dbname"])
-            if connection.is_connected():
-                print("Connected to database '%s'!" % auth["dbname"])
-                cursor = connection.cursor()
-
-                rewrite_file("db.php", auth, "$_ENV", "dbchar", "utf-8")
-
-                if input("Drop database tables (if they exist)? (y/n) ") == "y":
-                    print("Dropping database tables...")
-                    cursor.execute("DROP TABLE IF EXISTS `post_comments`, `posts`, `post_categories`;")
-                    cursor.execute("DROP TABLE IF EXISTS `users`, `user_ranks`;")
-                    print("Database tables dropped.")
-                else:
-                    print("Not dropping existing tables (if any).")
-
-                if input("Create database tables? (y/n) ") == "y":
-                    print("Creating database tables...")
-                    parse_sql(sql_file, cursor, ";", "utf-8")
-                else:
-                    print("Database initialization skipped.")
-
-        except mysql.connector.Error as e:
-            if "Query was empty" not in str(e):
-                print("Database connection error: ", e)
-            else:
-                print("Finished parsing %s." % sql_file)
-
-        finally:
-            if "connection" in locals():
-                if connection.is_connected():
-                    print("Closing database connection...")
-                    cursor.close()
-                    connection.close()
-                    print("Connection closed.")
-
-    else:
-        print("Error: " + root + "/setup/app.sql not found.")
 
 
 def init_files():
@@ -90,17 +33,14 @@ def init_files():
             print(filename + " already exists. Skipping...")
 
 
-def parse_sql(filename, cursor, delimiter, charset):
-    file = open(filename, "r", encoding=charset)
-    contents = file.read()
-    file.close()
-    queries = contents.split(delimiter)
-    for query in queries:
-        cursor.execute(query)
-
-
 def rewrite_file(filename, data, array, skip, charset):
     if input("Save credentials to %s? (y/n) " % filename) == "y":
+        auth = {
+                "dbhost": input("Hostname: "),
+                "dbname": input("Database: "),
+                "dbuser": input("Username: "),
+                "dbpass": input("Password: ")
+        }
         print("Writing credentials to %s." % filename)
         target_file = open(root + "/../app/src/System/%s" % filename, "w", encoding=charset)
         with open(root + "/setup/%sdefault.php" % filename[:-3], "r", encoding=charset) as source_file:
@@ -123,10 +63,7 @@ def main():
     else:
         print("Default file creation skipped.")
 
-    if input("Establish MySQL connection? (y/n) ") == "y":
-        init_db()
-    else:
-        print("MySQL connection skipped.")
+    rewrite_file("db.php", auth, "$_ENV", "dbchar", "utf-8")
 
     print("All operations completed. Exiting...")
     sys.exit()
