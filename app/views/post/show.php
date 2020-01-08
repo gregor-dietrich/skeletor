@@ -39,7 +39,6 @@
                                     <br/>
                                     <input type="submit" value="Add Comment" class="btn btn-primary"/>
                                 </form>
-                                <?php var_dump($_SESSION); ?>
                                 <?php else: ?>
                                 <p>Commenting is disabled because you're not logged in.
                                     <a href="login">Sign in</a> now.</p>
