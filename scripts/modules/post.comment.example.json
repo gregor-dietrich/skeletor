@@ -8,9 +8,7 @@
     "post_id",
     "user_id"
   ],
-  "has_many": [
-
-  ],
+  "has_many": [],
   "has_one": [
     "Post",
     "User"
