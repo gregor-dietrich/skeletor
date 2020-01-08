@@ -11,7 +11,7 @@
     <div class="card">
         <form method="POST" action="/app/index.php/dashboard/posts/add" class="form-horizontal">
             <input type="hidden" name="user_id" id="user_id"
-                   value="<?php echo $this->usersRepository->findUsername($_SESSION['login'])->id; ?>" required/>
+                   value="<?php echo escape($this->usersRepository->findUsername($_SESSION['login'])->id); ?>" required/>
             <div class="card-header">
                 New Post
             </div>

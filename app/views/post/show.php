@@ -34,7 +34,7 @@
                                 <?php if (isset($_SESSION['login'])): ?>
                                     <form method="post" action="post?id=<?php echo escape($post->id); ?>">
                                         <input type="hidden" name="user_id" id="user_id"
-                                               value="<?php echo $this->usersRepository->findUsername($_SESSION['login'])->id; ?>"
+                                               value="<?php echo escape($this->usersRepository->findUsername($_SESSION['login'])->id); ?>"
                                                required/>
                                         <textarea name="content" class="form-text form-control" required></textarea>
                                         <br/>

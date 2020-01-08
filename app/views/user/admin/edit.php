@@ -10,7 +10,7 @@
 <?php endif; ?>
 <?php if (!empty($error)): ?>
     <p class="alert alert-danger">
-        <?php echo $error; ?>
+        <?php echo escape($error); ?>
     </p>
 <?php endif; ?>
     <div class="card">

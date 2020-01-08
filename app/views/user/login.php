@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <?php if (!empty($error)): ?>
                             <p class="alert alert-danger">
-                                <?php echo $error; ?>
+                                <?php echo escape($error); ?>
                             </p>
                         <?php endif; ?>
                         <h5 class="card-title text-center">Sign In</h5>
