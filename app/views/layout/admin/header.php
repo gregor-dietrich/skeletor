@@ -51,22 +51,10 @@
             </a>
             <div id="collapsePosts" class="collapse" aria-labelledby="headingPosts" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts">Manage</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add">Add New</a>
-                </div>
-            </div>
-        </li>
-        <!-- Nav Item - Post Categories Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePostCategories"
-               aria-expanded="true" aria-controls="collapsePostCategories">
-                <i class="fas fa-fw fa-sitemap"></i>
-                <span>Post Categories</span>
-            </a>
-            <div id="collapsePostCategories" class="collapse" aria-labelledby="headingPostCategories" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories">Manage</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories/add">Add New</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts">All Posts</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories">Manage Categories</a>
+                    <a class="collapse-item" href="#">Manage Comments</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add">Add New Post</a>
                 </div>
             </div>
         </li>
@@ -79,36 +67,9 @@
             </a>
             <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/users">Manage</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/users/add">Add New</a>
-                </div>
-            </div>
-        </li>
-        <!-- Nav Item - User Groups Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserGroups"
-               aria-expanded="true" aria-controls="collapseUserGroups">
-                <i class="fas fa-fw fa-users"></i>
-                <span>User Groups</span>
-            </a>
-            <div id="collapseUserGroups" class="collapse" aria-labelledby="headingUserGroups" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#">Manage</a>
-                    <a class="collapse-item" href="#">Add New</a>
-                </div>
-            </div>
-        </li>
-        <!-- Nav Item - User Ranks Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserRanks"
-               aria-expanded="true" aria-controls="collapseUserRanks">
-                <i class="fas fa-fw fa-medal"></i>
-                <span>User Ranks</span>
-            </a>
-            <div id="collapseUserRanks" class="collapse" aria-labelledby="headingUserRanks" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks">Manage</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks/add">Add New</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/users">All Users</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks">Manage Ranks</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/users/add">Add New User</a>
                 </div>
             </div>
         </li>
