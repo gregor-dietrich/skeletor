@@ -74,15 +74,14 @@ def write_repository(module, charset):
         # TO DO
         file.write(")\n" + indent + "{\n" +
                    indent + indent + "$table = $this->getTableName();\n\n" +
-                   indent + indent + "$stmt = $this->pdo->prepare(\"INSERT INTO `{$table}` (`")
+                   indent + indent + "$stmt = $this->pdo->prepare(\"INSERT INTO `{$table}` (")
         # TO DO
         file.write(") VALUES (")
         # TO DO
         file.write(")\");\n" +
-                   indent + indent + "$stmt->execute([")
+                   indent + indent + "$stmt->execute([\n")
         # TO DO
-        file.write(indent + indent + indent + "'id' => $model->id" +
-                   indent + indent + "]);" +
+        file.write(indent + indent + "]);\n" +
                    indent + "}\n")
 
         file.write("}\n")
