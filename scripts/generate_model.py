@@ -29,21 +29,6 @@ def parse_json(filename, charset):
     return module
 
 
-def print_json(filename, charset):
-    with open(filename, "r", encoding=charset) as file:
-        data = file.read()
-
-    module = json.loads(data)
-    for k, v in module.items():
-        if isinstance(v, list):
-            print(k + " =>")
-            spacing = " " * len(k)
-            for column in v:
-                print(spacing + " => " + column)
-        else:
-            print(k + " => " + v)
-
-
 def write_model(module, charset):
     check_folders("./modules/generated/")
     filename = "./modules/generated/" + module["name"].capitalize() + "Model.php"

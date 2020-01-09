@@ -29,21 +29,6 @@ def parse_json(filename, charset):
     return module
 
 
-def print_json(filename, charset):
-    with open(filename, "r", encoding=charset) as file:
-        data = file.read()
-
-    module = json.loads(data)
-    for k, v in module.items():
-        if isinstance(v, list):
-            print(k + " =>")
-            spacing = " " * len(k)
-            for column in v:
-                print(spacing + " => " + column)
-        else:
-            print(k + " => " + v)
-
-
 def write_repository(module, charset):
     check_folders("./modules/generated/")
     filename = "./modules/generated/" + module["plural"] + "Repository.php"
@@ -56,12 +41,13 @@ def write_repository(module, charset):
                    "use App\\Core\\AbstractRepository;\n\n" +
                    "class " + module["plural"] + "Repository extends AbstractRepository\n" +
                    "{\n")
+
         file.write(indent + "public function getModelName()\n" +
                    indent + "{\n")
         if module["namespace"] != module["name"]:
             file.write(indent + indent + "return \"App\\\\%s\\\\%sModel\";\n" % (module["namespace"], module["name"]))
         else:
-            file.write(indent + indent + "return \"App\\\\%sModel\";\n" % (module["plural"]))
+            file.write(indent + indent + "return \"App\\\\%sModel\";\n" % (module["name"]))
         file.write(indent + "}\n\n")
 
         file.write(indent + "public function getTableName()\n" +
@@ -71,6 +57,33 @@ def write_repository(module, charset):
         else:
             file.write(indent + indent + "return \"%s\";\n" % (module["plural"].lower()))
         file.write(indent + "}\n\n")
+
+        file.write(indent + "public function update(%sModel $model)\n" % (module["name"]) +
+                   indent + "{\n")
+        file.write(indent + indent + "$table = $this->getTableName();\n\n")
+        file.write(indent + indent + "$stmt = $this->pdo->prepare(\"UPDATE `{$table}` SET ")
+        # TO DO
+        file.write(" WHERE `id` = :id\");\n" +
+                   indent + indent + "$stmt->execute([\n")
+        # TO DO
+        file.write(indent + indent + indent + "'id' => $model->id\n" +
+                   indent + indent + "]);\n")
+        file.write(indent + "}\n\n")
+
+        file.write(indent + "public function insert(")
+        # TO DO
+        file.write(")\n" + indent + "{\n" +
+                   indent + indent + "$table = $this->getTableName();\n\n" +
+                   indent + indent + "$stmt = $this->pdo->prepare(\"INSERT INTO `{$table}` (`")
+        # TO DO
+        file.write(") VALUES (")
+        # TO DO
+        file.write(")\");\n" +
+                   indent + indent + "$stmt->execute([")
+        # TO DO
+        file.write(indent + indent + indent + "'id' => $model->id" +
+                   indent + indent + "]);" +
+                   indent + "}\n")
 
         file.write("}\n")
     print("Finished writing %s." % filename)

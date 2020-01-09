@@ -45,17 +45,6 @@ def check_folders(subdir):
             os.mkdir(os.path.join(make_dir))
 
 
-def print_module(module):
-    for k, v in module.items():
-        if isinstance(v, list):
-            print(k + " =>")
-            spacing = " " * len(k)
-            for column in v:
-                print(spacing + " => " + column)
-        else:
-            print(k + " => " + v)
-
-
 def main():
     module = get_input()
 
