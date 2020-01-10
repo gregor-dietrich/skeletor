@@ -17,12 +17,14 @@ def get_input():
 
     for setting in settings:
         if setting == "namespace":
-            module[setting] = input("%s: App\\" % setting)
+            module[setting] = input("%s: App\\" % setting).capitalize()
         else:
-            module[setting] = input("%s: " % setting)
+            module[setting] = input("%s: " % setting).capitalize()
+
         if ", " in module[setting]:
             module[setting] = module[setting].replace(",", "")
             module[setting] = module[setting].split()
+
         if isinstance(module[setting], str) and not (setting in settings[:3]):
             if module[setting] != "":
                 module[setting] = [module[setting]]
@@ -32,6 +34,12 @@ def get_input():
     for k, v in module.items():
         if k in ["name", "plural", "namespace"]:
             module[k] = v.capitalize()
+        elif k == "properties":
+            for i in range(len(module[k])):
+                module[k][i] = module[k][i].lower()
+        elif k in ["has_many", "has_one"]:
+            for i in range(len(module[k])):
+                module[k][i] = module[k][i].capitalize()
 
     return module
 
