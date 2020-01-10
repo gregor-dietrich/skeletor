@@ -11,6 +11,6 @@
         "Posts"
     ],
     "has_one": [
-        "Category"
+        "Categories"
     ]
 }

@@ -13,7 +13,7 @@
         "Comments"
     ],
     "has_one": [
-        "User",
-        "Category"
+        "Users",
+        "Categories"
     ]
 }

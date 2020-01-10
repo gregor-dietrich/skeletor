@@ -23,5 +23,5 @@ A Web Application Framework
   * Views
 
 ## ToDo.py
-* Create Generate Controller Script
+* Finish Generate Controller Script
 * Create Generate Views Script

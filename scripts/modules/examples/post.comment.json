@@ -10,7 +10,7 @@
     ],
     "has_many": [],
     "has_one": [
-        "Post",
-        "User"
+        "Posts",
+        "Users"
     ]
 }
