@@ -58,31 +58,48 @@ def write_repository(module, charset):
             file.write(indent + indent + "return \"%s\";\n" % (module["plural"].lower()))
         file.write(indent + "}\n\n")
 
+        file.write(indent + "public function insert(")
+        for value in module["properties"][1:]:
+            file.write("$%s" % value)
+            if value != module["properties"][-1]:
+                file.write(", ")
+        file.write(")\n" + indent + "{\n" +
+                   indent + indent + "$table = $this->getTableName();\n\n" +
+                   indent + indent + "$stmt = $this->pdo->prepare(\"INSERT INTO `{$table}` (")
+        for value in module["properties"][1:]:
+            file.write("`%s`" % value)
+            if value != module["properties"][-1]:
+                file.write(", ")
+        file.write(") VALUES (")
+        for value in module["properties"][1:]:
+            file.write(":%s" % value)
+            if value != module["properties"][-1]:
+                file.write(", ")
+        file.write(")\");\n" +
+                   indent + indent + "$stmt->execute([\n")
+        for value in module["properties"][1:]:
+            file.write(indent + indent + indent + "'%s' => $%s," % (value, value))
+            file.write("\n")
+        file.write(indent + indent + "]);\n" +
+                   indent + "}\n\n")
+
         file.write(indent + "public function update(%sModel $model)\n" % (module["name"]) +
                    indent + "{\n")
         file.write(indent + indent + "$table = $this->getTableName();\n\n")
         file.write(indent + indent + "$stmt = $this->pdo->prepare(\"UPDATE `{$table}` SET ")
-        # TO DO
-        file.write(" WHERE `id` = :id\");\n" +
+        for value in module["properties"][1:]:
+            file.write("`%s` = :%s" % (value, value))
+            if value != module["properties"][-1]:
+                file.write(",")
+            file.write(" ")
+        file.write("WHERE `id` = :id\");\n" +
                    indent + indent + "$stmt->execute([\n")
-        # TO DO
+        for value in module["properties"][1:]:
+            file.write(indent + indent + indent + "'%s' => $model->%s," % (value, value))
+            file.write("\n")
         file.write(indent + indent + indent + "'id' => $model->id\n" +
                    indent + indent + "]);\n")
-        file.write(indent + "}\n\n")
-
-        file.write(indent + "public function insert(")
-        # TO DO
-        file.write(")\n" + indent + "{\n" +
-                   indent + indent + "$table = $this->getTableName();\n\n" +
-                   indent + indent + "$stmt = $this->pdo->prepare(\"INSERT INTO `{$table}` (")
-        # TO DO
-        file.write(") VALUES (")
-        # TO DO
-        file.write(")\");\n" +
-                   indent + indent + "$stmt->execute([\n")
-        # TO DO
-        file.write(indent + indent + "]);\n" +
-                   indent + "}\n")
+        file.write(indent + "}\n")
 
         file.write("}\n")
     print("Finished writing %s." % filename)
