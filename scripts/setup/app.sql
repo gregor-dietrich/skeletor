@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.0
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2020 at 05:39 AM
+-- Generation Time: Jan 10, 2020 at 10:55 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -111,7 +111,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `email`) VALUES
-(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3, '');
+(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -179,6 +179,7 @@ ALTER TABLE `post_comments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_comments_ibfk_1` (`user_id`),
   ADD KEY `post_comments_ibfk_2` (`post_id`);
+ALTER TABLE `post_comments` ADD FULLTEXT KEY `content` (`content`);
 
 --
 -- Indexes for table `users`
@@ -263,4 +264,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
