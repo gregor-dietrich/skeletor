@@ -1,19 +1,19 @@
 {
-  "name": "Post",
-  "plural": "Posts",
-  "namespace": "",
-  "properties": [
-    "id",
-    "title",
-    "content",
-    "user_id",
-    "category_id"
-  ],
-  "has_many": [
-    "Comments"
-  ],
-  "has_one": [
-    "User",
-    "Category"
-  ]
+    "name": "Post",
+    "plural": "Posts",
+    "namespace": "",
+    "properties": [
+        "id",
+        "title",
+        "content",
+        "user_id",
+        "category_id"
+    ],
+    "has_many": [
+        "Comments"
+    ],
+    "has_one": [
+        "User",
+        "Category"
+    ]
 }
