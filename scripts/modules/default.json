@@ -5,10 +5,11 @@
     "properties": [
         "id"
     ],
+    "optionals": [],
     "has_many": [
-        "Children"
+        "ChildElements"
     ],
     "has_one": [
-        "Parent"
+        "ParentElement"
     ]
 }

@@ -11,6 +11,7 @@ def get_input():
         "plural",
         "namespace",
         "properties",
+        "optionals",
         "has_many",
         "has_one"
     ]
@@ -25,7 +26,7 @@ def get_input():
             module[setting] = module[setting].replace(",", "")
             module[setting] = module[setting].split()
 
-        if isinstance(module[setting], str) and not (setting in settings[:3]):
+        if isinstance(module[setting], str) and not (setting in ["name", "plural", "namespace"]):
             if module[setting] != "":
                 module[setting] = [module[setting]]
             else:
@@ -34,7 +35,7 @@ def get_input():
     for k, v in module.items():
         if k in ["name", "plural", "namespace"]:
             module[k] = v.capitalize()
-        elif k == "properties":
+        elif k in ["properties", "optionals"]:
             for i in range(len(module[k])):
                 module[k][i] = module[k][i].lower()
         elif k in ["has_many", "has_one"]:

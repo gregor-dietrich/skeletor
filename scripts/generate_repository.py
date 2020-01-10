@@ -41,13 +41,11 @@ def write_repository(module, charset):
                    "use App\\Core\\AbstractRepository;\n\n" +
                    "class " + module["plural"] + "Repository extends AbstractRepository\n" +
                    "{\n")
-
+        if module["namespace"] == "":
+            module["namespace"] = module["name"]
         file.write(indent + "public function getModelName()\n" +
                    indent + "{\n")
-        if module["namespace"] != module["name"]:
-            file.write(indent + indent + "return \"App\\\\%s\\\\%sModel\";\n" % (module["namespace"], module["name"]))
-        else:
-            file.write(indent + indent + "return \"App\\\\%sModel\";\n" % (module["name"]))
+        file.write(indent + indent + "return \"App\\\\%s\\\\%sModel\";\n" % (module["namespace"], module["name"]))
         file.write(indent + "}\n\n")
 
         file.write(indent + "public function getTableName()\n" +
