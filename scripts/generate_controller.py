@@ -156,7 +156,7 @@ def write_controller(module, charset):
             if item in module["optionals"] or item in ["id", "user_id"]:
                 continue
             file.write("!empty($_POST['%s'])" % item)
-            if counter < len(module["properties"]) - 1:
+            if counter < len(module["properties"]) - len(module["optionals"]):
                 file.write(" AND ")
                 counter += 1
         file.write(") {\n")

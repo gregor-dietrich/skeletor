@@ -56,7 +56,7 @@ class GroupsController extends AbstractController
         $savedSuccess = false;
         $id = $_GET['id'];
         $entry = $this->groupsRepository->findID($id);
-        if (!empty($_POST['name'])!empty($_POST['users'])) {
+        if (!empty($_POST['name']) AND !empty($_POST['users'])) {
             $entry->name = $_POST['name'];
             $entry->users = $_POST['users'];
             $this->groupsRepository->update($entry);
