@@ -8,6 +8,7 @@
         "post_id",
         "user_id"
     ],
+    "optionals": [],
     "has_many": [],
     "has_one": [
         "Posts",

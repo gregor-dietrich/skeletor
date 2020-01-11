@@ -9,6 +9,9 @@
         "user_id",
         "category_id"
     ],
+    "optionals": [
+        "category_id"
+    ],
     "has_many": [
         "Comments"
     ],

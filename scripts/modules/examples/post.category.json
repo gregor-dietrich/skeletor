@@ -7,6 +7,9 @@
         "name",
         "parent_id"
     ],
+    "optionals": [
+        "parent_id"
+    ],
     "has_many": [
         "Posts"
     ],

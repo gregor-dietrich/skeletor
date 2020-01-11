@@ -10,6 +10,9 @@
         "rank_id",
         "email"
     ],
+    "optionals": [
+        "email"
+    ],
     "has_many": [
         "Groups"
     ],

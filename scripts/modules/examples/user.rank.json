@@ -21,6 +21,7 @@
 		"user_rank_delete",
 		"user_rank_edit"
 	],
+	"optionals": [],
 	"has_many": [
 		"Users"
 	],
