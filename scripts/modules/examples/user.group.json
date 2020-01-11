@@ -1,0 +1,15 @@
+{
+    "name": "Group",
+    "plural": "Groups",
+    "namespace": "User",
+    "properties": [
+        "id",
+        "name",
+        "users"
+    ],
+    "optionals": [],
+    "has_many": [
+        "Users"
+    ],
+    "has_one": []
+}

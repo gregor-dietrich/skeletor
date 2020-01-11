@@ -52,9 +52,9 @@
             <div id="collapsePosts" class="collapse" aria-labelledby="headingPosts" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="/app/index.php/dashboard/posts">All Posts</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add">Add New Post</a>
                     <a class="collapse-item" href="/app/index.php/dashboard/post_categories">Manage Categories</a>
                     <a class="collapse-item" href="#">Manage Comments</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add">Add New Post</a>
                 </div>
             </div>
         </li>
@@ -68,8 +68,9 @@
             <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="/app/index.php/dashboard/users">All Users</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks">Manage Ranks</a>
                     <a class="collapse-item" href="/app/index.php/dashboard/users/add">Add New User</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/user_groups">Manage Groups</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks">Manage Ranks</a>
                 </div>
             </div>
         </li>

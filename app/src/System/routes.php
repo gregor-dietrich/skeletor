@@ -56,6 +56,22 @@ $routes = [
         'controller' => 'usersController',
         'method' => 'edit'
     ],
+    '/dashboard/user_groups' => [
+        'controller' => 'groupsController',
+        'method' => 'admin_index'
+    ],
+    '/dashboard/user_groups/add' => [
+        'controller' => 'groupsController',
+        'method' => 'add'
+    ],
+    '/dashboard/user_groups/delete' => [
+        'controller' => 'groupsController',
+        'method' => 'delete'
+    ],
+    '/dashboard/user_groups/edit' => [
+        'controller' => 'groupsController',
+        'method' => 'edit'
+    ],
     '/dashboard/user_ranks' => [
         'controller' => 'ranksController',
         'method' => 'admin_index'
@@ -84,4 +100,12 @@ $routes = [
         'controller' => 'postsController',
         'method' => 'show'
     ],
+    '/user_group' => [
+        'controller' => 'groupsController',
+        'method' => 'show'
+    ],
+    '/user_groups' => [
+        'controller' => 'groupsController',
+        'method' => 'index'
+    ]
 ];

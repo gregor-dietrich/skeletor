@@ -8,6 +8,8 @@ use App\Post\CommentsRepository;
 use App\Post\PostsController;
 use App\Post\PostsRepository;
 use App\User\AuthService;
+use App\User\GroupsController;
+use App\User\GroupsRepository;
 use App\User\LoginController;
 use App\User\RanksController;
 use App\User\RanksRepository;
@@ -41,6 +43,16 @@ class Container
             },
             'commentsRepository' => function () {
                 return new CommentsRepository($this->make("pdo"));
+            },
+            'groupsController' => function () {
+                return new GroupsController(
+                    $this->make("groupsRepository"),
+                    $this->make("usersRepository"),
+                    $this->make("authService")
+                );
+            },
+            'groupsRepository' => function () {
+                return new GroupsRepository($this->make("pdo"));
             },
             'loginController' => function () {
                 return new LoginController(
