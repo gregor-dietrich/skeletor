@@ -78,8 +78,6 @@ class GroupsController extends AbstractController
     public function show()
     {
         $id = $_GET['id'];
-        // Code for adding Users by id(?)
-
         $group = $this->groupsRepository->findID($id);
         $users = $this->usersRepository->fetchAllByID($id);
         $this->render("user/group/show", [
