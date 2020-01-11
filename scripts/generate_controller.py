@@ -183,7 +183,7 @@ def write_controller(module, charset):
                 continue
             file.write(indent + indent + indent + "'%s' => $%s,\n" % (item.lower(), item.lower()))
         file.write(indent + indent + indent + "'savedSuccess' => $savedSuccess"
-                   "\n" + indent + indent + "]);\n" + indent + "}\n")
+                   "\n" + indent + indent + "]);\n" + indent + "}\n\n")
 
         file.write(indent + "public function index()\n" +
                    indent + "{\n" +
