@@ -145,7 +145,6 @@ def write_controller(module, charset):
                    indent + indent + "$savedSuccess = false;\n" +
                    indent + indent + "$id = $_GET['id'];\n" +
                    indent + indent + "$entry = $this->%sRepository->findID($id);\n" % module["plural"].lower())
-        # TO DO START
         for item in module["has_one"]:
             if item.lower() == "users":
                 continue
@@ -185,7 +184,6 @@ def write_controller(module, charset):
             file.write(indent + indent + indent + "'%s' => $%s,\n" % (item.lower(), item.lower()))
         file.write(indent + indent + indent + "'savedSuccess' => $savedSuccess"
                    "\n" + indent + indent + "]);\n" + indent + "}\n")
-        # TO DO END
 
         file.write(indent + "public function index()\n" +
                    indent + "{\n" +
