@@ -78,6 +78,21 @@
                         Edit Users
                     </label>
                     <br/>
+                    <input class="form-check-input" type="checkbox" name="user_group_add" id="user_group_add" value="1"/>
+                    <label class="form-check-label col-md-3" for="user_group_add">
+                        Add User Groups
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="user_group_delete" id="user_group_delete"
+                           value="1"/>
+                    <label class="form-check-label col-md-3" for="user_group_delete">
+                        Delete User Groups
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="user_group_edit" id="user_group_edit"
+                           value="1"/>
+                    <label class="form-check-label col-md-3" for="user_group_edit">
+                        Edit User Groups
+                    </label>
+                    <br/>
                     <input class="form-check-input" type="checkbox" name="user_rank_add" id="user_rank_add" value="1"/>
                     <label class="form-check-label col-md-3" for="user_rank_add">
                         Add User Ranks

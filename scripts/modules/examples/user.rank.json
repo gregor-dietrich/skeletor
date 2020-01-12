@@ -17,6 +17,9 @@
 		"user_add",
 		"user_delete",
 		"user_edit",
+		"user_group_add",
+		"user_group_delete",
+		"user_group_edit",
 		"user_rank_add",
 		"user_rank_delete",
 		"user_rank_edit"

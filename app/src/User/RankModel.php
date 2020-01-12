@@ -20,6 +20,9 @@ class RankModel extends AbstractModel
     public $user_add;
     public $user_delete;
     public $user_edit;
+    public $user_group_add;
+    public $user_group_delete;
+    public $user_group_edit;
     public $user_rank_add;
     public $user_rank_delete;
     public $user_rank_edit;
