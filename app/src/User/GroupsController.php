@@ -3,7 +3,6 @@
 namespace App\User;
 
 use App\Core\AbstractController;
-use App\User\AuthService;
 
 class GroupsController extends AbstractController
 {
@@ -58,11 +57,16 @@ class GroupsController extends AbstractController
         }
     }
 
-    public function deleteUsernameByGroupId($username, $group_id)
+    public function deleteUsernameByGroupId($username)
     {
-        $this->authService->checkAccess();
-        $user_id = $this->usersRepository->findUsername($username)->id;
-        $this->groupmetasRepository->remove($user_id, $group_id);
+        if (!$this->authService->checkAccess()) {
+            die();
+        } else {
+            $user_id = $this->usersRepository->findUsername($_GET['username'])->id;
+            $group_id = $_GET['from'];
+            $this->authService->checkAccess()
+            $this->groupmetasRepository->remove($user_id, $group_id);
+        }
     }
 
     public function edit()
@@ -75,6 +79,9 @@ class GroupsController extends AbstractController
             $entry->name = $_POST['name'];
             $this->groupsRepository->update($entry);
             $savedSuccess = true;
+        }
+        if (!empty($_POST['username'])) {
+            $this->addUsernameByGroupId($_POST['username'], $id);
         }
         $this->render("user/group/admin/edit", [
             'entry' => $entry,
