@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2020 at 08:29 AM
+-- Generation Time: Jan 12, 2020 at 04:36 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -116,6 +116,41 @@ INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `email`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_groups`
+--
+
+CREATE TABLE `user_groups` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `user_groups`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_groups_meta`
+--
+
+CREATE TABLE `user_groups_meta` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `user_groups_meta`:
+--   `user_id`
+--       `users` -> `id`
+--   `group_id`
+--       `user_groups` -> `id`
+--
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_ranks`
 --
 
@@ -194,6 +229,20 @@ ALTER TABLE `users`
   ADD KEY `users_ibfk_1` (`rank_id`);
 
 --
+-- Indexes for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_groups_meta`
+--
+ALTER TABLE `user_groups_meta`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`,`group_id`),
+  ADD KEY `group_id` (`group_id`);
+
+--
 -- Indexes for table `user_ranks`
 --
 ALTER TABLE `user_ranks`
@@ -225,6 +274,18 @@ ALTER TABLE `post_comments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_groups_meta`
+--
+ALTER TABLE `user_groups_meta`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -262,6 +323,13 @@ ALTER TABLE `post_comments`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rank_id`) REFERENCES `user_ranks` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_groups_meta`
+--
+ALTER TABLE `user_groups_meta`
+  ADD CONSTRAINT `user_groups_meta_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_groups_meta_ibfk_2` FOREIGN KEY (`group_id`) REFERENCES `user_groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

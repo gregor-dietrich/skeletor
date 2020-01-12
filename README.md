@@ -8,6 +8,7 @@ A Web Application Framework
   * Add Toggle Published
   * Add Toggle Commentable
   * Add Creation Date
+  * Add Last Edited
   * Comments
     * Display Author
     * Add Creation Date
@@ -17,7 +18,6 @@ A Web Application Framework
   * Add Creation Date
   * Add Last Login
 * User Groups
-  * User Meta
   * Views
 
 ## ToDo.py
