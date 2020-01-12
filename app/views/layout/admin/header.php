@@ -46,14 +46,14 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePosts"
                aria-expanded="true" aria-controls="collapsePosts">
-                <i class="fas fa-fw fa-file-alt"></i>
+                <i class="fas fa-fw fa-copy"></i>
                 <span>Posts</span>
             </a>
             <div id="collapsePosts" class="collapse" aria-labelledby="headingPosts" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add">Add New Post</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts">Manage Posts</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories">Manage Categories</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add"><i class="fas fa-fw fa-pencil-alt"></i> Add New Post</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts"><i class="fas fa-fw fa-copy"></i> Manage Posts</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories"><i class="fas fa-fw fa-folder-open"></i> Manage Categories</a>
                 </div>
             </div>
         </li>
@@ -61,15 +61,15 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
                aria-expanded="true" aria-controls="collapseUsers">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-fw fa-users"></i>
                 <span>Users</span>
             </a>
             <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/users/add">Add New User</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/users">Manage Users</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/user_groups">Manage Groups</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks">Manage Ranks</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/users/add"><i class="fas fa-fw fa-user-plus"></i> Add New User</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/users"><i class="fas fa-fw fa-user-cog"></i> Manage Users</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/user_groups"><i class="fas fa-fw fa-users-cog"></i> Manage Groups</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks"><i class="fas fa-fw fa-user-shield"></i> Manage Ranks</a>
                 </div>
             </div>
         </li>
