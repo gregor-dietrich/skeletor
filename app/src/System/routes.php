@@ -72,6 +72,10 @@ $routes = [
         'controller' => 'groupsController',
         'method' => 'edit'
     ],
+    '/dashboard/user_groups/kick' => [
+        'controller' => 'groupsController',
+        'method' => 'deleteUsernameByGroupId'
+    ],
     '/dashboard/user_ranks' => [
         'controller' => 'ranksController',
         'method' => 'admin_index'

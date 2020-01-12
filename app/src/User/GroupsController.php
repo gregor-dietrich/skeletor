@@ -57,7 +57,7 @@ class GroupsController extends AbstractController
         }
     }
 
-    public function deleteUsernameByGroupId($username)
+    public function deleteUsernameByGroupId()
     {
         if (!$this->authService->checkAccess()) {
             die();
