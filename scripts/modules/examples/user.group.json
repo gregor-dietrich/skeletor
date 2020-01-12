@@ -4,8 +4,7 @@
     "namespace": "User",
     "properties": [
         "id",
-        "name",
-        "users"
+        "name"
     ],
     "optionals": [],
     "has_many": [

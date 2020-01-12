@@ -8,5 +8,4 @@ class GroupModel extends AbstractModel
 {
     public $id;
     public $name;
-    public $users;
 }

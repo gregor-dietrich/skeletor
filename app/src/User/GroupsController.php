@@ -3,6 +3,7 @@
 namespace App\User;
 
 use App\Core\AbstractController;
+use App\User\AuthService;
 
 class GroupsController extends AbstractController
 {
@@ -17,10 +18,9 @@ class GroupsController extends AbstractController
     {
         $this->authService->checkAccess();
         $savedSuccess = false;
-        if (!empty($_POST['name']) AND !empty($_POST['users'])) {
+        if (!empty($_POST['name'])) {
             $name = $_POST['name'];
-            $users = $_POST['users'];
-            $this->groupsRepository->insert($name, $users);
+            $this->groupsRepository->insert($name);
             $savedSuccess = true;
         }
         $this->render("user/group/admin/add", [
@@ -56,9 +56,8 @@ class GroupsController extends AbstractController
         $savedSuccess = false;
         $id = $_GET['id'];
         $entry = $this->groupsRepository->findID($id);
-        if (!empty($_POST['name']) AND !empty($_POST['users'])) {
+        if (!empty($_POST['name'])) {
             $entry->name = $_POST['name'];
-            $entry->users = $_POST['users'];
             $this->groupsRepository->update($entry);
             $savedSuccess = true;
         }
@@ -78,6 +77,8 @@ class GroupsController extends AbstractController
     public function show()
     {
         $id = $_GET['id'];
+        // Code for adding Users by id(?)
+
         $group = $this->groupsRepository->findID($id);
         $users = $this->usersRepository->fetchAllByID($id);
         $this->render("user/group/show", [

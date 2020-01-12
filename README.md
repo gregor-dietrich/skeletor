@@ -17,9 +17,7 @@ A Web Application Framework
   * Add Creation Date
   * Add Last Login
 * User Groups
-  * Model
-  * Repository
-  * Controller
+  * User Meta
   * Views
 
 ## ToDo.py

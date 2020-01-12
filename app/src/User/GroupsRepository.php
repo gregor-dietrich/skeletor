@@ -16,14 +16,13 @@ class GroupsRepository extends AbstractRepository
         return "user_groups";
     }
 
-    public function insert($name, $users)
+    public function insert($name)
     {
         $table = $this->getTableName();
 
-        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`name`, `users`) VALUES (:name, :users)");
+        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`name`) VALUES (:name)");
         $stmt->execute([
             'name' => $name,
-            'users' => $users,
         ]);
     }
 
@@ -31,10 +30,9 @@ class GroupsRepository extends AbstractRepository
     {
         $table = $this->getTableName();
 
-        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `name` = :name, `users` = :users WHERE `id` = :id");
+        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `name` = :name WHERE `id` = :id");
         $stmt->execute([
             'name' => $model->name,
-            'users' => $model->users,
             'id' => $model->id
         ]);
     }
