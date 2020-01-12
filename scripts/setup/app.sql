@@ -111,7 +111,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `email`) VALUES
-(1, 'admin', '$2y$10$m20aKOA091V3VVXvyBO3XOnFCNWIoNSm2uacczl.PNx.sOrnCk4NG', '23dac1ff4f29fe9bd531', 3, NULL);
+(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3, NULL);
 
 -- --------------------------------------------------------
 
