@@ -31,7 +31,7 @@ class AuthService
 
     public function checkAccess()
     {
-        $this->check();
+        return $this->check();
     }
 
     public function check()

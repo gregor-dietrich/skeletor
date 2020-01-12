@@ -18,7 +18,8 @@ A Web Application Framework
   * Add Creation Date
   * Add Last Login
 * User Groups
-  * Views
+  * Create Profile View
+  * Add Join Date
 
 ## ToDo.py
 * Create Generate Views Script

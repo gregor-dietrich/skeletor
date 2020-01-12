@@ -3,6 +3,7 @@
 namespace App\User;
 
 use App\Core\AbstractRepository;
+use PDO;
 
 class GroupmetasRepository extends AbstractRepository
 {

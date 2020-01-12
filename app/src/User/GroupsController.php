@@ -33,6 +33,7 @@ class GroupsController extends AbstractController
         $this->authService->checkAccess();
         $user_id = $this->usersRepository->findUsername($username)->id;
         $this->groupmetasRepository->insert($user_id, $group_id);
+        header("Location: /app/index.php/dashboard/user_groups/edit?id=$group_id");
     }
 
     public function admin_index()
@@ -64,9 +65,14 @@ class GroupsController extends AbstractController
         } else {
             $user_id = $this->usersRepository->findUsername($_GET['username'])->id;
             $group_id = $_GET['from'];
-            $this->authService->checkAccess();
             $this->groupmetasRepository->remove($user_id, $group_id);
         }
+        $entry = $this->groupsRepository->findID($group_id);
+        $users = $this->groupmetasRepository->fetchAllByGroupID($group_id);
+        $this->render("user/group/admin/edit", [
+            'entry' => $entry,
+            'users' => $users
+        ]);
     }
 
     public function edit()
@@ -75,16 +81,18 @@ class GroupsController extends AbstractController
         $savedSuccess = false;
         $id = $_GET['id'];
         $entry = $this->groupsRepository->findID($id);
+        $users = $this->groupmetasRepository->fetchAllByGroupID($id);
         if (!empty($_POST['name'])) {
             $entry->name = $_POST['name'];
             $this->groupsRepository->update($entry);
             $savedSuccess = true;
         }
-        if (!empty($_POST['username'])) {
+        elseif (!empty($_POST['username'])) {
             $this->addUsernameByGroupId($_POST['username'], $id);
         }
         $this->render("user/group/admin/edit", [
             'entry' => $entry,
+            'users' => $users,
             'savedSuccess' => $savedSuccess
         ]);
     }
