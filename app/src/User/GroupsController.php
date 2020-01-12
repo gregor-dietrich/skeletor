@@ -64,7 +64,7 @@ class GroupsController extends AbstractController
         } else {
             $user_id = $this->usersRepository->findUsername($_GET['username'])->id;
             $group_id = $_GET['from'];
-            $this->authService->checkAccess()
+            $this->authService->checkAccess();
             $this->groupmetasRepository->remove($user_id, $group_id);
         }
     }
