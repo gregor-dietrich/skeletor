@@ -7,9 +7,10 @@ use App\User\AuthService;
 
 class GroupsController extends AbstractController
 {
-    public function __construct(GroupsRepository $groupsRepository, UsersRepository $usersRepository, AuthService $authService)
+    public function __construct(GroupsRepository $groupsRepository, GroupmetasRepository $groupmetasRepository, UsersRepository $usersRepository, AuthService $authService)
     {
         $this->groupsRepository = $groupsRepository;
+        $this->groupmetasRepository = $groupmetasRepository;
         $this->usersRepository = $usersRepository;
         $this->authService = $authService;
     }
@@ -26,6 +27,13 @@ class GroupsController extends AbstractController
         $this->render("user/group/admin/add", [
             'savedSuccess' => $savedSuccess
         ]);
+    }
+
+    public function addUsernameByGroupId($username, $group_id)
+    {
+        $this->authService->checkAccess();
+        $user_id = $this->usersRepository->findUsername($username)->id;
+        $this->groupmetasRepository->insert($user_id, $group_id);
     }
 
     public function admin_index()
@@ -48,6 +56,13 @@ class GroupsController extends AbstractController
             }
             $this->admin_index();
         }
+    }
+
+    public function deleteUsernameByGroupId($username, $group_id)
+    {
+        $this->authService->checkAccess();
+        $user_id = $this->usersRepository->findUsername($username)->id;
+        $this->groupmetasRepository->remove($user_id, $group_id);
     }
 
     public function edit()

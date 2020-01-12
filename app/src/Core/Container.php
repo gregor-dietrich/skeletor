@@ -9,6 +9,7 @@ use App\Post\PostsController;
 use App\Post\PostsRepository;
 use App\User\AuthService;
 use App\User\GroupsController;
+use App\User\GroupmetasRepository;
 use App\User\GroupsRepository;
 use App\User\LoginController;
 use App\User\RanksController;
@@ -47,8 +48,15 @@ class Container
             'groupsController' => function () {
                 return new GroupsController(
                     $this->make("groupsRepository"),
+                    $this->make("groupmetasRepository"),
                     $this->make("usersRepository"),
                     $this->make("authService")
+                );
+            },
+            'groupmetasRepository' => function () {
+                return new GroupmetasRepository(
+                    $this->make("pdo"),
+                    $this->make("usersRepository")
                 );
             },
             'groupsRepository' => function () {
