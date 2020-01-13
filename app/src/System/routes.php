@@ -8,9 +8,25 @@ $routes = [
         'controller' => 'loginController',
         'method' => 'dashboard'
     ],
+    '/dashboard/pages' => [
+        'controller' => 'pagesController',
+        'method' => 'admin_index'
+    ],
     '/dashboard/posts' => [
         'controller' => 'postsController',
         'method' => 'admin_index'
+    ],
+    '/dashboard/pages/add' => [
+        'controller' => 'pagesController',
+        'method' => 'add'
+    ],
+    '/dashboard/pages/delete' => [
+        'controller' => 'pagesController',
+        'method' => 'delete'
+    ],
+    '/dashboard/pages/edit' => [
+        'controller' => 'pagesController',
+        'method' => 'edit'
     ],
     '/dashboard/posts/add' => [
         'controller' => 'postsController',
@@ -99,6 +115,10 @@ $routes = [
     '/logout' => [
         'controller' => 'loginController',
         'method' => 'logout'
+    ],
+    '/page' => [
+        'controller' => 'pagesController',
+        'method' => 'show'
     ],
     '/post' => [
         'controller' => 'postsController',

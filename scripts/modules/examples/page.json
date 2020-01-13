@@ -1,0 +1,13 @@
+{
+    "name": "Page",
+    "plural": "Pages",
+    "namespace": "",
+    "properties": [
+        "id",
+        "title",
+        "content"
+    ],
+    "optionals": [],
+    "has_many": [],
+    "has_one": []
+}

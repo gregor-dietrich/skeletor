@@ -1,9 +1,11 @@
+# noinspection SqlNoDataSourceInspectionForFile
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2020 at 04:36 PM
+-- Generation Time: Jan 13, 2020 at 08:47 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -20,6 +22,22 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `app`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `pages`:
 --
 
 -- --------------------------------------------------------
@@ -195,6 +213,13 @@ INSERT INTO `user_ranks` (`id`, `name`, `post_add`, `post_delete`, `post_edit`, 
 --
 
 --
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `pages` ADD FULLTEXT KEY `content` (`content`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -251,6 +276,12 @@ ALTER TABLE `user_ranks`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`

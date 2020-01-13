@@ -42,17 +42,31 @@
         <div class="sidebar-heading">
             Modules
         </div>
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-file-alt"></i>
+                <span>Pages</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="/app/index.php/dashboard/pages/add"><i class="fas fa-fw fa-pen"></i> Add New Page</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/pages"><i class="fas fa-fw fa-copy"></i> Manage Pages</a>
+                </div>
+            </div>
+        </li>
         <!-- Nav Item - Posts Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePosts"
                aria-expanded="true" aria-controls="collapsePosts">
-                <i class="fas fa-fw fa-copy"></i>
+                <i class="fas fa-fw fa-newspaper"></i>
                 <span>Posts</span>
             </a>
             <div id="collapsePosts" class="collapse" aria-labelledby="headingPosts" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add"><i class="fas fa-fw fa-pencil-alt"></i> Add New Post</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts"><i class="fas fa-fw fa-copy"></i> Manage Posts</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add"><i class="fas fa-fw fa-pen-nib"></i> Add New Post</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts"><i class="fas fa-fw fa-newspaper"></i> Manage Posts</a>
                     <a class="collapse-item" href="/app/index.php/dashboard/post_categories"><i class="fas fa-fw fa-folder-open"></i> Manage Categories</a>
                 </div>
             </div>

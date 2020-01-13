@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Page\PagesController;
+use App\Page\PagesRepository;
 use App\Post\CategoriesController;
 use App\Post\CategoriesRepository;
 use App\Post\CommentsRepository;
@@ -63,6 +65,15 @@ class Container
                 return new LoginController(
                     $this->make("authService")
                 );
+            },
+            'pagesController' => function () {
+                return new PagesController(
+                    $this->make("pagesRepository"),
+                    $this->make("authService")
+                );
+            },
+            'pagesRepository' => function () {
+                return new PagesRepository($this->make("pdo"));
             },
             'postsController' => function () {
                 return new PostsController(
