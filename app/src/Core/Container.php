@@ -26,7 +26,7 @@ class Container
 
     public function __construct()
     {
-        $this->recipes = [
+        $this->recipes = array(
             'authService' => function () {
                 return new AuthService(
                     $this->make("usersRepository"),
@@ -54,10 +54,7 @@ class Container
                 );
             },
             'groupmetasRepository' => function () {
-                return new GroupmetasRepository(
-                    $this->make("pdo"),
-                    $this->make("usersRepository")
-                );
+                return new GroupmetasRepository($this->make("pdo"));
             },
             'groupsRepository' => function () {
                 return new GroupsRepository($this->make("pdo"));
@@ -91,6 +88,8 @@ class Container
             'usersController' => function () {
                 return new UsersController(
                     $this->make("usersRepository"),
+                    $this->make("groupsRepository"),
+                    $this->make("groupmetasRepository"),
                     $this->make("ranksRepository"),
                     $this->make("authService")
                 );
@@ -123,7 +122,7 @@ class Container
                 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
                 return $pdo;
             }
-        ];
+        );
     }
 
     public function make($name)

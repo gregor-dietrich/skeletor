@@ -6,9 +6,11 @@ use App\Core\AbstractController;
 
 class UsersController extends AbstractController
 {
-    public function __construct(UsersRepository $usersRepository, RanksRepository $ranksRepository, AuthService $authService)
+    public function __construct(UsersRepository $usersRepository, GroupsRepository $groupsRepository, GroupmetasRepository $groupmetasRepository, RanksRepository $ranksRepository, AuthService $authService)
     {
         $this->usersRepository = $usersRepository;
+        $this->groupsRepository = $groupsRepository;
+        $this->groupmetasRepository = $groupmetasRepository;
         $this->ranksRepository = $ranksRepository;
         $this->authService = $authService;
     }
@@ -102,5 +104,4 @@ class UsersController extends AbstractController
             'error' => $error
         ]);
     }
-
 }
