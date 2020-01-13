@@ -54,7 +54,7 @@ class UsersController extends AbstractController
         } else {
             $id = $_GET['id'];
             $user = $this->usersRepository->findID($id);
-            if (!empty($user)) {
+            if (!empty($user) and $user->username != $_SESSION['login']) {
                 $this->usersRepository->delete($id);
             }
             $this->admin_index();
