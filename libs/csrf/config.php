@@ -8,7 +8,7 @@
  * ---- tokenLength
  */
 return array(
-    "CSRFP_TOKEN" => "token",
+    "CSRFP_TOKEN" => "csrfp_token",
     "logDirectory" => "../log",
     "failedAuthAction" => array(
         "GET" => 0,
