@@ -31,11 +31,13 @@
                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit
                         </a>
+                        <?php if ($user->username != $_SESSION['login']): ?>
                         <a href="/app/index.php/dashboard/users/delete?id=<?php echo escape($user->id); ?>"
                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                            onclick="return confirm('Are you sure?')">
                             <i class="fas fa-trash-alt fa-sm text-white-50"></i> Delete
                         </a>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
