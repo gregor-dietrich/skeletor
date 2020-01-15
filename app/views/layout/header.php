@@ -6,9 +6,9 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Project Title</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/slate/bootstrap.min.css" 
+	rel="stylesheet" integrity="sha384-G9YbB4o4U6WS4wCthMOpAeweY4gQJyyx0P3nZbEBHyz+AtNoeasfRChmek1C2iqV" 
+	crossorigin="anonymous"/>
     <link href="/app/css/style.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="/app/img/favicon.png"/>
 </head>
