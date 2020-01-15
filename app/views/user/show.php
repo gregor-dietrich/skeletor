@@ -25,13 +25,16 @@
                             <h5>Groups</h5>
                             <ul>
                                 <?php foreach ($groups AS $group): ?>
-                                <li><a href="/app/index.php/user_group?id=<?php
+                                <li>
+                                    <small>(<?php echo $group->timestamp; ?>)</small>
+                                <a href="/app/index.php/user_group?id=<?php
                                     echo $group->group_id;
                                 ?>">
                                 <?php
                                     echo $this->groupsRepository->findID($group->group_id)->name;
                                 ?>
-                                </a></li>
+                                </a>
+                                </li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>

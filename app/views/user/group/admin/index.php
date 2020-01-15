@@ -21,7 +21,7 @@
                 <tr>
                     <td><?php echo escape($group->id); ?></td>
                     <td>
-                        <a href="/app/index.php/dashboard/user_groups/edit?id=<?php echo escape($group->id); ?>"><?php echo escape($group->name); ?></a>
+                        <a href="/app/index.php/user_group?id=<?php echo escape($group->id); ?>"><?php echo escape($group->name); ?></a>
                     </td>
                     <td>
                         <a href="/app/index.php/dashboard/user_groups/edit?id=<?php echo escape($group->id); ?>"

@@ -13,6 +13,7 @@
                         </div>
                         <div class="col-md-3">
                             <?php foreach ($members AS $member): ?>
+                                <small>(<?php echo $member->timestamp; ?>)</small>
                             <a href="/app/index.php/user?id=<?php
                                 echo $member->user_id;
                             ?>">
