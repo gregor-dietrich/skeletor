@@ -21,7 +21,7 @@
                 <tr>
                     <td><?php echo escape($user->id); ?></td>
                     <td>
-                        <a href="/app/index.php/dashboard/users/edit?id=<?php echo escape($user->id); ?>"><?php echo escape($user->username); ?></a>
+                        <a href="/app/index.php/user?id=<?php echo escape($user->id); ?>"><?php echo escape($user->username); ?></a>
                     </td>
                     <td><?php if (!empty($user->rank_id)) {
                             echo escape($this->ranksRepository->findID($user->rank_id)->name);

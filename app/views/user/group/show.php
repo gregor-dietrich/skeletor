@@ -1,0 +1,30 @@
+<?php include __DIR__ . "/../../layout/header.php"; ?>
+    <br/>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Group Profile: <?php echo escape($group->name); ?></h3>
+                    </div>
+                    <div class="card-body row">
+                        <div class="col-md-12">
+                            <h5>Members</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <?php foreach ($members AS $member): ?>
+                            <a href="/app/index.php/user?id=<?php
+                                echo $member->user_id;
+                            ?>">
+                            <?php
+                                echo $this->usersRepository->findID($member->group_id)->username;
+                            ?>
+                            </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php include __DIR__ . "/../../layout/footer.php"; ?>

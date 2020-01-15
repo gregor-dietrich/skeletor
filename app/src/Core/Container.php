@@ -63,6 +63,7 @@ class Container
             },
             'loginController' => function () {
                 return new LoginController(
+                    $this->make("usersRepository"),
                     $this->make("authService")
                 );
             },

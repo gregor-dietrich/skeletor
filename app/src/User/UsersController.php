@@ -104,4 +104,15 @@ class UsersController extends AbstractController
             'error' => $error
         ]);
     }
+
+    public function show()
+    {
+        $id = $_GET['id'];
+        $user = $this->usersRepository->findID($id);
+        $groups = $this->groupmetasRepository->fetchAllByUserID($id);
+        $this->render("user/show", [
+            'user' => $user,
+            'groups' => $groups
+        ]);
+    }
 }

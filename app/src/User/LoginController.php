@@ -6,8 +6,9 @@ use App\Core\AbstractController;
 
 class LoginController extends AbstractController
 {
-    public function __construct(AuthService $authService)
+    public function __construct(UsersRepository $usersRepository, AuthService $authService)
     {
+        $this->usersRepository = $usersRepository;
         $this->authService = $authService;
     }
 

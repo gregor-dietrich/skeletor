@@ -124,6 +124,10 @@ $routes = [
         'controller' => 'postsController',
         'method' => 'show'
     ],
+    '/user' => [
+        'controller' => 'usersController',
+        'method' => 'show'
+    ],
     '/user_group' => [
         'controller' => 'groupsController',
         'method' => 'show'
