@@ -13,8 +13,6 @@ A Web Application Framework
 * Users
   * Add Activation
   * Add Edit Profile
-* User Groups
-  * Display Join Date
 
 ## ToDo.py
 * Create Generate Views Script

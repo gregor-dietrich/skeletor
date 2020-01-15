@@ -24,7 +24,7 @@ class AuthService
             session_regenerate_id(true);
 
             $user->last_ip = $_SERVER['REMOTE_ADDR'];
-            $user->last_login = date('Y/m/d H:i:s', time());
+            $user->last_login = datetime_now();
 
             $this->usersRepository->update($user);
 
