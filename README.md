@@ -7,19 +7,17 @@ A Web Application Framework
   * Display Category
   * Add Toggle Published
   * Add Toggle Commentable
-  * Add Creation Date
+  * Display Creation Date
   * Add Last Edited
   * Comments
     * Display Author
-    * Add Creation Date
+    * Display Creation Date
 * Users
   * Create Profile View
-  * Add Toggle activated
-  * Add Creation Date
-  * Add Last Login
+  * Add Activation
 * User Groups
   * Create Profile View
-  * Add Join Date
+  * Display Join Date
 
 ## ToDo.py
 * Create Generate Views Script

@@ -13,4 +13,6 @@ class PostModel extends AbstractModel
     public $category_id;
     public $published;
     public $commentable;
+    public $created;
+    public $last_edit;
 }

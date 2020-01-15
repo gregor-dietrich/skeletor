@@ -1,11 +1,9 @@
-# noinspection SqlNoDataSourceInspectionForFile
-
 -- phpMyAdmin SQL Dump
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2020 at 08:47 PM
+-- Generation Time: Jan 15, 2020 at 02:59 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -53,7 +51,9 @@ CREATE TABLE `posts` (
   `user_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `published` tinyint(1) NOT NULL DEFAULT 0,
-  `commentable` tinyint(1) NOT NULL DEFAULT 0
+  `commentable` tinyint(1) NOT NULL DEFAULT 0,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `last_edit` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -92,7 +92,8 @@ CREATE TABLE `post_comments` (
   `id` int(11) NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL
+  `user_id` int(11) DEFAULT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -115,7 +116,12 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `salt` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rank_id` int(11) DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `activated` tinyint(1) NOT NULL DEFAULT 0,
+  `activation_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_ip` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `last_login` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -128,8 +134,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `email`) VALUES
-(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3, NULL);
+INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `activated`, `last_ip`) VALUES
+(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3, 1, '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -155,7 +161,8 @@ CREATE TABLE `user_groups` (
 CREATE TABLE `user_groups_meta` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL
+  `group_id` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

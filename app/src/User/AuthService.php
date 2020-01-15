@@ -22,6 +22,12 @@ class AuthService
             unset($_ENV['salt']);
             $_SESSION['login'] = $user->username;
             session_regenerate_id(true);
+
+            $user->last_ip = $_SERVER['REMOTE_ADDR'];
+            $user->last_login = date('Y/m/d H:i:s', time());
+
+            $this->usersRepository->update($user);
+
             return true;
         } else {
             unset($_ENV['salt']);
