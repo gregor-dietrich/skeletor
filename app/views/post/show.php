@@ -6,9 +6,21 @@
                 <div class="card">
                     <div class="card-header">
                         <h3><?php echo escape($post->title); ?></h3>
+                        <small>
+                            posted <?php echo escape($post->created); ?> by
+                            <a href="/app/index.php/user?id=<?php echo escape($post->user_id); ?>">
+                            <?php echo escape($this->usersRepository->findID($post->user_id)->username); ?>
+                            </a>
+                            <?php if (isset($post->category_id)) {
+                                echo " in <a href=\"/app/index.php/category?id=" . escape($post->category_id) . "\">" .
+                                    escape($this->categoriesRepository->findID($post->category_id)->name)
+                                    . "</a>";
+                            } ?>
+                        </small>
                     </div>
                     <div class="card-body">
-                        <?php echo nl2br(escape($post->content)); ?>
+                        <p><?php echo nl2br(escape($post->content)); ?></p>
+                        <small class="float-md-right">last edited <?php echo escape($post->last_edit); ?></small>
                     </div>
                 </div>
                 <br/>
@@ -20,7 +32,11 @@
                         <ul class="list-group">
                             <?php foreach ($comments AS $comment): ?>
                                 <li class="list-group-item">
-                                    <?php echo escape($comment->content, ENT_QUOTES, 'UTF-8'); ?>
+                                    <?php echo escape($comment->content); ?><br/>
+                                    <small>posted <?php echo escape($comment->created); ?> by
+                                        <a href="/app/index.php/user?id=<?php echo escape($comment->user_id); ?>">
+                                            <?php echo escape($this->usersRepository->findID($comment->user_id)->username); ?>
+                                        </a></small>
                                 </li>
                             <?php endforeach; ?>
                         </ul>

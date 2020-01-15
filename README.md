@@ -2,21 +2,18 @@
 A Web Application Framework
 
 ## ToDo.php
+* Categories
+  * Add Index
+  * Add Category Overview
 * Posts
-  * Display Author
-  * Display Category
   * Add Toggle Published
   * Add Toggle Commentable
-  * Display Creation Date
-  * Add Last Edited
-  * Comments
-    * Display Author
-    * Display Creation Date
+* Search
+  * Implement
 * Users
-  * Create Profile View
   * Add Activation
+  * Add Edit Profile
 * User Groups
-  * Create Profile View
   * Display Join Date
 
 ## ToDo.py
