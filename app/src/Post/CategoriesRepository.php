@@ -3,6 +3,7 @@
 namespace App\Post;
 
 use App\Core\AbstractRepository;
+use PDO;
 
 class CategoriesRepository extends AbstractRepository
 {
@@ -36,5 +37,25 @@ class CategoriesRepository extends AbstractRepository
             'parent_id' => $model->parent_id,
             'id' => $model->id
         ]);
+    }
+
+    public function fetchAllOrdered()
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` ORDER BY `name` ASC");
+        $stmt->execute();
+        $children = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
+        return $children;
+    }
+
+    public function fetchAllByParentID($id)
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `parent_id` = :id ORDER BY `name` ASC");
+        $stmt->execute(['id' => $id]);
+        $children = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
+        return $children;
     }
 }

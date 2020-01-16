@@ -48,7 +48,17 @@ class PostsRepository extends AbstractRepository
     {
         $table = $this->getTableName();
         $model = $this->getModelName();
-        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id ORDER BY `id` DESC");
+        $stmt->execute(['id' => $id]);
+        $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
+        return $posts;
+    }
+
+    public function fetchAllByCategoryID($id)
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `category_id` = :id ORDER BY `id` DESC");
         $stmt->execute(['id' => $id]);
         $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $posts;

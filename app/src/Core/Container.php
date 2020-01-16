@@ -38,6 +38,7 @@ class Container
             'categoriesController' => function () {
                 return new CategoriesController(
                     $this->make("categoriesRepository"),
+                    $this->make("postsRepository"),
                     $this->make("authService")
                 );
             },

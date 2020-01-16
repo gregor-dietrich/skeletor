@@ -8,9 +8,10 @@ use App\User\AuthService;
 class CategoriesController extends AbstractController
 {
 
-    public function __construct(CategoriesRepository $categoriesRepository, AuthService $authService)
+    public function __construct(CategoriesRepository $categoriesRepository, PostsRepository $postsRepository, AuthService $authService)
     {
         $this->categoriesRepository = $categoriesRepository;
+        $this->postsRepository = $postsRepository;
         $this->authService = $authService;
     }
 
@@ -52,8 +53,7 @@ class CategoriesController extends AbstractController
     public function admin_index()
     {
         $this->authService->check();
-        $categories = $this->categoriesRepository->findAll();
-        rsort($categories);
+        $categories = $this->categoriesRepository->fetchAllOrdered();
         $this->render("post/category/admin/index", ['categories' => $categories]);
     }
 
@@ -78,6 +78,25 @@ class CategoriesController extends AbstractController
             'entry' => $entry,
             'savedSuccess' => $savedSuccess,
             'categories' => $categories
+        ]);
+    }
+
+    public function index()
+    {
+        $categories = $this->categoriesRepository->fetchAllOrdered();
+        $this->render("post/category/index", ['categories' => $categories]);
+    }
+
+    public function show()
+    {
+        $id = $_GET['id'];
+        $category = $this->categoriesRepository->findID($id);
+        $children = $this->categoriesRepository->fetchAllByParentID($id);
+        $posts = $this->postsRepository->fetchAllByCategoryID($id);
+        $this->render("post/category/show", [
+            'category' => $category,
+            'children' => $children,
+            'posts' => $posts
         ]);
     }
 }
