@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <h3><?php echo escape($post->title); ?></h3>
                         <small>
-                            posted <?php echo escape($post->created); ?> by
+                            posted <?php echo escape(datetime_datetime($post->created)); ?> by
                             <a href="/app/index.php/user?id=<?php echo escape($post->user_id); ?>">
                             <?php echo escape($this->usersRepository->findID($post->user_id)->username); ?>
                             </a>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         <p><?php echo nl2br(escape($post->content)); ?></p>
-                        <small class="float-md-right">last edited <?php echo escape($post->last_edit); ?></small>
+                        <small class="float-md-right">last edited <?php echo escape(datetime_datetime($post->last_edit)); ?></small>
                     </div>
                 </div>
                 <br/>
@@ -33,7 +33,7 @@
                             <?php foreach ($comments AS $comment): ?>
                                 <li class="list-group-item">
                                     <?php echo escape($comment->content); ?><br/>
-                                    <small>posted <?php echo escape($comment->created); ?> by
+                                    <small>posted <?php echo escape(datetime_datetime($comment->created)); ?> by
                                         <a href="/app/index.php/user?id=<?php echo escape($comment->user_id); ?>">
                                             <?php echo escape($this->usersRepository->findID($comment->user_id)->username); ?>
                                         </a></small>

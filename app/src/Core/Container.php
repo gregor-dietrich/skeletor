@@ -103,6 +103,8 @@ class Container
                     $this->make("groupsRepository"),
                     $this->make("groupmetasRepository"),
                     $this->make("ranksRepository"),
+                    $this->make("postsRepository"),
+                    $this->make("commentsRepository"),
                     $this->make("authService")
                 );
             },

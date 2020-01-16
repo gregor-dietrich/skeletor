@@ -11,6 +11,16 @@ function datetime_date($string)
     return implode(".", array_reverse($date));
 }
 
+function datetime_datetime($string)
+{
+    $date = explode("-", explode(" ", $string)[0]);
+    $time = explode(":", explode(" ", $string)[1]);
+    array_pop($time);
+    $date = implode(".", array_reverse($date));
+    $time = implode(":", $time);
+    return $date . " " . $time;
+}
+
 function datetime_time($string)
 {
     $time = explode(":", explode(" ", $string)[1]);

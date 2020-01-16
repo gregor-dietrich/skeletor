@@ -3,6 +3,7 @@
 namespace App\Post;
 
 use App\Core\AbstractRepository;
+use PDO;
 
 class PostsRepository extends AbstractRepository
 {
@@ -41,5 +42,15 @@ class PostsRepository extends AbstractRepository
             'last_edit' => $model->last_edit,
             'id' => $model->id
         ]);
+    }
+
+    public function fetchAllByUserID($id)
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id");
+        $stmt->execute(['id' => $id]);
+        $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
+        return $posts;
     }
 }

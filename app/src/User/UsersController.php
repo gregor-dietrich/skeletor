@@ -3,15 +3,19 @@
 namespace App\User;
 
 use App\Core\AbstractController;
+use App\Post\PostsRepository;
+use App\Post\CommentsRepository;
 
 class UsersController extends AbstractController
 {
-    public function __construct(UsersRepository $usersRepository, GroupsRepository $groupsRepository, GroupmetasRepository $groupmetasRepository, RanksRepository $ranksRepository, AuthService $authService)
+    public function __construct(UsersRepository $usersRepository, GroupsRepository $groupsRepository, GroupmetasRepository $groupmetasRepository, RanksRepository $ranksRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository, AuthService $authService)
     {
         $this->usersRepository = $usersRepository;
         $this->groupsRepository = $groupsRepository;
         $this->groupmetasRepository = $groupmetasRepository;
         $this->ranksRepository = $ranksRepository;
+        $this->postsRepository = $postsRepository;
+        $this->commentsRepository = $commentsRepository;
         $this->authService = $authService;
     }
 
@@ -109,9 +113,16 @@ class UsersController extends AbstractController
     {
         $id = $_GET['id'];
         $user = $this->usersRepository->findID($id);
+        $posts = $this->postsRepository->fetchAllByUserID($id);
+        rsort($posts);
+        $comments = $this->commentsRepository->fetchAllByUserID($id);
+        rsort($comments);
         $groups = $this->groupmetasRepository->fetchAllByUserID($id);
+        rsort($groups);
         $this->render("user/show", [
             'user' => $user,
+            'posts' => $posts,
+            'comments' => $comments,
             'groups' => $groups
         ]);
     }
