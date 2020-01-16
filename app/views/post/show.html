@@ -31,9 +31,10 @@
                     <div class="card-body">
                         <ul class="list-group">
                             <?php foreach ($comments AS $comment): ?>
-                                <li class="list-group-item">
+                                <li class="list-group-item" id="comment<?php echo escape($comment->id); ?>">
                                     <?php echo escape($comment->content); ?><br/>
-                                    <small>posted <?php echo escape(datetime_datetime($comment->created)); ?> by
+                                    <small>posted <a href="#comment<?php echo escape($comment->id); ?>">
+                                        <?php echo escape(datetime_datetime($comment->created)); ?></a> by
                                         <a href="/app/index.php/user?id=<?php echo escape($comment->user_id); ?>">
                                             <?php echo escape($this->usersRepository->findID($comment->user_id)->username); ?>
                                         </a></small>
