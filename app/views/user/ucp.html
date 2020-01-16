@@ -1,0 +1,26 @@
+<?php include __DIR__ . "/../layout/header.php"; ?>
+    <br/>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>User Control Panel</h3>
+                    </div>
+                    <div class="card-body">
+                        <a href="dashboard" class="btn btn-lg btn-primary col-md-3">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            Dashboard</a>
+                        <a href="edit_profile" class="btn btn-lg btn-primary col-md-3">
+                            <i class="fas fa-fw fa-user-edit"></i>
+                            Edit Profile</a>
+                        <a href="logout"  class="btn btn-lg btn-danger col-md-3"
+                           onclick="return confirm('Are you sure?')">
+                            <i class="fas fa-fw fa-sign-out-alt"></i>
+                            Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php include __DIR__ . "/../layout/footer.php"; ?>

@@ -6,6 +6,8 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Project Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+          integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"/>
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/slate/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-G9YbB4o4U6WS4wCthMOpAeweY4gQJyyx0P3nZbEBHyz+AtNoeasfRChmek1C2iqV" 
 	crossorigin="anonymous"/>
@@ -30,8 +32,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/app/index.php/post_categories">Categories</a>
                 </li>
+                <?php if (!isset($_SESSION["login"])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/app/index.php/login">Login</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/app/index.php/ucp">Control Panel</a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/app/index.php/login">Login</a>
+                    <a class="nav-link" href="/app/index.php/dashboard">Admin</a>
                 </li>
             </ul>
         </div>

@@ -126,4 +126,40 @@ class UsersController extends AbstractController
             'groups' => $groups
         ]);
     }
+
+    public function edit_profile()
+    {
+        $this->authService->check();
+        $entry = $this->usersRepository->findUsername($_SESSION['login']);
+        if (!empty($_POST['username'])) {
+            $entry->username = $_POST['username'];
+            if (empty($_POST['email'])) {
+                $entry->email = NULL;
+            } else {
+                $entry->email = $_POST['email'];
+            }
+            if (!empty($_POST['password']) AND $_POST['password'] == $_POST['password_confirm']) {
+                require __DIR__ . "/../System/salt.php";
+                $salt = bin2hex(random_bytes(10));
+                $entry->password = password_hash($salt . $_POST['password'] . $_ENV['salt'], PASSWORD_DEFAULT);
+                unset($_ENV['salt']);
+                $entry->salt = $salt;
+            } elseif (!empty($_POST['password']) AND $_POST['password'] != $_POST['password_confirm']) {
+                $error = "Passwords don't match! User not saved!";
+            }
+            $this->usersRepository->update($entry);
+        }
+        $this->render("user/edit_profile", [
+            'entry' => $entry
+        ]);
+    }
+
+    public function ucp()
+    {
+        $this->authService->check();
+        $entry = $this->usersRepository->findUsername($_SESSION['login']);
+        $this->render("user/ucp", [
+            'entry' => $entry
+        ]);
+    }
 }

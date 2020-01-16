@@ -108,6 +108,10 @@ $routes = [
         'controller' => 'ranksController',
         'method' => 'edit'
     ],
+    '/edit_profile' => [
+        'controller' => 'usersController',
+        'method' => 'edit_profile'
+    ],
     '/login' => [
         'controller' => 'loginController',
         'method' => 'login'
@@ -131,6 +135,10 @@ $routes = [
     '/post_category' => [
         'controller' => 'categoriesController',
         'method' => 'show'
+    ],
+    '/ucp' => [
+        'controller' => 'usersController',
+        'method' => 'ucp'
     ],
     '/user' => [
         'controller' => 'usersController',

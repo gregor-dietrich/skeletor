@@ -21,7 +21,7 @@ class LoginController extends AbstractController
     public function login()
     {
         if (isset($_SESSION['login'])) {
-            header("Location: dashboard");
+            header("Location: ucp");
             return;
         }
 
@@ -31,7 +31,7 @@ class LoginController extends AbstractController
             $password = $_POST['password'];
 
             if ($this->authService->attempt($username, $password)) {
-                header("Location: dashboard");
+                header("Location: ucp");
                 return;
             } else {
                 $error = "Username not found or incorrect password.";
