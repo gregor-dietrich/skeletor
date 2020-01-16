@@ -1,0 +1,17 @@
+{
+    "name": "Groupmeta",
+    "plural": "Groupmetas",
+    "namespace": "User",
+    "properties": [
+        "id",
+        "user_id",
+        "group_id",
+        "timestamp"
+    ],
+    "optionals": [],
+    "has_many": [],
+    "has_one": [
+        "Users",
+        "Groups"
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "name": "User",
+    "plural": "Users",
+    "namespace": "",
+    "properties": [
+        "id",
+        "username",
+        "password",
+        "salt",
+        "rank_id",
+        "email",
+        "activated",
+        "activation_key",
+        "last_ip",
+        "created",
+        "last_login"
+    ],
+    "optionals": [
+        "rank_id",
+        "email",
+        "activation_key"
+    ],
+    "has_many": [
+        "Comments",
+        "Posts",
+        "Groups",
+        "Groupmetas"
+    ],
+    "has_one": [
+        "Ranks"
+    ]
+}

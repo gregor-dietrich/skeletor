@@ -1,0 +1,19 @@
+{
+    "name": "Category",
+    "plural": "Categories",
+    "namespace": "Post",
+    "properties": [
+        "id",
+        "name",
+        "parent_id"
+    ],
+    "optionals": [
+        "parent_id"
+    ],
+    "has_many": [
+        "Categories"
+    ],
+    "has_one": [
+        "Categories"
+    ]
+}

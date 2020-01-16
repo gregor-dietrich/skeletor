@@ -1,0 +1,20 @@
+{
+    "name": "Comment",
+    "plural": "Comments",
+    "namespace": "Post",
+    "properties": [
+        "id",
+        "content",
+        "post_id",
+        "user_id",
+        "created"
+    ],
+    "optionals": [
+        "user_id"
+    ],
+    "has_many": [],
+    "has_one": [
+        "Posts",
+        "Users"
+    ]
+}

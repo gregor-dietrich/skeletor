@@ -1,0 +1,27 @@
+{
+    "name": "Post",
+    "plural": "Posts",
+    "namespace": "",
+    "properties": [
+        "id",
+        "title",
+        "content",
+        "user_id",
+        "category_id",
+        "published",
+        "commentable",
+        "created",
+        "last_edit"
+    ],
+    "optionals": [
+        "user_id",
+        "category_id"
+    ],
+    "has_many": [
+        "Comments"
+    ],
+    "has_one": [
+        "Categories",
+        "Users"
+    ]
+}

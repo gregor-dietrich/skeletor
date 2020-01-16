@@ -1,0 +1,15 @@
+{
+    "name": "Default",
+    "plural": "Defaults",
+    "namespace": "",
+    "properties": [
+        "id"
+    ],
+    "optionals": [],
+    "has_many": [
+        "Children"
+    ],
+    "has_one": [
+        "Parents"
+    ]
+}
