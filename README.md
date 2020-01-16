@@ -2,9 +2,6 @@
 A Web Application Framework
 
 ## ToDo.php
-* Categories
-  * Add Index
-  * Add Category Overview
 * Posts
   * Add Toggle Published
   * Add Toggle Commentable
