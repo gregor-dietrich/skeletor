@@ -5,10 +5,12 @@ A Web Application Framework
 * Posts
   * Add Toggle Comments
   * Add Toggle Published
-* Search
-  * Implement
 * Users
   * Add Activation
+* Planned Modules
+  * Search
+  * Settings
+  * Widgets
 
 ## ToDo.py
 * Create Generate Views Script
