@@ -6,6 +6,7 @@ scripts/.idea
 scripts/modules/generated/*
 temp/*
 *.code-workspace
+*.log
 
 app/src/System/db.php
 app/src/System/salt.php

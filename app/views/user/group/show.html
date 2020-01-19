@@ -18,9 +18,9 @@
                                 echo $member->user_id;
                             ?>">
                             <?php
-                                echo escape($this->usersRepository->findID($member->group_id)->username);
+                                echo escape($this->usersRepository->findID($member->user_id)->username);
                             ?>
-                            </a>
+                            </a><br/>
                             <?php endforeach; ?>
                         </div>
                     </div>
