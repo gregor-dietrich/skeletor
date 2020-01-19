@@ -61,7 +61,7 @@ def write_sql(module, query, charset):
 
 
 def main():
-    modules = ["user_groups", "users", "user_groupmetas", "post_categories", "posts", "post_comments"]
+    modules = ["user_groups", "users", "user_groups_meta", "post_categories", "posts", "post_comments"]
     queries = []
 
     for module in modules:
@@ -70,7 +70,7 @@ def main():
             query += "`name`"
         elif module == "users":
             query += "`username`,`password`,`salt`,`rank_id`,`email`,`activated`,`last_ip`,`created`,`last_login`"
-        elif module == "user_groupmetas":
+        elif module == "user_groups_meta":
             query += "`user_id`,`group_id`,`timestamp`"
         elif module == "post_categories":
             query += "`name`,`parent_id`"
@@ -97,7 +97,7 @@ def main():
                      + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\",\""\
                      + "2020-01-" + random_date(1, 31) + " " + random_date(0, 23)\
                      + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\")"
-        elif module == "user_groupmetas":
+        elif module == "user_groups_meta":
             query += ""
         elif module == "post_categories":
             query += ""
