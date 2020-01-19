@@ -1,0 +1,3 @@
+INSERT INTO `post_categories` (`name`) VALUES ("General"),("Main"),("Software"),("Hardware"),("Games"),("Technology"),("Misc."),("Other"),("Programming"),("Webdesign");
+INSERT INTO `post_categories` (`name`,`parent_id`) VALUES ("vitae, posuere",2),("mauris ut",9),("semper et,",2),("luctus et",9),("ante",5),("neque",6),("dignissim",8),("nisi a",9),("Nulla eget",4),("pharetra",1);
+INSERT INTO `post_categories` (`name`,`parent_id`) VALUES ("Nam",7),("nec",3),("lacus. Ut",3),("velit eu",3),("sapien",2),("libero.",3),("pretium neque.",7),("Fusce feugiat.",2),("eget",7),("aliquet.",8);
