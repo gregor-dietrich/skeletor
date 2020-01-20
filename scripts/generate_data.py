@@ -21,8 +21,23 @@ def get_input(table):
     return user_input
 
 
-def lorem_ipsum():
-    return ""
+def lorem_ipsum(paragraphs):
+    lipsum_1 = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    lipsum_2 = "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."
+    lipsum_3 = "Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
+    lipsum_4 = "Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
+    lipsums = [lipsum_1.split(". "), lipsum_2.split(". "), lipsum_3.split(". "), lipsum_4.split(". ")]
+    text = ""
+    for i in range(int(paragraphs)):
+        paragraph = []
+        for lipsum in lipsums:
+            paragraph.append(lipsum[random.randint(0, len(lipsum) - 1)])
+        paragraph = ". ".join(paragraph)
+        paragraph = paragraph.replace("..", ".")
+        text += paragraph
+        if i != int(paragraphs) - 1:
+            text += "\n\n"
+    return text
 
 
 def random_string(length, mode="letters"):
@@ -67,12 +82,13 @@ def random_date(min_val, max_val):
         return str(result)
 
 
-def write_sql(module, query, charset):
+def write_sql(queries, charset):
     check_folders("./modules/generated/")
-    filename = "./modules/generated/" + module + ".sql"
+    filename = "./modules/generated/data.sql"
     print("Writing to %s..." % filename)
     with open(filename, "w", encoding=charset) as file:
-        file.write(query + "\n")
+        for query in queries:
+            file.write(query + "\n")
         print("Finished writing %s." % filename)
 
 
@@ -163,7 +179,7 @@ def main():
                 query += random_string(random.randint(3, 9)).capitalize()
                 for j in range(random.randint(2, 4)):
                     query += " " + random_string(random.randint(2, 12)).capitalize()
-                query += "\",\"" + lorem_ipsum() + "\","
+                query += "\",\"" + lorem_ipsum(random.randint(3, 6)) + "\","
                 user_id, category_id = str(random.randint(2, users+1)), str(random.randint(1, post_categories))
                 query += "%s,%s,1,1,\"" % (user_id, category_id)
                 query += "2020-01-" + random_date(1, 14) + " " + random_date(0, 23)\
@@ -175,16 +191,15 @@ def main():
         elif module == "post_comments":
             post_comments = get_input("post_comments")
             for i in range(post_comments):
-                query += "(\"" + lorem_ipsum() + "\","
+                query += "(\"" + lorem_ipsum(random.randint(1, 2)) + "\","
                 query += str(random.randint(1, posts)) + "," + str(random.randint(2, users+1))
                 query += ",\"" + "2020-01-" + random_date(15, 19) + " " + random_date(0, 23)\
                          + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\")"
                 if i != post_comments - 1:
                     query += ","
         query += ";"
-
         queries.append(query)
-        write_sql(module, query, "utf-8")
+    write_sql(queries, "utf-8")
 
     print("All operations completed. Exiting...")
     sys.exit()
