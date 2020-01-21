@@ -33,13 +33,12 @@ class PostsRepository extends AbstractRepository
     {
         $table = $this->getTableName();
 
-        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `content` = :content, `title` = :title, `category_id` = :category_id, `created` = :created, `last_edit` = :last_edit WHERE `id` = :id");
+        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `content` = :content, `title` = :title, `category_id` = :category_id, `created` = :created WHERE `id` = :id");
         $stmt->execute([
             'content' => $model->content,
             'title' => $model->title,
             'category_id' => $model->category_id,
             'created' => $model->created,
-            'last_edit' => $model->last_edit,
             'id' => $model->id
         ]);
     }

@@ -77,7 +77,6 @@ class PostsController extends AbstractController
             } else {
                 $entry->category_id = NULL;
             }
-            $entry->last_edit = datetime_now();
             $this->postsRepository->update($entry);
             $savedSuccess = true;
         }

@@ -1,9 +1,11 @@
+# noinspection SqlNoDataSourceInspectionForFile
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2020 at 02:59 AM
+-- Generation Time: Jan 21, 2020 at 05:50 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -29,7 +31,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pages` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -45,7 +47,7 @@ CREATE TABLE `pages` (
 --
 
 CREATE TABLE `posts` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -53,7 +55,7 @@ CREATE TABLE `posts` (
   `published` tinyint(1) NOT NULL DEFAULT 0,
   `commentable` tinyint(1) NOT NULL DEFAULT 0,
   `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `last_edit` datetime NOT NULL DEFAULT current_timestamp()
+  `last_edit` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -71,7 +73,7 @@ CREATE TABLE `posts` (
 --
 
 CREATE TABLE `post_categories` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `parent_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -89,7 +91,7 @@ CREATE TABLE `post_categories` (
 --
 
 CREATE TABLE `post_comments` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -111,7 +113,7 @@ CREATE TABLE `post_comments` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `salt` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -119,7 +121,7 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT 0,
   `activation_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_ip` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_ip` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `last_login` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -134,8 +136,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `activated`, `last_ip`) VALUES
-(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3, 1, '127.0.0.1');
+INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `activated`) VALUES
+(1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `activated
 --
 
 CREATE TABLE `user_groups` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -159,7 +161,7 @@ CREATE TABLE `user_groups` (
 --
 
 CREATE TABLE `user_groups_meta` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `timestamp` datetime NOT NULL DEFAULT current_timestamp()
@@ -180,7 +182,7 @@ CREATE TABLE `user_groups_meta` (
 --
 
 CREATE TABLE `user_ranks` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_add` tinyint(1) NOT NULL DEFAULT 0,
   `post_delete` tinyint(1) NOT NULL DEFAULT 0,
