@@ -132,7 +132,7 @@ def main():
             users = get_input("users")
             usernames = ["admin"]
             emails = []
-            while len(usernames) < users:
+            while len(emails) < users:
                 generated_username, generated_email = random_string(random.randint(3, 12)).capitalize(), random_email()
                 if generated_username not in usernames and generated_email not in emails:
                     usernames.append(generated_username)
@@ -145,7 +145,7 @@ def main():
                              + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\",\""\
                              + "2020-01-" + random_date(20, 31) + " " + random_date(0, 23)\
                              + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\")"
-                    if len(usernames) != users:
+                    if len(emails) != users:
                         query += ","
         elif module == "user_groups_meta":
             user_groups_meta = get_input("user_groups_meta")

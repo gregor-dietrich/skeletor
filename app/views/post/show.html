@@ -20,7 +20,9 @@
                     </div>
                     <div class="card-body">
                         <p><?php echo nl2br(escape($post->content)); ?></p>
+                        <?php if (isset($post->last_edit)): ?>
                         <small class="float-md-right">last edited <?php echo escape(datetime_datetime($post->last_edit)); ?></small>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <br/>
