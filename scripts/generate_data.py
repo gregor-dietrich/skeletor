@@ -24,15 +24,15 @@ def get_input(table):
 def lorem_ipsum(paragraphs):
     lipsum_1 = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     lipsum_2 = "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."
-    lipsum_3 = "Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
-    lipsum_4 = "Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
+    lipsum_3 = "Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Sed rutrum at nibh maximus accumsan."
+    lipsum_4 = "Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Proin feugiat nec ex ac molestie. Aliquam augue turpis, rutrum eget elementum ut, pellentesque a ligula. Pellentesque nec venenatis lorem, non pellentesque purus. In non ex in nunc aliquam pellentesque placerat blandit turpis. Maecenas sed velit nulla. Mauris eu quam et purus sodales tempus. Vestibulum sed aliquet ex."
     lipsums = [lipsum_1.split(". "), lipsum_2.split(". "), lipsum_3.split(". "), lipsum_4.split(". ")]
     text = ""
     for i in range(int(paragraphs)):
         paragraph = []
         for lipsum in lipsums:
             paragraph.append(lipsum[random.randint(0, len(lipsum) - 1)])
-        paragraph = ". ".join(paragraph)
+        paragraph = ". ".join(paragraph) + "."
         paragraph = paragraph.replace("..", ".")
         text += paragraph
         if i != int(paragraphs) - 1:
@@ -130,17 +130,23 @@ def main():
                     query += ","
         elif module == "users":
             users = get_input("users")
-            for i in range(users):
-                query += "(\"" + random_string(random.randint(3, 12)).capitalize() + "\",\""\
-                         + random_string(60, mode="hash") + "\",\""\
-                         + random_string(20, mode="hex").lower() + "\",1,\"" + random_email()\
-                         + "\",1,\"::1\",\""\
-                         + "2019-" + random_date(1, 12) + "-" + random_date(1, 28) + " " + random_date(0, 23)\
-                         + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\",\""\
-                         + "2020-01-" + random_date(20, 31) + " " + random_date(0, 23)\
-                         + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\")"
-                if i != users - 1:
-                    query += ","
+            usernames = ["admin"]
+            emails = []
+            while len(usernames) < users:
+                generated_username, generated_email = random_string(random.randint(3, 12)).capitalize(), random_email()
+                if generated_username not in usernames and generated_email not in emails:
+                    usernames.append(generated_username)
+                    emails.append(generated_email)
+                    query += "(\"" + generated_username + "\",\""\
+                             + random_string(60, mode="hash") + "\",\""\
+                             + random_string(20, mode="hex").lower() + "\",1,\"" + generated_email\
+                             + "\",1,\"::1\",\""\
+                             + "2019-" + random_date(1, 12) + "-" + random_date(1, 28) + " " + random_date(0, 23)\
+                             + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\",\""\
+                             + "2020-01-" + random_date(20, 31) + " " + random_date(0, 23)\
+                             + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\")"
+                    if len(usernames) != users:
+                        query += ","
         elif module == "user_groups_meta":
             user_groups_meta = get_input("user_groups_meta")
             pairs = []
