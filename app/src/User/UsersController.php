@@ -96,7 +96,7 @@ class UsersController extends AbstractController
                 unset($_ENV['salt']);
                 $entry->salt = $salt;
             } elseif (!empty($_POST['password']) AND $_POST['password'] != $_POST['password_confirm']) {
-                $error = "Passwords don't match! User not saved!";
+                $error = "Passwords don't match! Password not changed!";
             }
             $this->usersRepository->update($entry);
             $savedSuccess = true;
@@ -131,6 +131,8 @@ class UsersController extends AbstractController
     {
         $this->authService->check();
         $entry = $this->usersRepository->findUsername($_SESSION['login']);
+        $savedSuccess = false;
+        $error = null;
         if (!empty($_POST['username'])) {
             $entry->username = $_POST['username'];
             if (empty($_POST['email'])) {
@@ -145,12 +147,15 @@ class UsersController extends AbstractController
                 unset($_ENV['salt']);
                 $entry->salt = $salt;
             } elseif (!empty($_POST['password']) AND $_POST['password'] != $_POST['password_confirm']) {
-                $error = "Passwords don't match! User not saved!";
+                $error = "Passwords don't match! Password not changed!";
             }
             $this->usersRepository->update($entry);
+            $savedSuccess = true;
         }
         $this->render("user/edit_profile", [
-            'entry' => $entry
+            'entry' => $entry,
+            'savedSuccess' => $savedSuccess,
+            'error' => $error
         ]);
     }
 

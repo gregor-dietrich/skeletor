@@ -8,6 +8,16 @@
                         <h3>Edit Profile</h3>
                     </div>
                     <div class="card-body">
+                        <?php if (!empty($savedSuccess)): ?>
+                        <p class="alert alert-success">
+                            Information updated successfully.
+                        </p>
+                        <?php endif; ?>
+                        <?php if (!empty($error)): ?>
+                        <p class="alert alert-danger">
+                            <?php echo escape($error); ?>
+                        </p>
+                        <?php endif; ?>
                         <form method="POST" action="/app/index.php/edit_profile" class="form-horizontal">
                             <div class="container">
                                 <input type="hidden" name="id" id="id" value="<?php echo escape($entry->id); ?>"/>
