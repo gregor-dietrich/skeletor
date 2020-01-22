@@ -3,11 +3,18 @@ A Web Application Framework
 
 ## ToDo.php
 * Posts
+  * Add Pagination within Post
   * Add Toggle Comments
   * Add Toggle Published
 * Users
-  * Add Activation
-* Planned Modules
+  * Implement Banning
+  * Prevent Login if not activated
+  * Send Activation Mail
+  * Show Activation Status on Profile
+* Planned Features
+  * Ban IP
+  * Localization
+  * Pagination
   * Search
   * Settings
   * Widgets
