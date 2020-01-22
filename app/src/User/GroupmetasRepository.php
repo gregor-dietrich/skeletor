@@ -32,7 +32,7 @@ class GroupmetasRepository extends AbstractRepository
     {
         $table = $this->getTableName();
         $model = $this->getModelName();
-        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `group_id` = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `group_id` = :id ORDER BY `$table`.`timestamp` ASC");
         $stmt->execute(['id' => $id]);
         $user_ids = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $user_ids;
@@ -42,7 +42,7 @@ class GroupmetasRepository extends AbstractRepository
     {
         $table = $this->getTableName();
         $model = $this->getModelName();
-        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id ORDER BY `$table`.`timestamp` DESC");
         $stmt->execute(['id' => $id]);
         $group_ids = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $group_ids;

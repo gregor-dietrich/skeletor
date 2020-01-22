@@ -114,11 +114,8 @@ class UsersController extends AbstractController
         $id = $_GET['id'];
         $user = $this->usersRepository->findID($id);
         $posts = $this->postsRepository->fetchAllByUserID($id);
-        rsort($posts);
         $comments = $this->commentsRepository->fetchAllByUserID($id);
-        rsort($comments);
         $groups = $this->groupmetasRepository->fetchAllByUserID($id);
-        rsort($groups);
         $this->render("user/show", [
             'user' => $user,
             'posts' => $posts,

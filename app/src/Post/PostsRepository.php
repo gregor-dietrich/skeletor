@@ -47,7 +47,7 @@ class PostsRepository extends AbstractRepository
     {
         $table = $this->getTableName();
         $model = $this->getModelName();
-        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id ORDER BY `created` DESC");
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id ORDER BY `$table`.`created` DESC");
         $stmt->execute(['id' => $id]);
         $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $posts;
@@ -57,8 +57,17 @@ class PostsRepository extends AbstractRepository
     {
         $table = $this->getTableName();
         $model = $this->getModelName();
-        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `category_id` = :id ORDER BY `created` DESC");
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `category_id` = :id ORDER BY `$table`.`created` DESC");
         $stmt->execute(['id' => $id]);
+        $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
+        return $posts;
+    }
+
+    function findAllByDate()
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $stmt = $this->pdo->query("SELECT * FROM `$table` ORDER BY `$table`.`created` DESC");
         $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $posts;
     }

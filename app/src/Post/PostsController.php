@@ -89,8 +89,7 @@ class PostsController extends AbstractController
 
     public function index()
     {
-        $posts = $this->postsRepository->findAll();
-        rsort($posts);
+        $posts = $this->postsRepository->findAllByDate();
         $this->render("post/index", ['posts' => $posts]);
     }
 
