@@ -1,2 +1,2 @@
 *.php linguist-language=PHP
-app/views/*.html linguist-language=PHP
+app/views/* linguist-language=PHP
