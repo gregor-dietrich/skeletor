@@ -136,6 +136,14 @@ $routes = [
         'controller' => 'categoriesController',
         'method' => 'show'
     ],
+    '/sign_in' => [
+        'controller' => 'loginController',
+        'method' => 'login'
+    ],
+    '/sign_up' => [
+        'controller' => 'usersController',
+        'method' => 'sign_up'
+    ],
     '/ucp' => [
         'controller' => 'usersController',
         'method' => 'ucp'

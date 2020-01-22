@@ -7,6 +7,17 @@ use PDO;
 
 class UsersRepository extends AbstractRepository
 {
+    public function findEmail($email)
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $model);
+        $user = $stmt->fetch(PDO::FETCH_CLASS);
+        return $user;
+    }
+
     public function findUsername($username)
     {
         $table = $this->getTableName();
