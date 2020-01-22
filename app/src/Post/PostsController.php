@@ -20,7 +20,7 @@ class PostsController extends AbstractController
     public function add()
     {
         $this->authService->check();
-        $categories = $this->categoriesRepository->findAll();
+        $categories = $this->categoriesRepository->fetchAllOrdered();
         $savedSuccess = false;
         if (!empty($_POST['title']) AND !empty($_POST['content']) AND !empty($_POST['user_id']) AND $this->usersRepository->findUsername($_SESSION['login'])->id == $_POST['user_id']) {
             $title = $_POST['title'];
@@ -67,7 +67,7 @@ class PostsController extends AbstractController
         $this->authService->check();
         $id = $_GET['id'];
         $entry = $this->postsRepository->findID($id);
-        $categories = $this->categoriesRepository->findAll();
+        $categories = $this->categoriesRepository->fetchAllOrdered();
         $savedSuccess = false;
         if (!empty($_POST['title']) AND !empty($_POST['content'])) {
             $entry->title = $_POST['title'];
