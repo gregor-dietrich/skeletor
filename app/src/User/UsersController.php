@@ -29,16 +29,19 @@ class UsersController extends AbstractController
             if ($_POST['password'] == $_POST['password_confirm']) {
                 require __DIR__ . "/../System/salt.php";
                 $username = $_POST['username'];
+                $salt = bin2hex(random_bytes(10));
+                $password = password_hash($salt . $_POST['password'] . $_ENV['salt'], PASSWORD_DEFAULT);
                 $rank_id = $_POST['rank_id'];
                 if (empty($_POST['email'])) {
                     $email = NULL;
                 } else {
                     $email = $_POST['email'];
                 }
-                $salt = bin2hex(random_bytes(10));
-                $password = password_hash($salt . $_POST['password'] . $_ENV['salt'], PASSWORD_DEFAULT);
+                $activated = 1;
+                $activation_key = NULL;
+                $last_ip = NULL;
                 unset($_ENV['salt']);
-                $this->usersRepository->insert($username, $password, $salt, $rank_id, $email);
+                $this->usersRepository->insert($username, $password, $salt, $rank_id, $email, $activated, $activation_key, $last_ip);
                 $savedSuccess = true;
             } else {
                 $error = "Passwords don't match! User not saved!";
@@ -104,6 +107,34 @@ class UsersController extends AbstractController
         $this->render("user/admin/edit", [
             'entry' => $entry,
             'ranks' => $ranks,
+            'savedSuccess' => $savedSuccess,
+            'error' => $error
+        ]);
+    }
+
+    public function sign_up()
+    {
+        $savedSuccess = false;
+        $error = null;
+        if (!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['password_confirm']) AND !empty($_POST['email'])) {
+            if ($_POST['password'] == $_POST['password_confirm']) {
+                require __DIR__ . "/../System/salt.php";
+                $username = $_POST['username'];
+                $salt = bin2hex(random_bytes(10));
+                $password = password_hash($salt . $_POST['password'] . $_ENV['salt'], PASSWORD_DEFAULT);
+                unset($_ENV['salt']);
+                $rank_id = 1;
+                $email = $_POST['email'];
+                $activated = 0;
+                $activation_key = bin2hex(random_bytes(15));
+                $last_ip = $_SERVER['REMOTE_ADDR'];
+                $this->usersRepository->insert($username, $password, $salt, $rank_id, $email, $activated, $activation_key, $last_ip);
+                $savedSuccess = true;
+            } else {
+                $error = "Passwords don't match! Sign up failed!";
+            }
+        }
+        $this->render("user/sign_up", [
             'savedSuccess' => $savedSuccess,
             'error' => $error
         ]);

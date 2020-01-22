@@ -28,16 +28,19 @@ class UsersRepository extends AbstractRepository
         return "App\\User\\UserModel";
     }
 
-    public function insert($username, $password, $salt, $rank_id, $email)
+    public function insert($username, $password, $salt, $rank_id, $email, $activated, $activation_key, $last_ip)
     {
         $table = $this->getTableName();
-        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`username`, `password`, `salt`, `rank_id`, `email`) VALUES (:username, :password, :salt, :rank_id, :email)");
+        $stmt = $this->pdo->prepare("INSERT INTO `{$table}` (`username`, `password`, `salt`, `rank_id`, `email`, `activated`, `activation_key`, `last_ip`) VALUES (:username, :password, :salt, :rank_id, :email, :activated, :activation_key, :last_ip)");
         $stmt->execute([
             'username' => $username,
             'password' => $password,
             'salt' => $salt,
             'rank_id' => $rank_id,
-            'email' => $email
+            'email' => $email,
+            'activated' => $activated,
+            'activation_key' => $activation_key,
+            'last_ip' => $last_ip
         ]);
     }
 
