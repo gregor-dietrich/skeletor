@@ -129,7 +129,7 @@ CREATE TABLE `users`
     `username`       varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `password`       varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `salt`           varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-    `rank_id`        int(11) UNSIGNED                                 DEFAULT NULL,
+    `rank_id`        int(11) UNSIGNED                        NOT NULL,
     `email`          varchar(255) COLLATE utf8mb4_unicode_ci          DEFAULT NULL,
     `activated`      tinyint(1)                              NOT NULL DEFAULT 0,
     `activation_key` varchar(255) COLLATE utf8mb4_unicode_ci NULL,
