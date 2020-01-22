@@ -7,16 +7,6 @@ use PDO;
 
 class GroupmetasRepository extends AbstractRepository
 {
-    public function getModelName()
-    {
-        return "App\\User\\GroupmetaModel";
-    }
-
-    public function getTableName()
-    {
-        return "user_groups_meta";
-    }
-
     public function insert($user_id, $group_id)
     {
         $table = $this->getTableName();
@@ -28,6 +18,11 @@ class GroupmetasRepository extends AbstractRepository
         ]);
     }
 
+    public function getTableName()
+    {
+        return "user_groups_meta";
+    }
+
     public function fetchAllByGroupID($id)
     {
         $table = $this->getTableName();
@@ -36,6 +31,11 @@ class GroupmetasRepository extends AbstractRepository
         $stmt->execute(['id' => $id]);
         $user_ids = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $user_ids;
+    }
+
+    public function getModelName()
+    {
+        return "App\\User\\GroupmetaModel";
     }
 
     public function fetchAllByUserID($id)

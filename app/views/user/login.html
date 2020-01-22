@@ -1,36 +1,36 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
-    <br/>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card card-signin">
-                    <div class="card-header text-center">
-                        <h3>Sign In</h3>
-                    </div>
-                    <div class="card-body">
-                        <?php if (!empty($error)): ?>
-                            <p class="alert alert-danger">
-                                <?php echo escape($error); ?>
-                            </p>
-                        <?php endif; ?>
-                        <form method="POST" action="login" class="form-signin">
-                            <div class="form-label-group">
-                                <input type="text" id="username" name="username" class="form-control"
-                                       placeholder="Username" required autofocus>
-                                <label for="username">Username</label>
-                            </div>
-                            <div class="form-label-group">
-                                <input type="password" id="password" name="password" class="form-control"
-                                       placeholder="Password" required>
-                                <label for="password">Password</label>
-                            </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
-                                    style="border-radius:10px;">Sign in
-                            </button>
-                        </form>
-                    </div>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin">
+                <div class="card-header text-center">
+                    <h3>Sign In</h3>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($error)): ?>
+                    <p class="alert alert-danger">
+                        <?php echo escape($error); ?>
+                    </p>
+                    <?php endif; ?>
+                    <form action="login" class="form-signin" method="POST">
+                        <div class="form-label-group">
+                            <input autofocus class="form-control" id="username" name="username"
+                                   placeholder="Username" required type="text">
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input class="form-control" id="password" name="password" placeholder="Password"
+                                   required type="password">
+                            <label for="password">Password</label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" style="border-radius:10px;"
+                                type="submit">Sign in
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <?php include __DIR__ . "/../layout/footer.php"; ?>

@@ -28,14 +28,6 @@ class PagesController extends AbstractController
         ]);
     }
 
-    public function admin_index()
-    {
-        $this->authService->checkAccess();
-        $pages = $this->pagesRepository->findAll();
-        rsort($pages);
-        $this->render("page/admin/index", ['pages' => $pages]);
-    }
-
     public function delete()
     {
         if (!$this->authService->checkAccess()) {
@@ -48,6 +40,14 @@ class PagesController extends AbstractController
             }
             $this->admin_index();
         }
+    }
+
+    public function admin_index()
+    {
+        $this->authService->checkAccess();
+        $pages = $this->pagesRepository->findAll();
+        rsort($pages);
+        $this->render("page/admin/index", ['pages' => $pages]);
     }
 
     public function edit()

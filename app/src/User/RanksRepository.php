@@ -11,11 +11,6 @@ class RanksRepository extends AbstractRepository
         return "App\\User\\RankModel";
     }
 
-    public function getTableName()
-    {
-        return "user_ranks";
-    }
-
     public function insert($name, $post_add, $post_delete, $post_edit, $post_category_add, $post_category_delete, $post_category_edit, $post_comment_add, $post_comment_edit, $post_comment_delete, $user_add, $user_delete, $user_edit, $user_group_add, $user_group_delete, $user_group_edit, $user_rank_add, $user_rank_delete, $user_rank_edit)
     {
         $table = $this->getTableName();
@@ -42,6 +37,11 @@ class RanksRepository extends AbstractRepository
             'user_rank_delete' => $user_rank_delete,
             'user_rank_edit' => $user_rank_edit,
         ]);
+    }
+
+    public function getTableName()
+    {
+        return "user_ranks";
     }
 
     public function update(RankModel $model)

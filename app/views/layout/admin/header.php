@@ -51,8 +51,10 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/pages/add"><i class="fas fa-fw fa-pen"></i> Add New Page</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/pages"><i class="fas fa-fw fa-copy"></i> Manage Pages</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/pages/add"><i class="fas fa-fw fa-pen"></i>
+                        Add New Page</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/pages"><i class="fas fa-fw fa-copy"></i>
+                        Manage Pages</a>
                 </div>
             </div>
         </li>
@@ -65,9 +67,12 @@
             </a>
             <div id="collapsePosts" class="collapse" aria-labelledby="headingPosts" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add"><i class="fas fa-fw fa-pen-nib"></i> Add New Post</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/posts"><i class="fas fa-fw fa-newspaper"></i> Manage Posts</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories"><i class="fas fa-fw fa-folder-open"></i> Manage Categories</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts/add"><i
+                                class="fas fa-fw fa-pen-nib"></i> Add New Post</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/posts"><i
+                                class="fas fa-fw fa-newspaper"></i> Manage Posts</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/post_categories"><i
+                                class="fas fa-fw fa-folder-open"></i> Manage Categories</a>
                 </div>
             </div>
         </li>
@@ -80,10 +85,14 @@
             </a>
             <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/app/index.php/dashboard/users/add"><i class="fas fa-fw fa-user-plus"></i> Add New User</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/users"><i class="fas fa-fw fa-user-cog"></i> Manage Users</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/user_groups"><i class="fas fa-fw fa-users-cog"></i> Manage Groups</a>
-                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks"><i class="fas fa-fw fa-user-shield"></i> Manage Ranks</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/users/add"><i
+                                class="fas fa-fw fa-user-plus"></i> Add New User</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/users"><i class="fas fa-fw fa-user-cog"></i>
+                        Manage Users</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/user_groups"><i
+                                class="fas fa-fw fa-users-cog"></i> Manage Groups</a>
+                    <a class="collapse-item" href="/app/index.php/dashboard/user_ranks"><i
+                                class="fas fa-fw fa-user-shield"></i> Manage Ranks</a>
                 </div>
             </div>
         </li>

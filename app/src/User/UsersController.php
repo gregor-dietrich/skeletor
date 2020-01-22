@@ -3,8 +3,8 @@
 namespace App\User;
 
 use App\Core\AbstractController;
-use App\Post\PostsRepository;
 use App\Post\CommentsRepository;
+use App\Post\PostsRepository;
 
 class UsersController extends AbstractController
 {

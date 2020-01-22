@@ -7,11 +7,6 @@ use PDO;
 
 class PostsRepository extends AbstractRepository
 {
-    public function getModelName()
-    {
-        return "App\\Post\\PostModel";
-    }
-
     public function insert($title, $content, $user_id, $category_id)
     {
         $table = $this->getTableName();
@@ -51,6 +46,11 @@ class PostsRepository extends AbstractRepository
         $stmt->execute(['id' => $id]);
         $posts = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $posts;
+    }
+
+    public function getModelName()
+    {
+        return "App\\Post\\PostModel";
     }
 
     public function fetchAllByCategoryID($id)

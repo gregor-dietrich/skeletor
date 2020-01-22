@@ -1,56 +1,57 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
-    <br/>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
-                <div class="card card-signin">
-                    <div class="card-header">
-                        <h3>Edit Profile</h3>
-                    </div>
-                    <div class="card-body">
-                        <?php if (!empty($savedSuccess)): ?>
-                        <p class="alert alert-success">
-                            Information updated successfully.
-                        </p>
-                        <?php endif; ?>
-                        <?php if (!empty($error)): ?>
-                        <p class="alert alert-danger">
-                            <?php echo escape($error); ?>
-                        </p>
-                        <?php endif; ?>
-                        <form method="POST" action="/app/index.php/edit_profile" class="form-horizontal">
-                            <div class="container">
-                                <input type="hidden" name="id" id="id" value="<?php echo escape($entry->id); ?>"/>
-                                <input type="text" name="username" id="username" value="<?php echo escape($entry->username); ?>"
-                                       class="form-control" required/>
-                                <label class="control-label col-md-3" for="username">
-                                    Username
-                                </label>
-                                <input type="email" name="email" id="email" value="<?php echo escape($entry->email); ?>"
-                                       class="form-control"/>
-                                <label class="control-label col-md-3" for="email">
-                                    E-Mail
-                                </label>
-                                <input type="password" name="password" id="password" value=""
-                                       class="form-control"/>
-                                <label class="control-label col-md-3" for="password">
-                                    New Password
-                                </label>
-                                <input type="password" name="password_confirm" id="password_confirm" value=""
-                                       class="form-control"/>
-                                <label class="control-label col-md-3" for="password_confirm">
-                                    Confirm New Password
-                                </label>
-                                <br/>
-                                <button type="submit" name="save" id="save"
-                                        class="btn btn-lg btn-primary btn-block text-uppercase"
-                                        style="border-radius:10px;"> Save
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
+            <div class="card card-signin">
+                <div class="card-header">
+                    <h3>Edit Profile</h3>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($savedSuccess)): ?>
+                    <p class="alert alert-success">
+                        Information updated successfully.
+                    </p>
+                    <?php endif; ?>
+                    <?php if (!empty($error)): ?>
+                    <p class="alert alert-danger">
+                        <?php echo escape($error); ?>
+                    </p>
+                    <?php endif; ?>
+                    <form action="/app/index.php/edit_profile" class="form-horizontal" method="POST">
+                        <div class="container">
+                            <input id="id" name="id" type="hidden" value="<?php echo escape($entry->id); ?>"/>
+                            <input class="form-control" id="username" name="username"
+                                   required
+                                   type="text" value="<?php echo escape($entry->username); ?>"/>
+                            <label class="control-label col-md-3" for="username">
+                                Username
+                            </label>
+                            <input class="form-control" id="email" name="email" type="email"
+                                   value="<?php echo escape($entry->email); ?>"/>
+                            <label class="control-label col-md-3" for="email">
+                                E-Mail
+                            </label>
+                            <input class="form-control" id="password" name="password" type="password"
+                                   value=""/>
+                            <label class="control-label col-md-3" for="password">
+                                New Password
+                            </label>
+                            <input class="form-control" id="password_confirm" name="password_confirm" type="password"
+                                   value=""/>
+                            <label class="control-label col-md-3" for="password_confirm">
+                                Confirm New Password
+                            </label>
+                            <br/>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="save" name="save"
+                                    style="border-radius:10px;"
+                                    type="submit"> Save
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <?php include __DIR__ . "/../layout/footer.php"; ?>

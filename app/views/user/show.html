@@ -1,71 +1,71 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
-    <br/>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="container">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>User Profile: <?php echo escape($user->username); ?></h3>
+<br/>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h3>User Profile: <?php echo escape($user->username); ?></h3>
+                </div>
+                <div class="card-body row">
+                    <div class="col-md-3">
+                        (hidden)<br/>
+                        <small>E-Mail</small>
                     </div>
-                    <div class="card-body row">
-                        <div class="col-md-3">
-                            (hidden)<br/>
-                            <small>E-Mail</small>
-                        </div>
-                        <div class="col-md-3">
-                            <?php echo escape($this->ranksRepository->findID($user->rank_id)->name); ?><br/>
-                            <small>Rank</small>
-                        </div>
-                        <div class="col-md-3">
-                            <?php echo escape(datetime_datetime($user->created)); ?><br/>
-                            <small>Registered</small>
-                        </div>
-                        <div class="col-md-3">
-                            <?php echo escape(datetime_datetime($user->last_login)); ?><br/>
-                            <small>Last Login</small>
-                        </div>
-                        <div class="col-md-4">
-                            <br/>
-                            <h5>Posts</h5>
-                            <?php foreach ($posts AS $post): ?>
-                                <small>(<?php echo escape(datetime_date($post->created)); ?>)</small>
-                                <a href="/app/index.php/post?id=<?php
+                    <div class="col-md-3">
+                        <?php echo escape($this->ranksRepository->findID($user->rank_id)->name); ?><br/>
+                        <small>Rank</small>
+                    </div>
+                    <div class="col-md-3">
+                        <?php echo escape(datetime_datetime($user->created)); ?><br/>
+                        <small>Registered</small>
+                    </div>
+                    <div class="col-md-3">
+                        <?php echo escape(datetime_datetime($user->last_login)); ?><br/>
+                        <small>Last Login</small>
+                    </div>
+                    <div class="col-md-4">
+                        <br/>
+                        <h5>Posts</h5>
+                        <?php foreach ($posts AS $post): ?>
+                        <small>(<?php echo escape(datetime_date($post->created)); ?>)</small>
+                        <a href="/app/index.php/post?id=<?php
                                 echo escape($post->id);
                                 ?>"><?php
                                 echo escape($post->title);
                             ?></a>
-                            <br/>
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="col-md-4">
-                            <br/>
-                            <h5>Comments</h5>
-                            <?php foreach ($comments AS $comment): ?>
-                                <small>(<?php echo escape(datetime_date($comment->created)); ?>)</small>
-                                <a href="/app/index.php/post?id=<?php
+                        <br/>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="col-md-4">
+                        <br/>
+                        <h5>Comments</h5>
+                        <?php foreach ($comments AS $comment): ?>
+                        <small>(<?php echo escape(datetime_date($comment->created)); ?>)</small>
+                        <a href="/app/index.php/post?id=<?php
                                 echo escape($comment->post_id);
                                 ?>"><?php
                                 echo escape($this->postsRepository->findID($comment->post_id)->title);
                             ?></a>
-                            <br/>
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="col-md-4">
-                            <br/>
-                            <h5>Groups</h5>
-                            <?php foreach ($groups AS $group): ?>
-                                <small>(<?php echo escape(datetime_date($group->timestamp)); ?>)</small>
-                                <a href="/app/index.php/user_group?id=<?php
+                        <br/>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="col-md-4">
+                        <br/>
+                        <h5>Groups</h5>
+                        <?php foreach ($groups AS $group): ?>
+                        <small>(<?php echo escape(datetime_date($group->timestamp)); ?>)</small>
+                        <a href="/app/index.php/user_group?id=<?php
                                 echo $group->group_id;
                                 ?>"><?php
                                 echo escape($this->groupsRepository->findID($group->group_id)->name);
                             ?></a>
-                            <br/>
-                            <?php endforeach; ?>
-                        </div>
+                        <br/>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <?php include __DIR__ . "/../layout/footer.php"; ?>

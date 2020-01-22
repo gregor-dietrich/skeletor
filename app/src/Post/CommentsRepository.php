@@ -33,6 +33,11 @@ class CommentsRepository extends AbstractRepository
         return $comments;
     }
 
+    public function getModelName()
+    {
+        return "App\\Post\\CommentModel";
+    }
+
     public function fetchAllByUserID($id)
     {
         $table = $this->getTableName();
@@ -41,10 +46,5 @@ class CommentsRepository extends AbstractRepository
         $stmt->execute(['id' => $id]);
         $comments = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $comments;
-    }
-
-    public function getModelName()
-    {
-        return "App\\Post\\CommentModel";
     }
 }

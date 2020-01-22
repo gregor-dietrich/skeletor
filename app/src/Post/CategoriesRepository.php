@@ -7,11 +7,6 @@ use PDO;
 
 class CategoriesRepository extends AbstractRepository
 {
-    public function getModelName()
-    {
-        return "App\\Post\\CategoryModel";
-    }
-
     public function insert($name, $parent_id)
     {
         $table = $this->getTableName();
@@ -47,6 +42,11 @@ class CategoriesRepository extends AbstractRepository
         $stmt->execute();
         $children = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $children;
+    }
+
+    public function getModelName()
+    {
+        return "App\\Post\\CategoryModel";
     }
 
     public function fetchAllByParentID($id)

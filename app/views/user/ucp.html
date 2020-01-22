@@ -1,29 +1,30 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
-    <br/>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
-                <div class="card text-center">
-                    <div class="card-header">
-                        <h3>User Control Panel</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Howdy, <a href="user?id=<?php echo escape($this->usersRepository->findUsername($_SESSION['login'])->id); ?>">
-                            <?php echo escape($_SESSION['login']); ?></a>!
-                        </p>
-                        <a href="dashboard" class="btn btn-lg btn-primary">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                            Dashboard</a>
-                        <a href="edit_profile" class="btn btn-lg btn-primary">
-                            <i class="fas fa-fw fa-user-edit"></i>
-                            Edit Profile</a>
-                        <a href="logout"  class="btn btn-lg btn-danger"
-                           onclick="return confirm('Are you sure?')">
-                            <i class="fas fa-fw fa-sign-out-alt"></i>
-                            Logout</a>
-                    </div>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>User Control Panel</h3>
+                </div>
+                <div class="card-body">
+                    <p>Howdy, <a
+                            href="user?id=<?php echo escape($this->usersRepository->findUsername($_SESSION['login'])->id); ?>">
+                        <?php echo escape($_SESSION['login']); ?></a>!
+                    </p>
+                    <a class="btn btn-lg btn-primary" href="dashboard">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        Dashboard</a>
+                    <a class="btn btn-lg btn-primary" href="edit_profile">
+                        <i class="fas fa-fw fa-user-edit"></i>
+                        Edit Profile</a>
+                    <a class="btn btn-lg btn-danger" href="logout"
+                       onclick="return confirm('Are you sure?')">
+                        <i class="fas fa-fw fa-sign-out-alt"></i>
+                        Logout</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <?php include __DIR__ . "/../layout/footer.php"; ?>

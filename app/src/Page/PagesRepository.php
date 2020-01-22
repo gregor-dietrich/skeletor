@@ -11,11 +11,6 @@ class PagesRepository extends AbstractRepository
         return "App\\Page\\PageModel";
     }
 
-    public function getTableName()
-    {
-        return "pages";
-    }
-
     public function insert($title, $content)
     {
         $table = $this->getTableName();
@@ -25,6 +20,11 @@ class PagesRepository extends AbstractRepository
             'title' => $title,
             'content' => $content,
         ]);
+    }
+
+    public function getTableName()
+    {
+        return "pages";
     }
 
     public function update(PageModel $model)

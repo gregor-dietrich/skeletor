@@ -1,31 +1,31 @@
 <?php include __DIR__ . "/../../layout/header.php"; ?>
-    <br/>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="container">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Group Profile: <?php echo escape($group->name); ?></h3>
+<br/>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Group Profile: <?php echo escape($group->name); ?></h3>
+                </div>
+                <div class="card-body row">
+                    <div class="col-md-12">
+                        <h5>Members</h5>
                     </div>
-                    <div class="card-body row">
-                        <div class="col-md-12">
-                            <h5>Members</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <?php foreach ($members AS $member): ?>
-                                <small>(<?php echo escape(datetime_datetime($member->timestamp)); ?>)</small>
-                            <a href="/app/index.php/user?id=<?php
+                    <div class="col-md-3">
+                        <?php foreach ($members AS $member): ?>
+                        <small>(<?php echo escape(datetime_datetime($member->timestamp)); ?>)</small>
+                        <a href="/app/index.php/user?id=<?php
                                 echo $member->user_id;
                             ?>">
                             <?php
                                 echo escape($this->usersRepository->findID($member->user_id)->username);
                             ?>
-                            </a><br/>
-                            <?php endforeach; ?>
-                        </div>
+                        </a><br/>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <?php include __DIR__ . "/../../layout/footer.php"; ?>

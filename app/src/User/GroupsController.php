@@ -28,22 +28,6 @@ class GroupsController extends AbstractController
         ]);
     }
 
-    public function addUsernameByGroupId($username, $group_id)
-    {
-        $this->authService->checkAccess();
-        $user_id = $this->usersRepository->findUsername($username)->id;
-        $this->groupmetasRepository->insert($user_id, $group_id);
-        header("Location: /app/index.php/dashboard/user_groups/edit?id=$group_id");
-    }
-
-    public function admin_index()
-    {
-        $this->authService->checkAccess();
-        $groups = $this->groupsRepository->findAll();
-        rsort($groups);
-        $this->render("user/group/admin/index", ['groups' => $groups]);
-    }
-
     public function delete()
     {
         if (!$this->authService->checkAccess()) {
@@ -56,6 +40,14 @@ class GroupsController extends AbstractController
             }
             $this->admin_index();
         }
+    }
+
+    public function admin_index()
+    {
+        $this->authService->checkAccess();
+        $groups = $this->groupsRepository->findAll();
+        rsort($groups);
+        $this->render("user/group/admin/index", ['groups' => $groups]);
     }
 
     public function deleteUsernameByGroupId()
@@ -86,8 +78,7 @@ class GroupsController extends AbstractController
             $entry->name = $_POST['name'];
             $this->groupsRepository->update($entry);
             $savedSuccess = true;
-        }
-        elseif (!empty($_POST['username'])) {
+        } elseif (!empty($_POST['username'])) {
             $this->addUsernameByGroupId($_POST['username'], $id);
         }
         $this->render("user/group/admin/edit", [
@@ -95,6 +86,14 @@ class GroupsController extends AbstractController
             'users' => $users,
             'savedSuccess' => $savedSuccess
         ]);
+    }
+
+    public function addUsernameByGroupId($username, $group_id)
+    {
+        $this->authService->checkAccess();
+        $user_id = $this->usersRepository->findUsername($username)->id;
+        $this->groupmetasRepository->insert($user_id, $group_id);
+        header("Location: /app/index.php/dashboard/user_groups/edit?id=$group_id");
     }
 
     public function index()

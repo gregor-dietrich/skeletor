@@ -11,11 +11,6 @@ class GroupsRepository extends AbstractRepository
         return "App\\User\\GroupModel";
     }
 
-    public function getTableName()
-    {
-        return "user_groups";
-    }
-
     public function insert($name)
     {
         $table = $this->getTableName();
@@ -24,6 +19,11 @@ class GroupsRepository extends AbstractRepository
         $stmt->execute([
             'name' => $name,
         ]);
+    }
+
+    public function getTableName()
+    {
+        return "user_groups";
     }
 
     public function update(GroupModel $model)
