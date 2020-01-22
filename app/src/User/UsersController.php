@@ -186,6 +186,7 @@ class UsersController extends AbstractController
                         $last_ip = $_SERVER['REMOTE_ADDR'];
                         $this->usersRepository->insert($username, $password, $salt, $rank_id, $email, $activated, $activation_key, $last_ip);
                         $savedSuccess = true;
+                        header("Location: activation");
                     } else {
                         $error = "Passwords don't match!";
                     }
