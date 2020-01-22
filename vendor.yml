@@ -1,0 +1,3 @@
+app/vendor/* linguist-vendored
+libs/* linguist-vendored
+log/* linguist-vendored
