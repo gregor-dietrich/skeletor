@@ -15,8 +15,8 @@ return array(
         "POST" => 0),
     "errorRedirectionPage" => "",
     "customErrorMessage" => "",
-    "jsUrl" => "/app/js/csrfprotector.js",
-    "jsPath" => "../app/js/csrfprotector.js",
+    "jsUrl" => "/app/vendor/csrfp/js/csrfprotector.js",
+    "jsPath" => "../app/vendor/csrfp/js/csrfprotector.js",
     "tokenLength" => 10,
     "cookieConfig" => array(
         "path" => '',

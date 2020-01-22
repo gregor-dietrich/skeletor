@@ -50,12 +50,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"
         integrity="sha256-H3cjtrm/ztDeuhCN9I4yh4iN2Ybx/y1RM7rMmAesA0k=" crossorigin="anonymous"></script>
 <!-- Custom scripts for all pages-->
-<script src="/app/js/sb-admin-2.min.js"></script>
+<script src="/app/vendor/sb-admin-2/js/sb-admin-2.min.js"></script>
 <!-- Page level plugins -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"
         integrity="sha256-oSgtFCCmHWRPQ/JmR4OoZ3Xke1Pw4v50uh6pLcu+fIc=" crossorigin="anonymous"></script>
 <!-- Page level custom scripts -->
-<script src="/app/js/demo/chart-area-demo.js"></script>
-<script src="/app/js/demo/chart-pie-demo.js"></script>
+<script src="/app/vendor/sb-admin-2/js/demo/chart-area-demo.js"></script>
+<script src="/app/vendor/sb-admin-2/js/demo/chart-pie-demo.js"></script>
 </body>
 </html>
