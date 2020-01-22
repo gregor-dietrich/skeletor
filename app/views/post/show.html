@@ -8,8 +8,12 @@
                     <h3><?php echo escape($post->title); ?></h3>
                     <small>
                         posted <?php echo escape(datetime_datetime($post->created)); ?> by
+                        <?php if(!empty($this->usersRepository->findID($post->user_id))): ?>
                         <a href="/app/index.php/user?id=<?php echo escape($post->user_id); ?>">
                             <?php echo escape($this->usersRepository->findID($post->user_id)->username); ?></a>
+                        <?php else: ?>
+                            deleted user
+                        <?php endif; ?>
                         <?php if (isset($post->category_id)) {
                         echo " in <a href=\"/app/index.php/post_category?id=" . escape($post->category_id) . "\">" .
                         escape($this->categoriesRepository->findID($post->category_id)->name)
@@ -37,9 +41,14 @@
                             <?php echo escape($comment->content); ?><br/>
                             <small>posted <a href="#comment<?php echo escape($comment->id); ?>">
                                 <?php echo escape(datetime_datetime($comment->created)); ?></a> by
+                                <?php if(!empty($this->usersRepository->findID($comment->user_id))): ?>
                                 <a href="/app/index.php/user?id=<?php echo escape($comment->user_id); ?>">
                                     <?php echo escape($this->usersRepository->findID($comment->user_id)->username); ?>
-                                </a></small>
+                                </a>
+                                <?php else: ?>
+                                    deleted user
+                                <?php endif; ?>
+                            </small>
                         </li>
                         <?php endforeach; ?>
                     </ul>
