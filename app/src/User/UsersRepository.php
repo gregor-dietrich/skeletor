@@ -59,13 +59,15 @@ class UsersRepository extends AbstractRepository
     {
         $table = $this->getTableName();
 
-        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `username` = :username, `password` = :password, `salt` = :salt, `rank_id` = :rank_id, `email` = :email, `last_ip` = :last_ip, `last_login` = :last_login WHERE `id` = :id");
+        $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `username` = :username, `password` = :password, `salt` = :salt, `rank_id` = :rank_id, `email` = :email, `activated` = :activated, `activation_key` = :activation_key, `last_ip` = :last_ip, `last_login` = :last_login WHERE `id` = :id");
         $stmt->execute([
             'username' => $model->username,
             'password' => $model->password,
             'salt' => $model->salt,
             'rank_id' => $model->rank_id,
             'email' => $model->email,
+            'activated' => $model->activated,
+            'activation_key' => $model->activation_key,
             'last_ip' => $model->last_ip,
             'last_login' => $model->last_login,
             'id' => $model->id

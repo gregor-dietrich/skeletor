@@ -1,0 +1,32 @@
+<?php include __DIR__ . "/../layout/header.php"; ?>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin">
+                <div class="card-header text-center">
+                    <h3>Sign In</h3>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($error)): ?>
+                    <p class="alert alert-danger">
+                        <?php echo escape($error); ?>
+                    </p>
+                    <?php endif; ?>
+                    <form action="activation" class="form-signin" method="GET">
+                            <input autofocus class="form-control" id="username" name="username"
+                                   placeholder="Username" required type="text">
+                            <label for="username">Username</label>
+                            <input class="form-control" id="activation_key" name="activation_key"
+                                   placeholder="Activation Key" required type="text">
+                            <label for="activation_key">Activation Key</label>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" style="border-radius:10px;"
+                                type="submit">Activate
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include __DIR__ . "/../layout/footer.php"; ?>

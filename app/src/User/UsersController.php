@@ -19,6 +19,40 @@ class UsersController extends AbstractController
         $this->authService = $authService;
     }
 
+    public function activation()
+    {
+        if (isset($_SESSION['login'])) {
+            header("Location: ucp");
+            return;
+        }
+
+        $savedSuccess = false;
+        $error = null;
+        if (!empty($_GET['username']) AND !empty($_GET['activation_key'])) {
+            $user = $this->usersRepository->findUsername($_GET['username']);
+            if (empty($user)) {
+                $error = "Username not found!";
+            } elseif (!isset($user->activation_key)) {
+                $error = "User already activated!";
+            } else {
+                if ($user->activation_key == $_GET['activation_key']) {
+                    $user->activated = 1;
+                    $user->activation_key = NULL;
+                    $user->last_ip = $_SERVER['REMOTE_ADDR'];
+                    $user->last_login = datetime_now();
+                    $this->usersRepository->update($user);
+                    $savedSuccess = true;
+                } else {
+                    $error = "Invalid activation key!";
+                }
+            }
+        }
+        $this->render("user/activation", [
+            'savedSuccess' => $savedSuccess,
+            'error' => $error
+        ]);
+    }
+
     public function add()
     {
         $this->authService->check();
@@ -129,6 +163,11 @@ class UsersController extends AbstractController
 
     public function sign_up()
     {
+        if (isset($_SESSION['login'])) {
+            header("Location: ucp");
+            return;
+        }
+
         $savedSuccess = false;
         $error = null;
         if (!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['password_confirm']) AND !empty($_POST['email'])) {

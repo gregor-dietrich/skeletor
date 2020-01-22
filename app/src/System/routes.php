@@ -4,6 +4,10 @@ $routes = [
         'controller' => 'postsController',
         'method' => 'index'
     ],
+    '/activation' => [
+        'controller' => 'usersController',
+        'method' => 'activation'
+    ],
     '/dashboard' => [
         'controller' => 'loginController',
         'method' => 'dashboard'
