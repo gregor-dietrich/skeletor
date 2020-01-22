@@ -11,7 +11,7 @@
                         <a href="/app/index.php/user?id=<?php echo escape($post->user_id); ?>">
                             <?php echo escape($this->usersRepository->findID($post->user_id)->username); ?></a>
                         <?php if (isset($post->category_id)) {
-                        echo " in <a . escape($post- href=\"/app/index.php/post_category?id=">category_id) . "\">" .
+                        echo " in <a href=\"/app/index.php/post_category?id=" . escape($post->category_id) . "\">" .
                         escape($this->categoriesRepository->findID($post->category_id)->name)
                         . "</a>";
                         } ?>
