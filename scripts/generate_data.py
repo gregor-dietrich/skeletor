@@ -105,7 +105,7 @@ def main():
         if module == "user_groups":
             query += "`name`"
         elif module == "users":
-            query += "`username`,`password`,`salt`,`rank_id`,`email`,`activated`,`last_ip`,`created`,`last_login`"
+            query += "`username`,`password`,`salt`,`rank_id`,`email`,`activated`,`created`,`last_login`"
         elif module == "user_groups_meta":
             query += "`user_id`,`group_id`,`timestamp`"
         elif module == "post_categories":
@@ -140,7 +140,7 @@ def main():
                     query += "(\"" + generated_username + "\",\""\
                              + random_string(60, mode="hash") + "\",\""\
                              + random_string(20, mode="hex").lower() + "\",1,\"" + generated_email\
-                             + "\",1,\"::1\",\""\
+                             + "\",1,\""\
                              + "2019-" + random_date(1, 12) + "-" + random_date(1, 28) + " " + random_date(0, 23)\
                              + ":" + random_date(0, 59) + ":" + random_date(0, 59) + "\",\""\
                              + "2020-01-" + random_date(20, 31) + " " + random_date(0, 23)\
