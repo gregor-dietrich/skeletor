@@ -1,6 +1,15 @@
 # Skeletor
 A Web Application Framework
 
+## Libraries
+* Bootstrap 4.4.1 ([MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE))
+* Bootswatch Slate Theme ([MIT License](https://github.com/thomaspark/bootswatch/blob/master/LICENSE))
+* FontAwesome Free 5.11.2 ([varying](https://fontawesome.com/license/free))
+* jQuery 3.4.1 ([MIT License](https://jquery.org/license/))
+* OWASP CSRF Protector ([Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0))
+* SB-Admin-2 Dashboard Theme ([MIT License](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/master/LICENSE))
+
+
 ## ToDo.php
 * Categories
   * Display Parent Category if set
