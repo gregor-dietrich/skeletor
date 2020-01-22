@@ -27,7 +27,7 @@ class CommentsRepository extends AbstractRepository
     {
         $table = $this->getTableName();
         $model = $this->getModelName();
-        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `post_id` = :id ORDER BY `id` ASC");
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `post_id` = :id ORDER BY `created` ASC");
         $stmt->execute(['id' => $id]);
         $comments = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $comments;
@@ -37,7 +37,7 @@ class CommentsRepository extends AbstractRepository
     {
         $table = $this->getTableName();
         $model = $this->getModelName();
-        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id ORDER BY `id` DESC");
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE `user_id` = :id ORDER BY `created` DESC");
         $stmt->execute(['id' => $id]);
         $comments = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return $comments;
