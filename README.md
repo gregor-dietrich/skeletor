@@ -7,7 +7,7 @@ A Web Application Framework
 * FontAwesome Free 5.11.2 ([varying](https://fontawesome.com/license/free))
 * jQuery 3.4.1 ([MIT License](https://jquery.org/license/))
 * OWASP CSRF Protector ([Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0))
-* SB-Admin-2 Dashboard Theme ([MIT License](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/master/LICENSE))
+* SB-Admin-2 Theme 4.0.7 ([MIT License](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/master/LICENSE))
 
 
 ## ToDo.php
