@@ -19,6 +19,16 @@
                         <?php endforeach; ?>
                     </div>
                     <div class="col-md-6">
+                        <?php if (!empty($category->parent_id)): ?>
+                        <h5>Parent Category</h5>
+                        <ul>
+                            <li>
+                                <a href="/app/index.php/post_category?id=<?php echo escape($category->parent_id); ?>">
+                                    <?php echo escape($this->categoriesRepository->findID($category->parent_id)->name); ?>
+                                </a>
+                            </li>
+                        </ul>
+                        <?php endif; ?>
                         <h5>Sub Categories</h5>
                         <ul>
                             <?php foreach ($children AS $child): ?>

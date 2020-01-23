@@ -11,8 +11,6 @@ A Web Application Framework
 
 
 ## ToDo.php
-* Categories
-  * Display Parent Category if set
 * Posts
   * Add Pagination within Post
   * Add Toggle Comments
