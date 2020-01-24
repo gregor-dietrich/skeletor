@@ -22,28 +22,28 @@
                         <div class="container">
                             <input id="id" name="id" type="hidden" value="<?php echo escape($entry->id); ?>"/>
                             <input class="form-control" id="username" name="username"
-                                   required
+                                   required placeholder="Username"
                                    type="text" value="<?php echo escape($entry->username); ?>"/>
                             <label class="control-label col-md-3" for="username">
                                 Username
                             </label>
                             <input class="form-control" id="email" name="email" type="email"
-                                   value="<?php echo escape($entry->email); ?>"/>
+                                   required  placeholder="E-Mail" value="<?php echo escape($entry->email); ?>"/>
                             <label class="control-label col-md-3" for="email">
                                 E-Mail
                             </label>
                             <input class="form-control" id="password" name="password" type="password"
-                                   value=""/>
+                                   value="" placeholder="New Password"/>
                             <label class="control-label col-md-3" for="password">
                                 New Password
                             </label>
                             <input class="form-control" id="password_confirm" name="password_confirm" type="password"
-                                   value=""/>
+                                   value="" placeholder="Confirm New Password"/>
                             <label class="control-label col-md-3" for="password_confirm">
                                 Confirm New Password
                             </label>
                             <br/>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="save" name="save"
+                            <button class="btn btn-lg btn-primary col-md-5" id="save" name="save"
                                     style="border-radius:10px;"
                                     type="submit"> Save
                             </button>
