@@ -32,7 +32,8 @@ class LoginController extends AbstractController
 
             if ($this->authService->attempt($username, $password)) {
                 $user = $this->usersRepository->findUsername($username);
-                if ($user->activated) { if (!$user->banned) {
+                if ($user->activated) {
+                    if (!$user->banned) {
                         $_SESSION['login'] = $user->username;
                         session_regenerate_id(true);
                         $user->last_ip = $_SERVER['REMOTE_ADDR'];
@@ -40,9 +41,15 @@ class LoginController extends AbstractController
                         $this->usersRepository->update($user);
                         header("Location: ucp");
                         return;
-                    } else { $error = "Your account has been suspended."; }
-                } else { $error = "Account not activated. Check your inbox."; }
-            } else { $error = "Username not found or incorrect password."; }
+                    } else {
+                        $error = "Your account has been suspended.";
+                    }
+                } else {
+                    $error = "Account not activated. Check your inbox.";
+                }
+            } else {
+                $error = "Username not found or incorrect password.";
+            }
         }
         $this->render("user/login", [
             'error' => $error

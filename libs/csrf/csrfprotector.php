@@ -20,35 +20,25 @@ if (!defined('__CSRF_PROTECTOR__')) {
     /**
      * child exception classes
      */
-    class configFileNotFoundException extends \exception
+    class configFileNotFoundException extends exception
     {
     }
 
-    ;
-
-    class jsFileNotFoundException extends \exception
+    class jsFileNotFoundException extends exception
     {
     }
 
-    ;
-
-    class baseJSFileNotFoundExceptio extends \exception
+    class baseJSFileNotFoundExceptio extends exception
     {
     }
 
-    ;
-
-    class incompleteConfigurationException extends \exception
+    class incompleteConfigurationException extends exception
     {
     }
 
-    ;
-
-    class alreadyInitializedException extends \exception
+    class alreadyInitializedException extends exception
     {
     }
-
-    ;
 
     class csrfProtector
     {
@@ -609,5 +599,4 @@ if (!defined('__CSRF_PROTECTOR__')) {
         }
     }
 
-    ;
 }
