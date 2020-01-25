@@ -12,6 +12,7 @@ class UserModel extends AbstractModel
     public $salt;
     public $rank_id;
     public $email;
+    public $banned;
     public $activated;
     public $activation_key;
     public $last_ip;

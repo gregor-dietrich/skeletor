@@ -126,6 +126,16 @@ class UsersController extends AbstractController
             } else {
                 $entry->email = $_POST['email'];
             }
+            if (empty($_POST['banned'])) {
+                $entry->banned = 0;
+            } else {
+                $entry->banned = $_POST['banned'];
+            }
+            if (empty($_POST['activated'])) {
+                $entry->activated = 0;
+            } else {
+                $entry->activated = $_POST['activated'];
+            }
             if (!empty($_POST['password']) AND $_POST['password'] == $_POST['password_confirm']) {
                 require __DIR__ . "/../System/salt.php";
                 $salt = bin2hex(random_bytes(10));

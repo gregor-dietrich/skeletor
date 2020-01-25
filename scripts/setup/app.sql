@@ -1,11 +1,9 @@
-# noinspection SqlNoDataSourceInspectionForFile
-
 -- phpMyAdmin SQL Dump
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2020 at 05:50 AM
+-- Generation Time: Jan 25, 2020 at 03:15 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -53,7 +51,7 @@ CREATE TABLE `posts`
     `id`          int(11) UNSIGNED                        NOT NULL,
     `title`       varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `content`     text COLLATE utf8mb4_unicode_ci         NOT NULL,
-    `user_id`     int(11) UNSIGNED                        NULL,
+    `user_id`     int(11) UNSIGNED                                 DEFAULT NULL,
     `category_id` int(11) UNSIGNED                                 DEFAULT NULL,
     `published`   tinyint(1)                              NOT NULL DEFAULT 0,
     `commentable` tinyint(1)                              NOT NULL DEFAULT 0,
@@ -103,7 +101,7 @@ CREATE TABLE `post_comments`
     `id`      int(11) UNSIGNED                NOT NULL,
     `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
     `post_id` int(11) UNSIGNED                NOT NULL,
-    `user_id` int(11) UNSIGNED                NULL,
+    `user_id` int(11) UNSIGNED                         DEFAULT NULL,
     `created` datetime                        NOT NULL DEFAULT current_timestamp()
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -131,8 +129,9 @@ CREATE TABLE `users`
     `salt`           varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `rank_id`        int(11) UNSIGNED                        NOT NULL,
     `email`          varchar(255) COLLATE utf8mb4_unicode_ci          DEFAULT NULL,
+    `banned`         tinyint(1)                              NOT NULL DEFAULT 0,
     `activated`      tinyint(1)                              NOT NULL DEFAULT 0,
-    `activation_key` varchar(255) COLLATE utf8mb4_unicode_ci NULL,
+    `activation_key` varchar(255) COLLATE utf8mb4_unicode_ci          DEFAULT NULL,
     `last_ip`        varchar(45) COLLATE utf8mb4_unicode_ci           DEFAULT NULL,
     `created`        datetime                                NOT NULL DEFAULT current_timestamp(),
     `last_login`     datetime                                NOT NULL DEFAULT current_timestamp()
@@ -152,6 +151,7 @@ CREATE TABLE `users`
 
 INSERT INTO `users` (`id`, `username`, `password`, `salt`, `rank_id`, `activated`)
 VALUES (1, 'admin', '$2y$10$CTxymd5XnDLBftintJ6BWOPTziaP.csS74zyiZwAo05tNEVgwxvIG', '364bf7426d7925814a43', 3, 1);
+
 
 -- --------------------------------------------------------
 
