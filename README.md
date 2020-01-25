@@ -20,7 +20,6 @@ A Web Application Framework
   * Implement Access based on Rank privileges
   * Implement Banning
   * Implement Edit/Delete own Comments
-  * Prevent Login if not activated
   * Profile Information Visibility Settings
   * Send Activation Mail
   * Show Activation Status on Profile

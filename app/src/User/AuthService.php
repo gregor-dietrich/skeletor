@@ -16,18 +16,9 @@ class AuthService
         if (empty($user)) {
             return false;
         }
-
         require __DIR__ . "/../System/salt.php";
         if (password_verify($user->salt . $password . $_ENV['salt'], $user->password)) {
             unset($_ENV['salt']);
-            $_SESSION['login'] = $user->username;
-            session_regenerate_id(true);
-
-            $user->last_ip = $_SERVER['REMOTE_ADDR'];
-            $user->last_login = datetime_now();
-
-            $this->usersRepository->update($user);
-
             return true;
         } else {
             unset($_ENV['salt']);

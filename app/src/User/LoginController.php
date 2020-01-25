@@ -31,8 +31,18 @@ class LoginController extends AbstractController
             $password = $_POST['password'];
 
             if ($this->authService->attempt($username, $password)) {
-                header("Location: ucp");
-                return;
+                $user = $this->usersRepository->findUsername($username);
+                if ($user->activated) {
+                    $_SESSION['login'] = $user->username;
+                    session_regenerate_id(true);
+                    $user->last_ip = $_SERVER['REMOTE_ADDR'];
+                    $user->last_login = datetime_now();
+                    $this->usersRepository->update($user);
+                    header("Location: ucp");
+                    return;
+                } else {
+                    $error = "Account not activated. Check your inbox.";
+                }
             } else {
                 $error = "Username not found or incorrect password.";
             }
