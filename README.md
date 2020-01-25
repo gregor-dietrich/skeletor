@@ -18,11 +18,9 @@ A Web Application Framework
   * Implement Edit/Delete Comments
 * Users
   * Implement Access based on Rank privileges
-  * Implement Banning
   * Implement Edit/Delete own Comments
   * Profile Information Visibility Settings
   * Send Activation Mail
-  * Show Activation Status on Profile
 * Planned Features
   * Ban IP
   * Contact Form

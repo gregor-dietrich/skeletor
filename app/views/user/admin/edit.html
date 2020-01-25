@@ -25,20 +25,40 @@
             <label class="control-label col-md-3" for="username">
                 Username
             </label>
-            <select class="form form-control col-md-4" id="rank_id"
-                    name="rank_id">
-                <?php foreach ($ranks AS $rank): ?>
-                <option value="<?php echo escape($rank->id); ?>"
-                <?php
+            <div class="row">
+                <div class="col-md-4">
+                    <select class="form form-control col-md-12" id="rank_id"
+                            name="rank_id">
+                        <?php foreach ($ranks AS $rank): ?>
+                        <option value="<?php echo escape($rank->id); ?>"
+                        <?php
                         if (escape($rank->id) == escape($entry->rank_id)) {
-                echo " selected";
-                } ?>><?php echo escape($rank->name); ?>
-                </option>
-                <?php endforeach; ?>
-            </select>
-            <label class="control-label col-md-2" for="rank_id">
-                Rank
-            </label>
+                        echo " selected";
+                        } ?>><?php echo escape($rank->name); ?>
+                        </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label class="control-label col-md-12" for="rank_id">
+                        Rank
+                    </label>
+                </div>
+                <div class="col-md-1">
+                    <input class="form-check-inline col-md-12" id="banned" name="banned" type="checkbox"
+                           value="1"<?php if (escape($entry->banned)) {
+                    echo " checked"; } ?>/>
+                    <label class="form-check-label" for="banned">
+                        Banned
+                    </label>
+                </div>
+                <div class="col-md-1">
+                    <input class="form-check-inline col-md-12" id="activated" name="activated" type="checkbox"
+                           value="1"<?php if (escape($entry->activated)) {
+                    echo " checked"; } ?>/>
+                    <label class="form-check-label" for="activated">
+                        Activated
+                    </label>
+                </div>
+            </div>
             <input class="form-control" id="email" name="email" type="email"
                    value="<?php echo escape($entry->email); ?>"/>
             <label class="control-label col-md-3" for="email">
