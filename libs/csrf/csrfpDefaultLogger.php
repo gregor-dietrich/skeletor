@@ -8,17 +8,13 @@ if (!defined('__CSRF_PROTECTOR_csrfpDefaultLogger_')) {
     // to avoid multiple declaration errors
     define('__CSRF_PROTECTOR_csrfpDefaultLogger_', true);
 
-    class logDirectoryNotFoundException extends \exception
+    class logDirectoryNotFoundException extends exception
     {
     }
 
-    ;
-
-    class logFileWriteError extends \exception
+    class logFileWriteError extends exception
     {
     }
-
-    ;
 
     /**
      * Default logger class for CSRF Protector
