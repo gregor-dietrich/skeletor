@@ -12,27 +12,30 @@ A Web Application Framework
 
 ## ToDo.php
 * Posts
-  * Add Pagination within Post
-  * Add Toggle Comments
-  * Add Toggle Published
-  * Implement Edit/Delete Comments
+  * Edit/Delete Comments
+  * Pagination within Post
+  * Tagging
+  * Toggle Comments
+  * Toggle Published
 * Users
   * Implement Access based on Rank privileges
-  * Implement Edit/Delete own Comments
-  * Profile Information Visibility Settings
+  * Edit/Delete own Comments
+  * Friends
+  * Information Visibility Settings
+  * Private Messages
   * Send Activation Mail
 * Planned Features
   * Ban IP
+  * Breadcrumbs
   * Contact Form
-  * Friends
   * Localization
   * Pagination
-  * Private Messages
   * Search
   * Settings
-  * Support Tickets
+  * SEO (URL/Title/Meta)
+  * Tickets
   * Widgets
-  * WYSIWYG Editor for Pages & Posts
+  * WYSIWYG Editor
 
 ## ToDo.py
-* Create Generate Views Script
+* Generate Views Script
