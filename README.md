@@ -9,7 +9,6 @@ A Web Application Framework
 * OWASP CSRF Protector ([Apache 2.0 License](https://github.com/mebjas/CSRF-Protector-PHP/blob/master/licence.md))
 * SB-Admin-2 Theme 4.0.7 ([MIT License](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/master/LICENSE))
 
-
 ## ToDo.php
 * Posts
   * Edit/Delete Comments
