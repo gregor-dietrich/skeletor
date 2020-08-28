@@ -1,6 +1,20 @@
 # Skeletor
 A Web Application Framework
 
+## Install
+* It's pre-configured to run in the root directory of wherever your URL points.
+* You can just run /scripts/setup_full.py (Python 3.8)
+
+OR
+
+* Go to /scripts/setup/
+* Import the app.sql 
+* Copy both default files to /app/src/System/
+* Remove ".default" from both filenames
+* Configure connection in db.php
+Default user: admin
+Default password: admin
+
 ## Libraries
 * Bootstrap 4.4.1 ([MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE))
 * Bootswatch Slate Theme ([MIT License](https://github.com/thomaspark/bootswatch/blob/master/LICENSE))
