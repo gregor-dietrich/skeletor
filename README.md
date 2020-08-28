@@ -2,8 +2,11 @@
 A Web Application Framework
 
 ## Install
-* It's pre-configured to run in the root directory of wherever your URL points.
-* You can just run /scripts/setup_full.py (Python 3.8)
+It's pre-configured to run in the root directory of wherever your URL points.
+* Install Python 3.8+
+* Go to command line, navigate to the project directory and type:
+* python /scripts/setup_full.py
+* Hit Enter and follow instructions
 
 OR
 
