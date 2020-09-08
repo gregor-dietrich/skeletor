@@ -15,8 +15,10 @@ OR
 * Copy both default files to /app/src/System/
 * Remove ".default" from both filenames
 * Configure connection in db.php
-Default user: admin
-Default password: admin
+
+## Credentials
+* Default user: admin
+* Default password: admin
 
 ## Libraries
 * Bootstrap 4.4.1 ([MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE))
